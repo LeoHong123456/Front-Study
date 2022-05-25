@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东商城首页布局</title>
+    <link rel="stylesheet" href="../css/source/reset.css">
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        .navigation {
+            height: 30px;
+            background-color: #e3e4e5;
+            padding: 0px 350px;
+        }
+
+        .locate {
+            width: 10px;
+            height: 20px;
+            float: left;
+            background-color: red;
+            margin: 5px 0px;
+            border-radius: 50% 50%;
+        }
+
+        .spacer {
+            height: 30px;
+            line-height: 30px;
+            font-size: 12px;
+            display: inline-block;
+            color: #999;
+            overflow: hidden;
+        }
+
+        .register-font {
+            color: red;
+        }
+
+        .navigation-list {
+            width: 990px;
+        }
+
+        .navigation-list li {
+            float: left;
+        }
+
+        .navigation-list li a {
+            color: #999;
+            display: inline-block;
+            line-height: 30px;
+            font-size: 12px;
+            text-decoration: none;
+            padding: 0px 20px;
+        }
+
+        .navigation-list li a:hover {
+            color: red;
+        }
+
+        .header {
+            width: 980px;
+            height: 140px;
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+            /* margin: 0px auto; */
+        }
+
+        .logo {
+            width: 190px;
+            height: 120px;
+            float: left;
+            background-image: url(https://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/header/sprite.png);
+            margin-left: 100px;
+            overflow: hidden;
+        }
+
+        .search {
+            height: 60px;
+            background-color: #fff;
+            padding-top: 8px;
+        }
+
+        .search-m {
+            width: 546px;
+            height: 32px;
+            border: 2px red solid;
+            margin-top: 18px;
+            margin-left: 300px;
+        }
+
+        .search-input {
+            width: 542px;
+            height: 30px;
+            border: none;
+        }
+
+        .navitems {
+            width: 880px;
+            height: 20px;
+            margin-left: 280px;
+        }
+
+        .navitems li a {
+            color: #000;
+            float: left;
+            display: block;
+            margin: auto 15px;
+            padding-top: 10px;
+            line-height: 20px;
+            text-decoration: none;
+
+        }
+
+        .navitems li a:hover {
+            color: red;
+        }
+
+        .hotwords {
+            width: 450px;
+            height: 20px;
+            margin-left: 300px;
+        }
+
+        .hotwords ul li a {
+            color: #999;
+            display: block;
+            float: left;
+            line-height: 20px;
+            text-decoration: none;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+
+        .hotwords ul li a:hover {
+            color: red;
+        }
+
+        main {
+            background-color: #e3e4e5;
+            height: 480px;
+        }
+
+        .box-main {
+            background-color: rgb(235, 232, 232);
+        }
+
+        .body-nav {
+            width: 200px;
+            height: 478px;
+            float: left;
+            background-color: #fff;
+            margin-left: 150px;
+            margin-right: 10px;
+
+        }
+
+        .body-nav div {
+            height: 36px;
+            line-height: 36px;
+            padding-left: 10px;
+        }
+
+        .body-nav div a {
+            font-size: 14px;
+            color: black;
+            text-decoration: none;
+        }
+
+        .body-nav div:hover {
+            background-color: #999;
+        }
+
+        .body-nav div a:hover {
+            color: brown;
+        }
+
+        .body-nav span {
+            padding: 0px 1px;
+            font-size: 14px;
+        }
+
+        article {
+            width: 800px;
+            height: 478px;
+            float: left;
+            margin-right: 10px;
+        }
+
+        aside {
+            width: 190px;
+            height: 478px;
+            float: left;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 网站头部 -->
+    <header class="site-header">
+        <div class="navigation">
+            <ul class="navigation-list">
+                <div class="locate"></div>
+                <li><a href="#">海外</a></li>
+                <li><span class="spacer">|</span></li>
+                <li><a href="#">你好，请登录 <strong class="register-font">免费注册</strong></a></li>
+                <li><span class="spacer">|</span></li>
+                <li><a href="#">我的订单</a></li>
+                <li><span class="spacer">|</span></li>
+                <li><a href="#">我的京东</a></li>
+                <li><span class="spacer">|</span></li>
+                <li><a href="#">京东会员</a></li>
+                <li><span class="spacer">|</span></li>
+                <li><a href="#">企业采购</a></li>
+                <li><span class="spacer">|</span></li>
+                <li><a href="#">客户服务</a></li>
+                <li><span class="spacer">|</span></li>
+                <li><a href="#">网站导航</a></li>
+                <li><span class="spacer">|</span></li>
+                <li><a href="#">手机京东</a></li>
+                <li><span class="spacer">|</span></li>
+                <li><a href="#">网站无障碍</a></li>
+            </ul>
+        </div>
+        <div class="header">
+            <div class="logo"></div>
+            <div class="search">
+                <div class="search-m">
+                    <input class="search-input" type="text" background: transparent;></input>
+                </div>
+            </div>
+            <div class="hotwords">
+                <ul>
+                    <li><a href="#">美的洗地机</a></li>
+                    <li><a href="#">京东京造</a></li>
+                    <li><a href="#">不止五折</a></li>
+                    <li><a href="#">手机好店</a></li>
+                    <li><a href="#">勇不独行</a></li>
+                    <li><a href="#">运动520</a></li>
+                    <li><a href="#">车品特惠</a></li>
+                </ul>
+
+            </div>
+            <div class="navitems">
+                <ul>
+                    <li><a href="">秒杀</a></li>
+                    <li><a href="">优惠券</a></li>
+                    <li><a href="">PLUS会员</a></li>
+                    <li><a href="">品牌闪购</a></li>
+                    <li><a href="">拍卖</a></li>
+                    <li><a href="">京东家电</a></li>
+                    <li><a href="">京东超时</a></li>
+                    <li><a href="">京东生鲜</a></li>
+                    <li><a href="">京东国际</a></li>
+                    <li><a href="">京东云</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- 网站内容体 -->
+    <main class="main">
+        <div class="box-main">
+            <nav class="body-nav">
+                <div><a href="javascript:;">家用电器</a></div>
+                <div>
+                    <a href="javascript:;">手机</a><span>/</span><a href="javascript:;">运营商</a><span>/</span><a
+                        href="javascript:;">数码</a>
+                </div>
+                <div>
+                    <a href="javascript:;">电脑</a><span>/</span><a href="javascript:;">办公</a>
+                </div>
+                <div>
+                    <a href="javascript:;">家纺</a><span>/</span><a href="javascript:;">家居</a><span>/</span><a
+                        href="javascript:;">厨具</a>
+                </div>
+                <div>
+                    <a href="javascript:;">家具</a><span>/</span><a href="javascript:;">家装</a><span>/</span><a
+                        href="javascript:;">灯具</a><span>/</span><a href="javascript:;">工业品</a>
+                </div>
+                <div>
+                    <a href="javascript:;">内衣</a><span>/</span><a href="javascript:;">男装</a><span>/</span><a
+                        href="javascript:;">女装</a><span>/</span><a href="javascript:;">童装</a>
+                </div>
+                <div>
+                    <a href="javascript:;">箱包</a><span>/</span><a href="javascript:;">钟表</a><span>/</span><a
+                        href="javascript:;">珠宝</a><span>/</span><a href="javascript:;">女鞋</a>
+                </div>
+                <div>
+                    <a href="javascript:;">运动</a><span>/</span><a href="javascript:;">户外</a><span>/</span><a
+                        href="javascript:;">男鞋</a>
+                </div>
+
+                <div>
+                    <a href="javascript:;">汽车用品</a><span>/</span><a href="javascript:;">车载电器</a>
+                </div>
+                <div>
+                    <a href="javascript:;">母婴</a><span>/</span><a href="javascript:;">洗护喂养</a>
+                </div>
+                <div>
+                    <a href="javascript:;">玩具乐器</a><span>/</span><a href="javascript:;">宠物生活</a>
+                </div>
+                <div>
+                    <a href="javascript:;">家庭清洁</a><span>/</span><a href="javascript:;">个人护理</a><span>/</span><a
+                        href="javascript:;">计生情趣</a>
+                </div>
+                <div>
+                    <a href="javascript:;">图书</a><span>/</span><a href="javascript:;">童书</a><span>/</span><a
+                        href="javascript:;">文学</a><span>/</span>
+                </div>
+            </nav>
+
+            <article>
+                <div><img
+                        src="https://imgcps.jd.com/ling4/100026667910/5Lqs6YCJ5aW96LSn/5L2g5YC85b6X5oul5pyJ/p-5bd8253082acdd181d02f9e3/869715aa/cr/s/q.jpg"
+                        alt=""></div>
+            </article>
+
+            <aside></aside>
+        </div>
+    </main>
+
+
+    <!-- 网站底部 -->
+    <footer></footer>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪元素解决外边距折叠问题</title>
+
+    <style>
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+
+        /*利用伪元素*/
+        .box1::before {
+            content: '';
+            display: table;
+        }
+
+        .box2 {
+            width: 50px;
+            height: 50px;
+            margin-top: 50px;
+            background-color: #bfa;
+        }
+
+        /*
+            利用伪元素解决 高度塌陷，外边距折叠问（较好方式）
+        */
+        .clearfix::before,
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪类选择器</title>
+
+    <style>
+        /**
+            伪类（不存在的类，特殊的类）
+            伪类用来描述一个元素的特殊状态
+            比如第一个子元素，被点击的元素，鼠标移入的元素。。。
+
+            伪类特点 一般情况下都是使用:开头
+        */
+
+        /*
+            需求永远选中ul元素下的第一个子元素设置字体为红色
+        */
+        ul>li:first-child {
+            color: red;
+        }
+
+        /*
+            需求选中ul 元素下的最后一个子元素设置字体大小为20px
+        */
+        ul>li:last-child {
+            font-size: 20px;
+        }
+
+        /*
+            需求选中ul 元素下的第N个子元素设置字体颜色
+            >特殊值 n 零到正无穷
+            >特殊值2n(even) 选中偶数位的元素
+            >特殊值2n+1(odd) 选中奇数位的元素
+        */
+        ul>li:nth-child(even) {
+            color: aqua;
+        }
+
+        /*
+            需求如果ul元素新增一个span子元素放到ul第一个位置，我们想让ul下的第一个li 字体颜色变红
+            first-of-type 与first-child 功能类似，不同点是他们在同类型元素中进行排序
+
+        */
+
+        ul>li:first-of-type {
+            color: blue;
+        }
+
+        /*
+            :not() 否定伪类
+            >将符合条件的元素从选择器中去除
+            除了第二个子元素颜色不变，其它子元素全部变成指定颜色
+        */
+        ul>li:not(:nth-child(2)) {
+            color: brown;
+        }
+
+        /*
+            超链接
+            :link 表示没有访问过的连接(正常连接)
+        */
+        a:link {
+            color: aquamarine;
+        }
+
+        /*
+            超链接
+            :visited 表示访问过的连接
+            由于隐私问题，这个伪类只能修改连接颜色
+        */
+        a:visited {
+            color: blueviolet;
+        }
+
+        /*
+            :hover 鼠标移入状态
+        */
+        a:hover{
+            color: blueviolet;
+            font-size: 30px;
+        }
+
+        /*
+            :active  鼠标点击跳转
+        */
+        a:active{
+            color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <span>SPAN</span>
+        <li>第一个</li>
+        <li>第二个</li>
+        <li>第三个</li>
+        <li>第四个</li>
+        <li>第五个</li>
+    </ul>
+    <a href="http://www.baidu.com">百度一下</a>
+    <a href="http://www.2345.com">网址导航</a>
+</body>
+
+</html>

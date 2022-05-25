@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪元素选择器</title>
+    <style>
+        p{
+            font-size: 20px;
+        }
+
+        /*
+            伪元素，表示页面中一些特殊的并不真实存在的元素(特殊位置)
+            伪元素使用 :: 开头
+            ::first-letter 表示第一个字母
+            ::first-line 表示第一行
+            ::selection 表示选中的内容
+            ::before 表示元素的起始位置(必须结合content属性来使用)
+            ::after 表示元素的结束位置(必须结合content属性来使用)
+        */
+        p::first-letter{
+            font-size: 30px;
+        }
+
+        /*
+            ::first-line 表示第一行
+        */
+        p::first-line{
+            background-color: antiquewhite;
+        }
+
+        /*
+            ::selection  表示选中的内容
+        */
+        p::selection{
+            background-color: green;
+        }
+
+        /*
+            元素起始位置添加内容
+        */
+        div::before{
+            content: "『";
+            color: aquamarine;
+        }
+
+        /*
+            元素结束位置添加内容
+        */
+        div::after{
+            content: "』";
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias exercitationem molestias accusamus, magni consequatur temporibus, repudiandae debitis in corrupti odit nemo. Pariatur, quasi? Assumenda eos sit at. Debitis, aliquam asperiores!
+    </p>
+    <div>Hello word</div>
+</body>
+
+</html>

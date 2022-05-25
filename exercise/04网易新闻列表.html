@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网易新闻列表</title>
+    <link rel="stylesheet" href="../css/source/reset.css">
+    <style>
+        .news{
+            width: 300px;
+            height: 324px;
+            margin-top: 10px;
+        }
+        .index-title{
+            width: 300px;
+            height: 41px;
+            font-size: 16px;
+            line-height: 24px;
+            border-width: 1px;
+            border-top: 1px #dddddd solid;
+        }
+        .title{
+            /*为了边框和文字宽度一致，需要将H2 转换为行内块元素*/
+            display:inline-block;
+            height: 41px;
+            border-top: 1px solid red;
+            margin-top: -1px;
+            padding-top: 6px;
+        }
+        .title a{
+            font-size: 14px;
+            font-family: 宋体;
+            font-weight: bold;
+            color: #666666;
+            /*去除下划线*/
+            text-decoration: none;
+        }
+        .img-title{
+            color: #fff;
+            margin-top: -30px;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+        .ul-list{
+            width: 300px;
+            height: 120px;
+            margin-top: 12px;
+        }
+        .ul-list li{
+            width: 285px;
+            height: 30px;
+            line-height: 30px;
+            text-align: left;
+            /* padding-left: 15px; */
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        .ul-list li a{
+            font-size: 14px;
+            font-family: 宋体;
+            color: #666666;
+            /*去除下划线*/
+            text-decoration: none;
+        }
+        a:hover{
+            color: red;
+        }
+        .ul-list li a:hover{
+            color: red;
+        }
+        .ul-list li::before{
+            content:"◆";
+            color: #666666;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="news">
+        <div class="index-title">
+            <h2 class="title"><a href="javascrpit:;">体育</a></h2>
+        </div>
+
+        <div class="img">
+            <img src="https://cms-bucket.ws.126.net/2022/0518/d1731b55j00rc2d8l002lc000go00b4c.jpg?imageView&thumbnail=300y150&type=webp" alt="赵继伟带伴郎团出发接亲" sizes="display: inline; opacity: 1;">
+            <h3 class="img-title">赵继伟带伴郎团出发接亲</h3>
+        </div>
+ 
+        <ul class="ul-list">
+            <li><a href="javascript:;">18年忠于一支队 35岁英超队长向6万球迷告别哭成泪人</a></li>
+            <li><a href="javascript:;">时隔18年再中状元签 魔术的下一个魔兽是他吗</a></li>
+            <li><a href="javascript:;">印度羽毛球，是怎么崛起的？</a></li>
+            <li><a href="javascript:;">较个真！是太阳崩盘缴枪 还是独行侠强到离谱？</a></li>
+        </ul>
+    </div>
+</body>
+</html>

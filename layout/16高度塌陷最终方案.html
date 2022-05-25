@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高度塌陷问题-完美解决</title>
+    <style>
+        .box1{
+            height: 100px;
+            background-color: antiquewhite;
+        }
+
+        .box2{
+            width: 100px; 
+            height: 50px;
+            float: left;
+            background-color: aqua;
+        }
+        /*在父元素结尾添加一个标签解决此类问题*/
+        /* .box3{
+            clear: left;
+        } */
+
+        /*通过伪元素解决高度塌陷问题,注意伪元素默认是行内元素，需要转换成行内块元素，或者块元素才能 clear生效*/
+        .box1::after{
+            content: '';
+            display: block;
+            clear:both;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+        <!-- 在父元素结尾添加一个标签解决此类问题 -->
+        <!-- <div class="box3"></div> -->
+    </div>
+</body>
+</html>

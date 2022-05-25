@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子水平布局</title>
+    <style>
+        .box1{
+            width: 800px;
+            height:200px;
+            border: 10px rebeccapurple solid;
+        }
+        .inner{
+            width: 200px;
+            height:190px;
+            background-color: bisque;
+            border: 5px red solid;
+            margin-left: 20px;
+        }
+
+        /*
+            一个元素在其父元素中，水平布局必须要满足以下等式：
+            margin-left(默认0)
+            + boder-left(默认0)
+            + padding-left(默认0)
+            + border-right(默认0)
+            + width (默认0)
+            + pangding-reght(默认0)
+            + margin-right(默认0) = 其父元素内容的宽度（必须满足）
+            以上等式必须满足，如果相加结果使等式不成立，则称为过渡约束，则等式会自动调整
+            width 值默认是auto
+
+            -如果将一个宽度和一个外边距设置为auto,则宽度调整为最大
+            -如果将三个值都设置为auto则外边距都是0，宽度最大
+            -如果将两个外边距设置为auto ,宽度为固定值的时候，则会将外边距设置为相同的值
+                所以我们经常利用这个特点来使一个元素在其父元素水平居中
+        */
+
+
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="inner">
+
+        </div>
+    </div>
+</body>
+</html>

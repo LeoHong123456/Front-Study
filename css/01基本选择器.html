@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./source/study01.css">
+    <title>CSS</title>
+    <style>
+        /*
+            通配：* 表示所有
+        */
+        /*
+        *{
+            color: #000;
+        } 
+        */
+        /* div.div{
+            font-size: 30px;
+        }
+
+        .p.c{
+            color: aquamarine;
+            font-size: 10px;
+        } */
+
+        /* 选择器分组 */
+        div,
+        p {
+            color: blue;
+        }
+
+        /**
+            选择下一个兄弟元素：语法 前一个元素 + 后一个元素
+        */
+        div+p {
+            color: rgb(0, 0, 0);
+        }
+
+        /*p
+            选择兄弟元素下所有元素：语法 兄弟 ~
+         */
+
+        div~p{
+            font-size: 60px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="div">盒子</div>
+    <p class="p c">段落A</p>
+    <p class="p c">段落B</p>
+    <p class="p c">段落C</p>
+    <p class="p c">段落D</p>
+    <p class="p c">段落E</p>
+    <span>A</span>
+    <span>B</span>
+    <span>C</span>
+</body>
+
+</html>

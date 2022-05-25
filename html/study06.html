@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        内联框架，用于当前页面中引入一个其他页面
+        src 指定引入的网页路径
+        frameborder 指定内联框架的边框值0,1 默认是0
+    -->
+    <iframe src="./study04.html" width="500" height="500" frameborder="0"></iframe>
+    <iframe src="https://www.baidu.com" width="500" height="500" frameborder="0"></iframe>
+
+
+    <!-- 
+        audio 标签用来向页面引入一个外部音频文件
+        音视频文件引入是，默认情况下不允许用户自己控制播放停止功能的
+     -->
+    <p>精选图片>>></p>
+    <img src="./source/IMG/01.jpg" alt="01">
+    <img src="./source/IMG/02.jpg" alt="02">
+    <img src="./source/IMG/03.jpg" alt="03">
+
+    <p>视频播放>>></p>
+    <audio src="./source/MP3/以後的以後.mp3" controls>庄心妍-以后的以后.MP3</audio>
+    <video src="./source/MP4/以後的以後.mp4" controls>庄心妍-以后的以后</video>
+    <a href="song.mp3">Play Sound</a>
+    <script type="text/javascript" src="http://mediaplayer.yahoo.com/js">
+    </script>
+</body>
+
+</html>

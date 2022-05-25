@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片列表</title>
+    <link rel="stylesheet" href="../css/source/reset.css">
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        .img-list{
+            height: 470px;
+            width: 190px;
+            /*距离顶部50像素，左右居中*/
+            margin: 50px auto;
+            /*裁剪溢出的内容*/
+            overflow: hidden;
+            background-color: white;
+        }
+        .img-list li:not(:last-child){
+            margin-bottom: 10px;
+        }
+        .img-list img{
+            width: 500%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 方式一 -->
+    <!-- <div><img src="" alt=""><img src="" alt=""><img src="" alt=""></div> -->
+    <ul class="img-list">
+        <li><a href="javascript:;"><img src="https://img12.360buyimg.com/aotucms/jfs/t1/87197/30/21208/287417/6205b8d7E32a7a39b/55b6e3c2651b52f8.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="https://img12.360buyimg.com/aotucms/jfs/t1/87197/30/21208/287417/6205b8d7E32a7a39b/55b6e3c2651b52f8.png" alt=""></a></li>
+        <li><a href="javascript:;"><img src="https://img12.360buyimg.com/aotucms/jfs/t1/87197/30/21208/287417/6205b8d7E32a7a39b/55b6e3c2651b52f8.png" alt=""></a></li>
+    </ul>
+</body>
+</html>

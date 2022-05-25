@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择器权重</title>
+
+    <style>
+        /*
+            选择器的权重
+                内联样式           权重值=1000
+                ID选择器           权重值=100
+                类和伪类选择器      权重值=10
+                元素选择器          权重值=1
+                通配选择器          权重值=0
+                继承的样式          没有优先级
+            比较优先级时，需要将所有选择器的优先级进行相加计算，最后权重值越高则优先显示(分组选择器是单独计算)
+            选择器的累加不会超过其最大的数量级，类选择器再搞也不会高过ID选择器
+            如果优先级相同，此时优先使用靠下的样式
+            
+            可以在样式后面添加 !important 则此时该样式会获取到最高的优先级别，甚至超过内联样式
+            注意,在开发中慎用！
+        */
+        div {
+            background-color: antiquewhite;
+        }
+
+        .red {
+            background-color: aqua !important;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="box" class="red">我是DIV</div>
+</body>
+
+</html>
