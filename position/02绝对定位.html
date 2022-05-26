@@ -21,6 +21,8 @@
                         包含块就是离当前元素最近的祖先块元素(排除行内元素)
                     -绝对定位的包含块：
                         包含块就是离它最近的开启了定位的祖先元素，如果所有的祖先元素都没有开启定位则依据根元素进行定位,html (初始包含块)
+                        水平布局(开了绝对定位九个值只和等于盒子的总大小)【left + margin-left + border-left+ padding-left + width + padding-right + border-right + margin-right + right】，
+                        当发生过渡约束，如果九个值没有auto 则自动调整right值使等式满足，如果有auto则自动调整auto的值以使等式满足。
         */
 
         .box1{

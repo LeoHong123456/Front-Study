@@ -14,6 +14,9 @@
                 -和绝对定位不一致的地方就是永远参照于浏览器的视扣进行定位
                 -固定定位的元素不会随着网站的滚动条滚动
         */
+        body{
+            height: 3000px;
+        }
 
         .box1 {
             width: 100px;
@@ -24,7 +27,9 @@
         .box2 {
             width: 100px;
             height: 100px;
-            background-color: aliceblue;
+            position: fixed;
+            top: 50px;
+            background-color: red;
         }
 
         .box3 {
