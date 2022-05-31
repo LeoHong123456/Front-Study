@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <title>图标字体</title>
+    <link rel="stylesheet" href="../css/source/reset.css">
+    <link rel="stylesheet" href="./source/css/all.css">
+    <style>
+        ul{
+            list-style: none;
+        }
+        /*
+            通过为伪元素来设置图标字体
+                1、找到要设置图标的元素通过before或者after
+                2、在content中设置字体编码
+                3、设置字体样式
+                    fab
+                        font-family: 'Font Awesome 6 Free';
+                    fas
+                        font-family: 'Font Awesome 6 Brands';
+        
+        */
+        li::before{
+            content: '\f1b0';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: orange;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 图标字体（iconfont）
+        在网页中经常使用一些图标，可以通过图片来引入图标
+        但是图片大小本身比较大，并且非常不灵活，所以在使用图标时，
+        我们还可以将图标设置为字体，然后通过font-face的形式来对字体进行引入，
+        这样我们就可以通过使用字体的形式来使用图标。
+
+        font awesome 使用步骤：
+            1、下载
+            2、将css和webfonts移动到项目中
+            3、将all.css引入到网页中
+            4、使用图标字体
+                -通过类名来使用图标字体
+                -使用class='fas fa-bell'
+     -->
+
+     <ul>
+         <li>床前明月光</li>
+         <li>疑是地上霜</li>
+         <li>举头望明月</li>
+         <li>低头思故乡</li>
+     </ul>
+
+     <!-- 使用实体来使用图标字体固定格式(&#x编码;)-->
+     <span class="fas">&#xf0f3;</span>
+
+     <!-- 使用内联样式使用图标字体 -->
+     <span class="fas fa-bell" style="font-size: 40px; color: #000;"></span>
+</body>
+</html>
