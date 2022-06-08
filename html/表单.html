@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: #fff;
+        }
+
+        .form {
+            width: 50%;
+            margin: 50px auto;
+            border: 3px dotted green;
+        }
+
+        .row {
+            width: 100%;
+            display: table;
+            border-collapse: separate;
+            border-spacing: 5px;
+            margin: 10px 0px;
+            vertical-align: middle;
+            border-bottom: 1px dotted #999;
+        }
+
+        .row:last-child {
+            border-bottom: 0px solid transparent;
+        }
+
+        .label {
+            width: 20%;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .content {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        input[type=text] {
+            width: 300px;
+            height: 30px;
+            font-size: 16px;
+            border: 1px solid greenyellow;
+            border-radius: 10px;
+        }
+
+        input[type=password] {
+            width: 300px;
+            height: 30px;
+            font-size: 16px;
+            border: 1px solid greenyellow;
+            border-radius: 10px;
+        }
+
+        input[type=radio] {
+            width: 50px;
+            height: 20px;
+            font-size: 16px;
+            border: 1px solid greenyellow;
+            border-radius: 10px;
+        }
+
+        input[type=checkbox]{
+            margin: 0px 10px;
+        }
+
+        select {
+            width: 300px;
+            height: 30px;
+            font-size: 16px;
+            border: 1px solid greenyellow;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <form action="study01.html" method="get">
+            <div class="row">
+                <div class="label"><label for="username">用户名:</label></div>
+                <div class="content"><input type="text" name="username" placeholder="张三"></div>
+            </div>
+
+            <div class="row">
+                <div class="label"><label for="password">密码:</label></div>
+                <div class="content"><input type="password" name="password" placeholder="123456"></div>
+            </div>
+
+            <div class="row">
+                <div class="label"><label for="性别">性别:</label></div>
+                <div class="content">
+                    <label for="sex">男</label><input type="radio" name="sex" value="man" checked>
+                    <label for="sex">女</label><input type="radio" name="sex" value="woman">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="label"><label for="hobby">爱好:</label></div>
+                <div class="content">
+                    <label for="hobby">听音乐</label><input type="checkbox" name="hobby" id="hobby" value="song">
+                    <label for="hobby">打游戏</label><input type="checkbox" name="hobby" id="hobby" value="game">
+                    <label for="hobby">旅行</label><input type="checkbox" name="hobby" id="hobby" value="trip" checked>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="label"><label for="profession">职业:</label></div>
+                <div class="content">
+                    <select name="profession" id="profession">
+                        <option value="码农">码农</option>
+                        <option value="搬砖" selected>搬砖</option>
+                        <option value="混混">混混</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="label"><label for="info">个人简介:</label></div>
+                <div class="content"><textarea name="info" id="info" cols="40" rows="6"></textarea></div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
