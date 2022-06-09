@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>腾讯电影小卡片</title>
+    <link rel="stylesheet" href="../css/source/reset.css">
+    <link rel="stylesheet" href="../font-color/source/css/all.css">
+
+    <style>
+        /*解决高度塌陷问题*/
+        .clearflex::before,
+        .clearflex::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        .video-content {
+            width: 250px;
+            margin: 50px auto;
+            background: 0 0;
+            border: 1px solid rgb(238, 235, 235);
+        }
+
+        .video-content:hover{
+            box-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+        }
+
+        .image {
+            width: 250px;
+            height: 259px;
+        }
+
+        .title {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 900;
+            color: #111111;
+            margin: 0px 10px 0px;
+        }
+
+        .label-nav li {
+            float: left;
+            margin: 10px 6px;
+            padding: 2px 5px;
+            background-color: #ddd;
+            border: 1px solid #ddd;
+            border-radius: 10px 10px;
+        }
+
+        .info p {
+            width: 250px;
+            height: 28px;
+            font-size: 14px;
+            overflow: hidden;
+            /*将对象作为弹性伸缩盒子模型显示*/
+            display: -webkit-box;
+            /*设置子元素排列方式*/
+            -webkit-box-orient: vertical;
+            /*设置显示的行数，多出的部分会显示为...*/
+            -webkit-line-clamp: 3;
+        }
+
+        .oper-item {
+            width: 100%;
+            font-size: 16px;
+            text-decoration: none;
+            background-color: #fff;
+        }
+
+        .oper-item .video {
+            float: left;
+            padding: 5px 10px;
+            margin: 8px 8px 0px 8px;
+            border-radius: 25px 25px;
+            background-image: repeating-linear-gradient(to right, yellow,red);
+        }
+
+        .oper-item .video a{
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            margin: 8px 8px 5px 8px;
+        }
+
+        .oper-item .collect {
+            float: right;
+            padding: 5px 10px;
+            margin: 8px 2px 5px 0px;
+        }
+
+        .oper-item .download {
+            float: right;
+            padding: 5px 10px;
+            margin: 8px 2px 5px 0px;;
+        }
+
+        .fas {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .fas:hover{
+            color: palevioletred;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-content clearflex">
+        <!-- 电影图片 -->
+        <div class="video-image">
+            <a href="#"><img class="image" src="./image/350.webp" alt="完美世界"></a>
+        </div>
+        <!-- 标题 -->
+        <span class='title'>完美世界</span>
+        <!-- 标签 -->
+        <ul class="label-nav">
+            <li>2021</li>
+            <li>玄幻</li>
+            <li>内地</li>
+            <li>阎萌萌</li>
+        </ul>
+        <!-- 电影描述 -->
+        <div class="info">
+            <p>《完美世界》动画改编自同名小说。他为修道而生，为应劫而至，他身化亿万血雨，洒落万古岁月，经历无数时空的熬炼，岁月长河的洗礼，他化万古，他化自在。看男主石昊如何一生极致辉煌，造就无尽传说。</p>
+        </div>
+        <!-- 操作项 -->
+        <div class="oper-item clearfelx">
+            <div class="video"><a href="#">立即观看</a></div>
+            <!-- 收藏 -->
+            <div class="collect">
+                <a class="collect-link" href="#">
+                    <li class="fas fa-heart"></li>
+                </a>
+            </div>
+            <!-- 下载图标 -->
+            <div class="download">
+                <a href="#"><i class="fas fa-download"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
