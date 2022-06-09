@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .clearflx::before, 
+        .clearflx::after{
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        .header{
+            width: 100%;
+            background-color: black;
+        }
+
+        .content{
+            width: 1226px;
+            margin: 0px auto;
+            background-color:red;
+        }
+
+        .ul-a li{
+            float: left;
+            list-style: none;
+            margin: 10px;
+        }
+
+        .ul-a a{
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .ul-b li{
+            float: right;
+            list-style: none;
+            margin: 10px;
+        }
+
+        .ul-b a{
+            font-size: 12px;
+            line-height: 40px;
+            text-decoration: none;
+        }
+
+        .box{
+            float: right;
+            vertical-align: middle;
+            margin: 10px;
+        }
+
+        .box a{
+            font-size: 12px;
+            line-height: 40px;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="content clearflx">
+            <ul class="ul-a">
+                <li>
+                    <a href="">A</a>
+                </li>
+                <li>
+                    <a href="">B</a>
+                </li>
+                <li>
+                    <a href="">C</a>
+                </li>
+            </ul>
+    
+    
+            <ul class="ul-b">
+                <li>
+                    <a href="">D</a>
+                </li>
+                <li>
+                    <a href="">E</a>
+                </li>
+                <li>
+                    <a href="">F</a>
+                </li>
+            </ul>
+    
+            <div class="box">
+                <a href="">H</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
