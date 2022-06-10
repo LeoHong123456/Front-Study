@@ -10,13 +10,16 @@
 
 .nav-list li {
     float: left;
+    display: block;
     margin: 0px 0.3em;
+
 }
 
 .nav-list a {
     color: #b0b0b0;
     font-size: 12px;
     line-height: 40px;
+    text-align: left;
     text-decoration: none;
 }
 
@@ -26,22 +29,21 @@
 
 .dow-app:hover>.download {
     height: 148px;
-
 }
 
 .dow-app:hover .dow-icon {
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
+    border-left: 8px solid transparent;
     border-color: transparent transparent #fff transparent;
 }
 
 .dow-icon {
-    /*将父元素水平50%的位置上边40px 作为基点*/
     position: absolute;
-    top: 25px;
+    bottom: 0;
     left: 50%;
-    /*将本身元素向水平方向移动50% 使其子元素和父元素对齐*/
-    transform: translateX(-80%);
-    border: 8px solid red;
-    border-color: transparent;
+    margin-left: -8px;
+    /* transform: translateX(-50%); */
 }
 
 .download {
@@ -51,6 +53,7 @@
     position: absolute;
     left: 50%;
     top: 40px;
+    z-index: 999;
     /*将本身元素向水平方向移动50% 使其子元素和父元素 对*/
     transform: translateX(-50%);
     background-color: #fff;
@@ -143,6 +146,7 @@
     top: 40px;
     /*从父元素为基点定位，从右边0开始*/
     right: 0px;
+    z-index: 999;
     background-color: #fff;
     box-shadow: 0 2px 10px rgb(0 0 0 / 15%);
     /*添加过渡效果*/
@@ -169,7 +173,6 @@
 
 .header-logo {
     /*方式一绝对定位垂直居中*/
-    width: 62px;
     position:absolute; top: 50%; left: 0;
     transform: translateY(-50%);
     /*让图片居中方式二： 把当前元素设置为单元格，可以利用单元格的垂直居中方式进行垂直居中，父元素必须是display:table*/
@@ -180,23 +183,152 @@
 .header-logo>a>.logo-img{
     width: 62px;
     height: 56px;
+    text-align: left;
 }
 
 .header-nav{
-    position: relative;
-    width: 850px;
+    width: 678px;
     height: 100px;
-
+    position: absolute;left: 172px;top: 0;
 }
 
-.header-navs{
-    position:absolute; top: 50%; left: 250px;
-    transform: translateY(-50%);
-}
-
-.header-navs li{
+.header-navs-li{
+    position: relative;
     float: left;
+    padding: 38px 10px;
+    line-height: 23px;
+}
+
+.header-navs-li a{
+    color: #333;
     font-size: 16px;
-    line-height: 16px;
-    margin: 0px 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.header-navs-li:hover a{
+    color: #ff6700;
+}
+
+.header-navs-li:hover .container{
+    height: 200px;
+    translate: all .5s;
+}
+
+/* .header-nav>.header-navs-li:hover .header-content{
+    border-bottom: 1px solid  #616161;
+} */
+
+.header-search{
+    width: 296px;
+    height: 100px;
+    position: absolute;left: 912px;top: 0;
+}
+
+.search{
+    float: left;
+    margin-top: 25px;
+    width: 238px;
+    height: 46px;
+    border: 1px solid rgb(224, 224, 224);
+}
+
+.search-button{
+    display: inline-block;
+    width: 38px;
+    height: 46px;
+    line-height: 46px;
+    margin-top: 25px;
+    padding: 1px 6px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid rgb(224, 224, 224);
+    border-left: 1px solid transparent;
+    background-color: #fff;
+}
+
+.fa-search{
+    font-size: 18px;
+    color: #616161;
+}
+
+.search-button:hover{
+    background-color: #ff6700;;
+}
+
+.search-button:hover .fa-search{
+    color: #fff;
+}
+
+.container{
+    width: 1226px;
+    position: absolute;
+    top: 100px;
+    left: -172px;
+    height: 0;
+    overflow: hidden;
+    background-color: #fff;
+    transition: all .3s;
+}
+
+.xiaomi-ul li{
+    float: left;
+}
+
+.xiaomi-ul li img{
+    width: 160px;
+    height: 110px;
+    margin-bottom: 16px;
+}
+
+.mode-info{
+    display: block;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.price-info{
+    color: #ff6700;
+    display: block;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+}
+
+
+.line{
+    float: left;
+    width: 10px; height: 110px;
+    border-right: 1px solid rgb(224, 224, 224);
+}
+
+.site-body{
+    /* position: relative; */
+    width: 1226px;
+    margin: 0px auto;
+    background-color: #fff;
+}
+
+.site-category{
+    float: left;
+    width: 234px;
+    height: 460px;
+    opacity: .9;
+    padding: 20px 0px;
+    background: rgba(105,101,101,.6);
+}
+
+.site-category li{
+    vertical-align: middle;
+    padding-left: 30px;
+}
+
+.site-category li span{
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.site-category li:hover{
+    background-color: #ff6700;
 }
