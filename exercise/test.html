@@ -8,96 +8,32 @@
     <title>Document</title>
 
     <style>
-        .clearflx::before, 
-        .clearflx::after{
-            content: '';
-            display: table;
-            clear: both;
+        .box1 {
+            width: 100px;
+            height: 300px;
+            border: 1px solid red;
         }
-
-        .header{
-            width: 100%;
-            background-color: black;
+        .box1 ul {
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0 auto;
         }
-
-        .content{
-            width: 1226px;
-            margin: 0px auto;
-            background-color:red;
-        }
-
-        .ul-a li{
-            float: left;
+        .box1 ul li {
             list-style: none;
-            margin: 10px;
         }
-
-        .ul-a a{
-            font-size: 12px;
-            text-decoration: none;
-        }
-
-        .ul-b li{
-            float: right;
-            list-style: none;
-            margin: 10px;
-        }
-
-        .ul-b a{
-            font-size: 12px;
-            line-height: 40px;
-            text-decoration: none;
-        }
-
-        .box{
-            float: right;
-            vertical-align: middle;
-            margin: 10px;
-        }
-
-        .box a{
-            font-size: 12px;
-            line-height: 40px;
-            text-decoration: none;
-        }
-
     </style>
 </head>
 
 <body>
-
-    <div class="header">
-        <div class="content clearflx">
-            <ul class="ul-a">
-                <li>
-                    <a href="">A</a>
-                </li>
-                <li>
-                    <a href="">B</a>
-                </li>
-                <li>
-                    <a href="">C</a>
-                </li>
-            </ul>
-    
-    
-            <ul class="ul-b">
-                <li>
-                    <a href="">D</a>
-                </li>
-                <li>
-                    <a href="">E</a>
-                </li>
-                <li>
-                    <a href="">F</a>
-                </li>
-            </ul>
-    
-            <div class="box">
-                <a href="">H</a>
-            </div>
-
-        </div>
+    <div class="box1">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
     </div>
 </body>
 
