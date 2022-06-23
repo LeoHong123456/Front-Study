@@ -1,0 +1,45 @@
+.box1 {
+  width: 200px;
+  background-color: #bfa;
+}
+.box1 > .box2 {
+  column-rule: red;
+}
+.box1:hover {
+  color: #bfa;
+}
+.box1 {
+  height: 200px;
+  background-image: url("box2/img/i.png");
+}
+.p1 {
+  width: 100px;
+  height: 200px;
+}
+.p2::extend(.p1) {
+  color: red;
+}
+.p3 {
+  width: 100px;
+  height: 200px;
+}
+.p5 {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+}
+div {
+  width: 200px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+}
+span {
+  color: #ff8000;
+}
+.box6 {
+  width: 200px;
+  height: 50px;
+  background-color: #bfa;
+}
+/*# sourceMappingURL=./index.css.map */

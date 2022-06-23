@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画</title>
+    
+    <style>
+        .box1{
+            width: 800px;
+            height: 400px;
+            background-color: aquamarine;
+            overflow: hidden;
+        }
+
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            /*动画名*/
+            animation-name: test;
+            /*动画执行时间*/
+            animation-duration: 2s;
+            /*动画延时*/
+            animation-delay: 2s;
+            /*设置动画执行次数可以值为数字或者infinite无限循环*/
+            animation-iteration-count: infinite;
+            /*匀速运动*/
+            animation-timing-function: inherit;
+            /*指定方向运行【normal:from->to运行,reverse:to->from运行，alternate:from->to重复执行时反向执行】*/
+            animation-direction: reverse;
+            /**动画执行状态【running:运行，paused:暂停】*/
+            animation-play-state: running;
+            /*动画填充模式【none:默认值动画执行结束回到原来位置,forwards：执行完停留到结束位置】*/
+            animation-fill-mode: forwards;
+        }
+
+        /*
+            动画
+                设置动画效果，必须先要设置一个关键帧
+        */
+        @keyframes test{
+           
+             /*from动画的结束位置，也可以使用100%*/
+            from{
+                margin-left: 0px;
+            }
+            /*to表示动画的开始位置，也可以使用0%*/
+            to{
+                margin-left: 800px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+</body>
+</html>

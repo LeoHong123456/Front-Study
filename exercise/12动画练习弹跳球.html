@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画练习弹跳球</title>
+    <style>
+        .content {
+            width: 1000px;
+            height: 500px;
+            margin: 50px auto;
+            border-bottom: 10px solid black;
+            display: flex;
+            justify-content:space-around;
+            flex-direction: row;
+        }
+
+        .content>div{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            animation: run 1s forwards linear infinite alternate;
+        }
+
+        div.box1 {
+            background-color: gold;
+        }
+
+        div.box2 {
+            background-color: rebeccapurple;
+            animation-delay: .2s;
+        }
+
+        div.box3 {
+            background-color: greenyellow;
+            animation-delay: .3s;
+        }
+
+        div.box4 {
+            background-color: pink;
+            animation-delay: .4s;
+        }
+
+        div.box5 {
+            background-color: red;
+            animation-delay: .5s;
+        }
+
+        div.box6 {
+            background-color: blue;
+            animation-delay: .6s;
+        }
+
+        div.box7 {
+            background-color: blueviolet;
+            animation-delay: .7s;
+        }
+        div.box8 {
+            background-color: red;
+            animation-delay: .8s;
+        }
+        div.box9 {
+            background-color: green;
+            animation-delay: .9s;
+        }
+        div.box10 {
+            background-color: yellowgreen;
+            animation-delay: 1s;
+        }
+
+        @keyframes run {
+            from{
+                margin-top: 0px;
+            }
+            40%{
+                margin-top: 100px;
+            }
+            20%,60%, to{
+                margin-top: 400px;
+                animation-timing-function: ease-in;
+            }
+            80%{
+                margin-top: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+        <div class="box5"></div>
+        <div class="box6"></div>
+        <div class="box7"></div>
+        <div class="box8"></div>
+        <div class="box9"></div>
+        <div class="box10"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹性元素样式</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul{
+            width: 800px;
+            border: 10px solid red;
+            display: flex;
+        }  
+
+        li{
+            width: 200px;
+            height: 100px;
+            background-color: #bfa;
+            font-size: 50px;
+            text-align: center;
+            line-height: 100px;
+            /*增长系数，可以单独对某一个li进行设置*/
+            flex-grow: 1;
+            /*缩减系数*/
+            flex-shrink: 1;
+            /*元素的基础长度
+                flex-basis 指定的是主轴上的基础长度
+                默认值是auto 表示参考元素自身的高度或宽度
+            */
+            flex-basis: content;
+            /*
+                简写属性
+                
+            */
+            flex: 1 1 auto;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+</html>

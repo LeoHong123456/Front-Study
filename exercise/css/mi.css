@@ -306,7 +306,7 @@ body {
 }
 
 .home-nav{
-    width: 204px;
+    width: 234px;
     padding: 20px 0px 20px 0px;
     position:absolute; top: 0; left: 0;
     background-color: rgba(105, 101, 101, 0.6)
@@ -388,21 +388,170 @@ body {
 }
 
 .article{
-    width: 204px;
+    float: left;
+    width: 234px;
     height: 170px;
+    display: inline;
     background-color: #5f5750;
+}
+
+.article-items li{
+    position: relative;
+    float: left;
+    width: 70px;
+    height: 82px;
+    padding: 0 3px;
+}
+
+.row::after{
+    width: 64px;
+    height: 1px;
+    content: '';
+    position: absolute;bottom: 0px;left: 6px;
+    background-color:#665e57;
+}
+
+.col::before{
+    width: 1px;
+    height: 70px;
+    content: '';
+    position: absolute;top: 6px;right: 0px;
+    background-color:#665e57;
 }
 
 .article-img{
     width: 24px;
     height: 24px;
+    margin: 0px 23px 4px 23px;
 }
 
 .article a{
+    color: #fff;
     display: block;
-    float: left;
     width: 64px;
     height: 70px;
+    padding-top: 18px;
+    opacity: .7;
+    text-decoration: none;
+    text-align: center;
 }
 
+.article-banner{
+    float: left;
+}
+
+.article-banner-nav {
+    width: 992px;
+    display: flex;
+    justify-content:space-between;
+    flex-direction: row; 
+    padding-left: 14px;
+    box-sizing: border-box;
+}
+
+.article-banner-nav li{
+    float: left;
+}
+
+.article-banner-nav img{
+    width: 316px;
+    height: 170px;
+}
+
+
+.home-main{
+    width: 100%;
+    float: left;
+    background-color: #f5f5f5;
+}
+
+.home-banner-box{
+    margin: 22px 0px 22px 0px;
+}
+
+.main-title{
+    width: 100%;
+    float: left;
+}
+.main-title h2{
+    color: #333;
+    font-size: 22px;
+    line-height: 58px;
+    font-weight: 200;
+    float: left;
+
+}
+
+.main-title p{
+    float:right;
+    color: #333;
+    font-size: 22px;
+    line-height: 58px;
+    font-weight: 200;
+}
+
+
+.phone-aside{
+    float: left;
+    width: 100%;
+}
+
+.aside{
+    float: left;
+    width: 248px;
+    height: 614px;
+    background-color: #fff;
+}
+
+.phone-aside-nav{
+    float: left;
+    width: 978px;
+    height: 614px;
+
+}
+
+.phone-aside-items{
+    width: 100%;
+}
+
+.phone-aside-items li{
+    float: left;
+    width: 234px;
+    height: 300px;
+    text-align: center;
+    margin: 0px 0px 10.5px 10.5px;
+    background-color: #fff;
+}
+
+.phone-aside-items li a{
+    text-decoration: none;
+}
+
+.phone-title{
+    font-size: 14px;
+    font-weight: 400px;
+    color: #333;
+}
+
+.phone-detail{
+    font-size: 12px;
+    color: #b0b0b0;
+    margin: 0px 10px 10px 10px;
+}
+
+.phone-price{
+    color: #ff6700;
+    font-size: 14px;
+}
+
+.phone-del-price{
+    color: #b0b0b0;
+    text-decoration: line-through;
+    font-size: 14px;
+}
+
+.phone-image{
+    width: 160px;
+    height: 160px;
+}
 /*网站主体部分-*/

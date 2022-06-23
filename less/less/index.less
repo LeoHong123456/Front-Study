@@ -1,0 +1,88 @@
+//引用外部less,做模块处理
+@import "other.less";
+
+//less中声明变量
+@width:200px;
+@height:200px;
+@backgroundcolor:#bfa;
+@backgroundimage:box2;
+@box:box1;
+
+.box1{
+    //使用变量
+    width: @width;
+    background-color: @backgroundcolor;
+
+    //选中其下面的子元素
+    >.box2{
+        column-rule: red;
+    }
+
+    //box1 本身hover事件
+    &:hover{
+        color: #bfa;
+    }
+}
+
+//作为类名选择器，或者一部分值使用时必须以@{变量名}的形式使用
+//变量发生重名时，优先使用最近的的变量
+.@{box}{
+    height: @height;
+    background-image: url("@{backgroundimage}/img/i.png");
+}
+
+.p1{
+    width: 100px;
+    height: 200px;
+}
+
+//p2样式继承p1样式，然后可以写自己独有样式
+.p2::extend(.p1){
+    color: red;
+}
+
+.p3{
+    //引用p1的样式
+    .p1();
+}
+
+//使用类选择器可以在选择后边添加一个括号，这时我们实际上就创建了一个mixins,实际就是声明一组公共样式
+.p4(){
+    width: 100px;
+    height: 100px;
+    background-color: green;
+}
+
+.p5{
+    //引用公共样式
+    .p4;
+}
+
+
+//混合函数，在混合函数中可以直接设置变量
+.test(@width,@height){
+    width: @width;
+    height: 100px;
+    border: 1px solid red;
+}
+
+div{
+    //使用带宽度的混合函数
+    .test(200px,200px);
+    //这种带参数名写法参数可以不按顺序传递
+    .test(@width:100px, @height:100px)
+}
+
+span{
+    //average 取平均值
+    color: average(red, yellow);
+}
+
+
+.box6{
+    //在less中所有的数值可以直接进行运算
+    width: 100px + 100px;
+    //less中除法必须带上括号才能使用
+    height: (100px / 2);
+    background-color: #bfa;
+}

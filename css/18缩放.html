@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缩放</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            margin: 100px auto;
+            background-color: aqua;
+            transition: all .5s;
+            /*设置变形原点 默认值是center*/
+            transform-origin: 20px 20px;
+        }
+
+
+        .box:hover{
+            /*scale 放大或缩小：scaleX(2)表示水平方向放大两倍，scaleY(2)表示垂直方向放大两倍，scale(2)双方向放大*/
+            transform: scale(2);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

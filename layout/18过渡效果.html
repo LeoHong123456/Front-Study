@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过渡效果</title>
+    <style>
+
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        .box1{
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            background-color: green;
+        }
+
+        .box1:hover .box2{
+            width: 200px;
+            height: 200px;
+        }
+
+        .box2{
+            width: 100px;
+            height: 0;
+            margin: 10px;
+            transition: all 2s;
+            background-color: aqua;
+        }
+
+        .box3{
+            width: 0px;
+            height: 0px;
+            border: 100px solid transparent;
+            border-bottom: 100px solid green;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+
+
+    <div class="box3"></div>
+</body>
+</html>
