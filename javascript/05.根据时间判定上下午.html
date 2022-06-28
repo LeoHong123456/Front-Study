@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>根据时间判断上下午</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            margin: 0 auto;
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p></p>
+        <img src="../exercise/img/phone-list-1.webp" alt="上午好">
+    </div>
+
+    <script>
+        var p = document.querySelector("p");
+        var img = document.querySelector("img");
+        var date = new Date();
+        var hours = date.getHours();
+        function setImg() {
+            if (hours < 12) {
+                p.innerHTML = "<span style='color:green'>早上好!</span>";
+                img.src = '../exercise/img/phone-list-2.webp';
+            } else if (hours >= 12 && hours < 18) {
+                p.innerHTML = "<span style='color:green'>下午好!</span>";
+                img.src = '../exercise/img/phone-list-3.webp';
+            } else if (hours >= 18) {
+                p.innerHTML = "<span style='color:green'>晚上好!</span>";
+                img.src = '../exercise/img/phone-list-4.webp';
+            }
+            setTimeout(() => setImg(), 1000);
+        }
+        setImg();
+    </script>
+</body>
+
+</html>

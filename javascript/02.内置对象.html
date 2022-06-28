@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内置对象</title>
+    <script>
+        //获取数据类型
+        var demo = '';
+        console.log(typeof demo);
+
+        //求最大值
+        var max = Math.max(3, 6, 34, 7, 9);
+        console.log(max); //34
+
+        var max2 = Math.max(3, 6, 34, 7, 9, 'sdf');
+        console.log(max2); //NaN
+
+        var max3 = Math.max();
+        console.log('最大值：' + max3);//-Infinity 负无穷大
+
+        //向下取整
+        var floor = Math.floor(3.1415926);
+        console.log('向下取整：' + floor);
+
+        //向上取整
+        var ceil = Math.ceil(3.1415926);
+        console.log('向上取整：' + ceil);
+
+        //四舍五入默认取整，需要带上小数位
+        var round = Math.round(3.1415926, -2);
+        console.log('四舍五入：' + round);
+
+        //获取随机数默认是0~1但是不会包含1，带小数的数值
+        var random = Math.random();
+        console.log('随机小数：' + random);
+
+        //获取指定范围间的随机数
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        console.log('获取指定范围的随机数：' + getRandom(0, 100));
+
+        //随机点名
+        var arr = ['张三', '李四', '王五', '赵六', '田七'];
+        console.log('随机点名：' + arr[getRandom(0, arr.length - 1)]);
+
+        //数组最后添加元素
+        arr.push('范八');
+        console.log('数组最后添加元素：' + arr);
+
+        //数组前面添加元素
+        arr.unshift('曾九', '小王');
+        console.log('数组前添加元素：' + arr);
+
+        //删除数组最后一个元素,有返回值，返回的是删除的那个元素
+        arr.pop();
+        console.log('删除数组最后一个元素：' + arr);
+
+        //删除数组的第一个元素，有返回值，返回的是删除的那个元素
+        arr.shift();
+        console.log('删除数组的第一个元素：' + arr);
+
+
+        arr.splice(arr, 2);
+
+        //翻转数组
+        arr.reverse();
+        console.log('翻转过后的数组：' + arr);
+
+        arr=[3,1,5,76,22,45];
+        //排序数组默认只能排序个位数，需要增强
+        arr.sort(function(a,b){
+            return a - b;
+        });
+        console.log('排序(升序)后的数组：' + arr);
+
+        arr.sort(function(a,b){
+            return b - a;
+        });
+        console.log('排序(降序)后的数组：' + arr);
+
+        //查找指定元素在数组中的下标
+        var index = arr.indexOf(22);
+        console.log('查找指定元素在数组中的下标:' + index);
+
+        //查找指定元素在数组中最后一个元素的下标
+        var lastIndex = arr.lastIndexOf(22);
+        console.log('查找指定元素在数组中最后一个元素的下标:' + lastIndex);
+
+        arr = ['张三', '李四', '王五', '赵六', '田七'];
+        //数组转字符串
+        console.log("数组转字符串:" + arr.join());
+
+        //数组转字符串指定连接符
+        console.log('数组转字符串指定连接符:' + arr.join('&'));
+
+        //封装计算对象工具
+        var myMath = {
+            PI: 3.1415926,
+            max: function () {
+                var max = arguments[0];
+                for (var i = 1; i < arguments.length; i++) {
+                    if (max < arguments[i]) {
+                        max = arguments[i]
+                    }
+                }
+                return max;
+            },
+            min: function () {
+                var min = arguments[0];
+                for (var i = 1; i < arguments.length; i++) {
+                    if (min > arguments[i]) {
+                        min = arguments[i];
+                    }
+                }
+                return min;
+            }
+        };
+
+        console.log('圆周率：' + myMath.PI);
+        console.log('最大值：' + myMath.max(45, 3, 55, 66, 23));
+        console.log('最小值：' + myMath.min(45, 3, 78, 0));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

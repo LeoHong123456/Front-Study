@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初始DOM</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .timer{
+            margin: 0px auto;
+            text-align: center;
+            border-bottom: 1px solid #fff;
+        }
+
+        .wapper{
+            background-color: rgb(12, 118, 206);
+        }
+
+        .top-nav{
+            display: flex;
+            justify-content:space-around;
+            flex-direction: row;
+            list-style: none;
+            line-height: 40px;
+        }
+
+        .top-nav li{
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        .img{
+            width: 100%;    
+            height: 100%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="wapper">
+            <p class="timer"></p>
+            <ul class="top-nav">
+                <li>扫一扫</li>
+                <li>收付款</li>
+                <li>出行</li>
+                <li>卡包</li>
+            </ul>
+            <img class="img" src="../exercise/image/350.webp" alt="图片丢失" title="轮播">
+        </div>
+    </div>
+
+    <script>
+        var box = document.getElementById("box");
+        console.dir(box);
+        var ul = document.getElementsByTagName("ul");
+        console.dir(ul);
+
+        //H5新增方法多个元素只会返回第一个元素
+        // box = document.querySelector("#box");
+        // console.dir(box.textContent);
+
+        //H5新增方法多个元素
+        li = document.querySelectorAll("li");
+        console.dir(li);
+        console.dir(li[1].textContent);
+
+
+        //事件有三部分组成【事件源，事件类型，事件处理程序】
+        // var btn = document.querySelector("#btn");
+        // btn.onclick = function () {
+        //     alert("***");
+        // }
+
+
+
+        var img = document.querySelector(".img");
+        img.alt = '***';
+        //element.innerText 获取标签中的内容，但是它去除了html标签，同时空格和换行也会去掉
+        //element.innerHTML 获取其实到终止位置的所有内容，包括html标签，同时也报流空格换行
+        function showDate() {
+            var timer = document.querySelector(".timer");
+            //获取系统当前时间
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var hours = date.getHours();
+            hours = hours < 10 ? '0' + hours : hours;
+            var minutes = date.getMinutes();
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            var seconds = date.getSeconds();
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            timer.innerHTML = '系统当前时间：<span style=color:#fff>' + year + '年' + month + '月' + day + '日' + ' ' + hours + ':' + minutes + ':' + seconds + '</span>';
+            //使用无限递归方式实现动态时间展示
+            setTimeout("showDate()",1000);
+        }
+        //使用定时器实现动态时间展示
+        // setInterval("showDate()", 1000);
+        showDate();
+    </script>
+</body>
+
+</html>

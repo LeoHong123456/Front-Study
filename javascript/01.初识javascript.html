@@ -6,7 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>初识javascript</title>
     <script>
-        
+        console.log(typeof 10);
+        console.log(typeof 35.22);
+        console.log(typeof "sdfsdf");
+        // var age = prompt("年龄：");
+        // console.log(age);
+        // console.log(typeof age);
+
+        function test(){
+            //agruments 数组中的元素对象
+            for (let index = 0; index < arguments.length; index++) {
+                console.log(arguments[index]);
+            }
+        }
+
+        test(1,2,3);
+        //JS隐式转换（- * /）可以使字符串隐式转换成数字
+
+        //声明一个构造函数
+        function Person(name, age, sex){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            //申明匿名函数赋值给run
+            this.run = function(hobby){
+                console.log(">>>"+hobby);
+            }
+        }
+        //实例化
+        var p = new Person('张三',30, 'man');
+        console.log(p);
+        console.log(p.name);
+        p.run('看书');
+
+        //遍历对象
+        for(var key in p){
+            //获取对象中的key
+            console.log(key);
+            //获取对象中key对应的值
+            console.log(p[key]);
+        }
+
     </script>
 </head>
 <body>
