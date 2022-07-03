@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹性盒</title>
+    <style>
+        /*当父元素使用flex布局以后，子元素的float ,clear ,vertical-alig属性将会失效*/
+        /*
+            常见父项属性
+                flex-direction: 设置主轴的方向
+                    属性值：
+                        row    设置主轴为X轴方向
+                        column 设置主轴为Y轴方向
+                justify-content: 设置主轴的子元素排列方式
+                    属性值：
+                        flex-start 默认值从头部开始 如果主轴是X轴则从左到右
+                        flex-end 从尾部开始排列
+                        center 在主轴居中对齐(如果主轴是X轴则水平居中)
+                        space-around 平分剩余空间
+                        space-between 先两边贴边再平分剩余空间
+                flex-wrap: 设置子元素是否换行
+                    wrap:换行，默认也是换行的
+                    no-wrap 不换行
+                align-content: 设置侧轴上的子元素排列方式（多行）
+                    属性值：
+                        flex-start 默认值在侧轴的头部开始排列
+                        flex-end 在侧轴尾部开始排列
+                        center 在侧轴中间显示
+                        space-around 子项在侧轴平分剩余空间
+                        space-between 子项在侧轴先分布在两头，再平分剩下的空间
+                        stretch   设置子项元素高度平分父元素高度
+                align-items: 设置侧轴上的子元素排列方式(单行)
+                    
+                flex-flow: 复合属性，相当于同时设置了flex-direction 和flex-wrap
+
+        */
+        div{
+            width: 80%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            /*侧轴居中*/
+            /* align-items: center; */
+            /*侧轴拉伸和盒子高度一致，需要去除子元素高度*/
+            align-items: stretch;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 100px auto;
+            background-color:antiquewhite;
+        }
+
+        span{
+            width: 200px;
+            /* height: 200px; */
+            margin: 10px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+</html>
