@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟登录</title>
+    <link rel="stylesheet" href="../exercise/css/reset.css">
+    <link rel="stylesheet" href="../font-color/source/css/all.css">
+    <style>
+        body{
+            /* background: url('../exercise/img/banner/active-banner1.jpg');
+            background-size: cover; */
+        }
+
+        .login-form{
+            width: 632px;
+            height: 340px;
+            /* background-image: url('../exercise/img/banner/active-banner2.jpg');
+            background-size: 100% 100%; */
+            margin: 20px auto;
+        }
+
+        .form{
+            /* border:5px dashed green; */
+            display: flex;
+            justify-content: space-around;
+            flex-flow: column wrap;
+        }
+
+        .title{
+            color: #000;
+            font-size: 20px;
+            font-weight: 500px;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        
+        .username,.password{
+            width: 300px;
+            height: 30px;
+            border-bottom: 1px solid #ccc;
+            margin: 15px auto;
+            background-color: transparent;
+        }
+        .username input,.password input{
+            width: 270px;
+            height: 28px;
+            border: 0;
+        }
+        .button{
+            width: 300px;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+            background-color: green;
+            margin: 20px  auto 20px;
+            border: 0;
+            border-radius: 5px;
+        }
+        /* fa-eye-slash */
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <form action="http://#" method="post">
+            <div class="form">
+                <h1 class="title">图灵计算机</h1>
+                <div class="username">
+                    <label for="username" class="fa fa-user"></label>
+                    <input type="text" name="username" id="username" placeholder="请输入手机号/用户名">
+                </div>
+                <div class="password">
+                    <label for="password" class="fa fa-eye-slash" id="pass"></label>
+                    <input type="password" name="password" id="password" placeholder="请输入密码">
+                </div>
+                <button class='button' type="submit">登录</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        var pass = document.querySelector("#pass");
+        var password = document.querySelector("#password");
+        var flag = 0;
+        pass.onclick = function(){
+            if(flag == 0){
+                password.type = 'text'
+                pass.className = 'fa fa-eye';
+                flag = 1
+            }else{
+                password.type = 'password'
+                pass.className = 'fa fa-eye-slash';
+                flag = 0
+            }
+        }
+    </script>
+</body>
+</html>
