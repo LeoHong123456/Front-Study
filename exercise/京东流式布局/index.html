@@ -84,8 +84,10 @@
 	  .search-wrap-to{
         width: 100%;
         height: 44px;
-        margin-top: 0px;
-        position: fixed;left: 0;top:0;
+        min-width: 320px;
+        max-width: 640px;
+        position: fixed;left: 50%;top:0;
+        transform: translateX(-50%);
         background-color: #c82519;
 	  }
 
@@ -353,7 +355,10 @@
 
       .footer-nav{
         width: 100%;
-        position:fixed;bottom:0;left: 0;
+        min-width: 320px;
+        max-width: 640px;
+        position:fixed;bottom:0;left: 50%;
+        transform: translateX(-50%);
         background-color: #fff;
       }
 
@@ -787,10 +792,11 @@
       var closeBtn = document.querySelector(".app-close-btn");
       var app = document.querySelector(".app");
       var searchWrap = document.querySelector('.search-wrap');
-
+      var mainContainer = document.querySelector('.main-container');
       closeBtn.onclick = function () {
         app.style.display = "none";
         searchWrap.className = 'search-wrap-to clear-flex';
+        mainContainer.setAttribute('style','margin-top:48px')
       };
 
       function showSecKillActive(){
