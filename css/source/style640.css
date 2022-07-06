@@ -1,0 +1,10 @@
+.content{
+    width: 100%;
+    background-color: antiquewhite;
+}
+
+.content div{
+    width: 33%;
+    float: left;
+    height: 200px;
+}

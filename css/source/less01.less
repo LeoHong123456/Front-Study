@@ -1,0 +1,49 @@
+/*
+    （rem 开发中最终的适配方案）
+    1、设计稿定出标准尺寸大小(750px)为准
+    2、我们用屏幕尺寸 / 划分份数 = html根字体大小
+    3、页面元素rem值 =  750像素 / html根字体大小
+*/
+@color:rgb(168,0,0);
+@width:300px;
+@height:300px;
+@baseFont:50px;
+html{
+    font-size: @baseFont - 38px;
+}
+
+.box{
+    width: @width;
+    height: @height;
+    background-color: @color;
+}
+
+.content{
+    height: 10px * @baseFont;
+    background-color: #c0c0c0;
+    margin-top: @baseFont - 30px;
+    margin: 0px auto;
+    .items{
+        width: 100%;
+        height: 500px;
+        display: flex;
+        list-style: none;
+        justify-content: space-between;
+        flex-flow: column wrap;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        li{
+            width: 10rem;
+            height: 2 * @baseFont;
+            text-align: center;
+            line-height: 100px;
+            background-color: @color;
+            a{
+                color: #000;
+                font-size: 1.5rem;
+                text-decoration: none;
+            }
+        }
+    }
+}

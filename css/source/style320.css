@@ -1,0 +1,11 @@
+.content{
+    width: 100%;
+    background-color: green;
+}
+
+.content div{
+    width: 100%;
+    height: 200px;
+    background-color: pink;
+    border: 1px solid black;
+}
