@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>节点操作</title>
+  </head>
+  <body>
+    <ul></ul>
+
+    <script>
+      var ul = document.querySelector("ul");
+      var li = document.createElement("li");
+      var li2 = document.createElement("li");
+      //给父元素追加元素节点
+      ul.appendChild(li);
+      //给父元素追加元素到指定位置insertBefore(新元素节点,指定的元素)
+      ul.insertBefore(li2, ul.children[0]);
+    </script>
+  </body>
+</html>

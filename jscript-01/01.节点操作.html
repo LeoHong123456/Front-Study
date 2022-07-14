@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS节点操作</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <ul>
+                <li>A</li>
+                <li>B</li>
+                <li>C</li>
+            </ul>
+        </nav>
+        <div class="box"></div>
+    </div>
+
+    <script>
+        var ul = document.querySelector('ul');
+        var li = document.querySelector('li');
+        console.dir(li.parentNode);
+        console.dir(ul.parentNode);
+        //获取ul下的所有子节点childNodes 包含元素节点和文本节点等等
+        console.dir(ul.childNodes);
+/*         nodeType 属性可返回节点的类型：
+            元素类型 ----------->节点类型
+            元素 element------->1
+            属性 att ------->2
+            文本 text ------->3
+            注释 comments ------->8
+            文档 document-------> 9 
+*/
+        //获取所有子元素节点
+        console.dir(ul.children);
+        //获取ul中最后一个子元素
+        console.dir(ul.lastElementChild);
+        var nav = document.querySelector('.nav');
+        //得到下一个兄弟节点(包含元素节点和文本几点)
+        console.log('下一个兄弟节点:'+nav.nextSibling);
+        //得到上一个兄弟节点(包含元素节点和文本几点)
+        console.log('上一个兄弟节点:'+nav.previousSibling);
+        //得到下一个兄弟元素节点(不存在返回null)
+        console.log('下一个兄弟元素节点:'+nav.nextElementSibling);
+        //得到上一个兄弟元素节点(不存在返回null)
+        console.log('上一个兄弟元素节点:'+nav.previousElementSibling);
+
+
+        
+
+    </script>
+</body>
+</html>

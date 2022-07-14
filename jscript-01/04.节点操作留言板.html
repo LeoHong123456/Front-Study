@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>留言板</title>
+    <style>
+      .container {
+        width: 500px;
+        height: 500px;
+        background-color: #fff;
+        border: 1px solid #000;
+        margin: 200px auto;
+        overflow: hidden;
+        border-radius: 30px;
+      }
+      .content {
+        width: 100%;
+        height: 250px;
+        border-bottom: 1px solid #000;
+      }
+      textarea {
+        font-size: 30px;
+        width: 100%;
+        height: 200px;
+        padding: 10px 30px;
+        box-sizing: border-box;
+        outline: none;
+        border: 0;
+      }
+      .button-sub {
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: aquamarine;
+        border-top: 1px solid #000;
+      }
+      input {
+        font-size: 16px;
+        font-weight: 600;
+        width: 80px;
+        height: 30px;
+        margin: 0 20px;
+      }
+      .remark {
+        font-size: 12px;
+        width: 100%;
+        height: 250px;
+        box-sizing: border-box;
+        background-color: pink;
+        overflow: auto;
+      }
+      .remark ul {
+        list-style: none;
+      }
+      p {
+        font-size: 12px;
+        margin: 0;
+        padding: 0;
+        background-color: rgb(173, 170, 170);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <textarea name="" id="rContent" cols="30" rows="15"></textarea>
+        <div class="button-sub">
+          <input type="button" value="提交" onclick="submit();" />
+          <input type="reset" value="重置" onclick="reset();" />
+          <input type="reset" value="克隆" onclick="clone();" />
+          <input type="reset" value="清除消息" onclick="resetMessage();" />
+        </div>
+      </div>
+      <div class="remark">
+        <ul class="message"></ul>
+      </div>
+    </div>
+    <script>
+      var ul = document.querySelector("ul");
+      
+      function submit() {
+        var li = document.createElement("li");
+        var time = getDateStr();
+        var content = document.querySelector("#rContent").value;
+        if (content === "" || content == null) {
+          return;
+        }
+        li.innerHTML = "<p>" + time + "</p>" + content;
+        ul.insertBefore(li, ul.children[0]);
+      }
+
+      function reset() {
+        document.querySelector("#rContent").value = "";
+      }
+
+      function resetMessage() {
+        var message = document.querySelector(".message");
+        var lis = message.querySelectorAll("li");
+        for (var i = 0; i < lis.length; i++) {
+          lis[i].remove();
+        }
+      }
+
+      function clone(){
+        var li  = ul.children[0];
+        var cloneLi = li.cloneNode(li);
+        ul.insertBefore(cloneLi, ul.children[0]);
+      }
+
+      function getDateStr() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hours = date.getHours();
+        var min = date.getMinutes();
+        var sec = date.getSeconds();
+        hours = hours < 10 ? "0" + hours : hours;
+        min = min < 10 ? "0" + min : min;
+        sec = sec < 10 ? "0" + sec : sec;
+        return (
+          year + "-" + month + "-" + day + " " + hours + ":" + min + ":" + sec
+        );
+      }
+    </script>
+  </body>
+</html>
