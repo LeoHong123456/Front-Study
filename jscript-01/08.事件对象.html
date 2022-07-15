@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+    <style>
+        .container{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .button{
+            width: 80px;
+            height: 30px;
+            background-color: green;
+            margin: 120px auto;
+        }
+        ul{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding:0;
+        }
+        ul li{
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #000;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li>按钮一</li>
+            <li>按钮二</li>
+            <li>按钮三</li>
+        </ul>
+        <div class="button"></div>
+    </div>
+    <script>
+        //事件对象
+        var button = document.querySelector('.button');
+        //事件对象存在事件才会存在，系统给我自动创建的，不需要我们传递参数
+        button.onclick = function(event){
+            //target->获取触发事件的对象
+            //this->哪个元素绑定了事件就返回那个元素
+            console.log(event.target);
+            console.log(this)
+        }
+
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click',function(event){
+            //target->获取触发事件的对象
+            console.log(event.target);
+            //哪个元素绑定了事件就返回那个元素
+            console.log(this)
+            //this->currentTarget 等同(一般都是使用this)
+            console.log(event.currentTarget)
+            //得到事件名称
+            console.log(event.type);
+        });
+    </script>
+</body>
+</html>

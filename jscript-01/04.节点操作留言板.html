@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>留言板</title>
     <style>
+      body {
+        background-color: azure;
+      }
       .container {
         width: 500px;
         height: 500px;
@@ -54,12 +57,19 @@
       }
       .remark ul {
         list-style: none;
+        padding: 10px 50px 0px;
       }
       p {
         font-size: 12px;
         margin: 0;
         padding: 0;
         background-color: rgb(173, 170, 170);
+      }
+      li a {
+        float: right;
+        font-size: 12px;
+        text-decoration: none;
+        color: #000;
       }
     </style>
   </head>
@@ -80,7 +90,7 @@
     </div>
     <script>
       var ul = document.querySelector("ul");
-      
+
       function submit() {
         var li = document.createElement("li");
         var time = getDateStr();
@@ -88,8 +98,18 @@
         if (content === "" || content == null) {
           return;
         }
-        li.innerHTML = "<p>" + time + "</p>" + content;
+        li.innerHTML =
+          "<p>" + time + "</p>" + content + "<a href='javascript:;'>删除</a>";
         ul.insertBefore(li, ul.children[0]);
+
+        //给a标签添加点击事件
+        var del = document.querySelectorAll("a");
+        for (var i = 0; i < del.length; i++) {
+          del[i].onclick = function () {
+            console.log(1);
+            ul.removeChild(this.parentNode);
+          };
+        }
       }
 
       function reset() {
@@ -104,9 +124,11 @@
         }
       }
 
-      function clone(){
-        var li  = ul.children[0];
-        var cloneLi = li.cloneNode(li);
+      function clone() {
+        var li = ul.children[0];
+        //克隆数据，cloneNode()如果方法不写参数只克隆元素自己.
+        //如果带参数true,则拷贝自己本身及其元素下的所有元素内容.
+        var cloneLi = li.cloneNode(true);
         ul.insertBefore(cloneLi, ul.children[0]);
       }
 

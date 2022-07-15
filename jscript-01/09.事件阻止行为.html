@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件阻止行为</title>
+    <style>
+      .container {
+        width: 300px;
+        height: 300px;
+        background-color: pink;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a href="http://www.baidu.com">百度</a>
+      <hr />
+      <form action="http://www.baidu.com" method="post">
+        <input type="submit" value="提交" />
+      </form>
+    </div>
+
+    <script>
+      var a = document.querySelector("a");
+      a.addEventListener("click", fn, false);
+
+      function fn(event) {
+        console.log(event.type);
+        //阻止默认行为preventDefault()(事件)，让跳转链接不跳转，或者让提交按钮不提交IE678不支持
+        event.preventDefault();
+        event.cancelBubble = true;
+      }
+
+/*       a.onclick = function(event){
+            console.log(event.target);
+            //IE678使用returnValue属性来阻止默认行为
+            event.returnValue;
+            //return false也可以阻止默认行为没有兼容性问题
+            return false;
+        } */
+    </script>
+  </body>
+</html>

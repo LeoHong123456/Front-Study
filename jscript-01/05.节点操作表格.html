@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表格</title>
+    <script src="./js/node-data.js"></script>
+
+    <style>
+      .container {
+        width: 500px;
+        height: 500px;
+        margin: 200px auto;
+      }
+      table {
+        margin: 0px auto;
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      td {
+        border: 1px solid #000;
+        text-align: center;
+      }
+      th {
+        width: 100px;
+        border: 1px solid #000;
+        text-align: center;
+      }
+
+      thead {
+        border: 1px solid #000;
+        background-color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <table>
+        <thead>
+          <th>员工编号</th>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>性别</th>
+          <th>操作</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script>
+      var tbody = document.querySelector("tbody");
+      for (var i = 0; i < data.length; i++) {
+        //write创建元素会把原有的文档全部清除重写一份
+        // var demo = document.write('<div>页面会重绘</div>');
+        //创建tr
+        var tr = document.createElement("tr");
+        //遍历对象字段信息创建td
+        for (var key in data[i]) {
+          var td = document.createElement("td");
+          td.innerHTML = data[i][key];
+          tr.appendChild(td);
+        }
+        //追加最后一列操作项
+        var operate = document.createElement("td");
+        var a = document.createElement("a");
+        a.setAttribute("href", "javascript:;");
+        a.innerHTML = "删除";
+        operate.appendChild(a);
+        tr.appendChild(operate);
+        tbody.appendChild(tr);
+
+        //获取a标签添加点击事件删除tr
+        var as = document.querySelectorAll("a");
+        for (var i = 0; i < as.length; i++) {
+          as[i].onclick = function () {
+            tbody.removeChild(this.parentNode.parentNode);
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

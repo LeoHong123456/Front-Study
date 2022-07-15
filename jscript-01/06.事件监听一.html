@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件监听</title>
+    <style>
+      .container {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        border: 1px solid #ccc;
+        margin: 0 auto;
+      }
+      .items {
+        display: flex;
+        justify-content: space-around;
+        flex-flow: row nowrap;
+        align-items: center;
+      }
+      .item {
+        width: 80px;
+        height: 30px;
+        margin: 10px auto;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 6px;
+        background-color: green;
+      }
+      .content {
+        width: 200px;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      button {
+        margin: 0px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="items">
+        <div class="item">按钮一</div>
+        <div class="item">按钮二</div>
+        <div class="item">按钮三</div>
+      </div>
+      <div class="content">
+        <button>登录</button>
+        <button>注册</button>
+      </div>
+    </div>
+    <script>
+      var button = document.querySelectorAll("button");
+      //添加事件监听addEventListener,一次可以添加多个监听器(attachEvent 老的注册事件监听方式)
+      button[0].addEventListener("click", function () {
+        alert("***");
+      });
+      button[1].addEventListener("mouseout", function () {
+        alert("&&&&");
+      });
+
+      //方式一
+      var items = document.querySelectorAll(".item");
+      items[0].onclick = function () {
+        alert("老的添加事件监听和事件解绑方式");
+        items[0].onclick = null;
+      };
+
+      //方式二
+      items[1].addEventListener("click", fn);
+
+      function fn() {
+        alert("新的事件绑定和解绑方式");
+        items[1].removeEventListener('click', fn);
+      }
+    </script>
+  </body>
+</html>
