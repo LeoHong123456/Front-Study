@@ -5,8 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>事件委托</title>
+    <style>
+        .container{
+            width: 300px;
+            /* height: 300px; */
+            /* background-color: pink; */
+            margin: 0 auto;
+        }
+        ul{
+            list-style: none;
+            margin-top: 20px;
+            padding: 0;
+        }
+        ul li{
+            border:1px solid #000;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="container">
+        <ul>
+            <li>列表一</li>
+            <li>列表二</li>
+            <li>列表三</li>
+            <li>列表四</li>
+            <li>列表五</li>
+        </ul>
+    </div>
+    <script>
+        //事件委托，获取li 的click 事件，需要给每个li添加事件这样会影响页面初始化速度
+        //，把事件绑定到ul(父节点)，通过时间对象target来获取点击对象从而实现事件委托机制
+        //原理是通过事件冒泡来影响每一个节点
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', fn, true);
+        function fn(event){
+            var li = event.target;
+            // alert(li.outerHTML);
+            // console.log(li.innerText);
+            // console.log(li.textContent);
+            var ul = li.parentNode;
+            for(var i =0 ;i<ul.children.length;i++){
+                ul.children[i].style.backgroundColor = '#fff';
+            }
+            event.target.style.backgroundColor = 'green';
+        }
+    </script>
 </body>
 </html>

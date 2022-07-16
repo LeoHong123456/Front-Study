@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用的鼠标键盘事件</title>
+    <style>
+        .container{
+            width: 500px;
+        }
+        img{
+            position:absolute;
+            top:2px;
+            left:2px;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <img src="./image/congrats-7.gif" alt="">
+    <div class="container">
+        <p>禁止复制，选中</p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus esse temporibus sed doloribus assumenda. Facere exercitationem labore, reprehenderit deleniti, nam blanditiis quo aliquam aspernatur quos eos perferendis corporis, quae odio!
+    </div>
+    <script>
+        var container =  document.querySelector('.container');
+        var img = document.querySelector('img');
+        //鼠标常规选中事件selectstart
+        container.addEventListener('selectstart',function(event){
+            //阻止常规选中事件
+            event.preventDefault();
+        },false);
+
+        //鼠标右击事件contextmenu
+        container.addEventListener('contextmenu',function(event){
+            //阻止常规鼠标右击事件
+            event.preventDefault();
+        },false);
+
+        //鼠标移动事件mousemove
+        document.addEventListener('mousemove', function(event){
+            var x = event.pageX;
+            var y = event.pageY;
+            img.style.top = y +'px';
+            img.style.left = x +'px';
+        },false);
+
+        //键盘弹起事件(不区分字母大小写)
+        document.addEventListener('keyup',function(event){
+            console.log(event.key+'键弹起')
+            //event.keyCdoe 得到的是ASCll码表值
+            console.log('键盘弹起keyup>>>');
+        },false);
+
+        //键盘按下事件keydown支持功能键(不区分字母大小写)
+        document.addEventListener('keydown', function(event){
+            console.log('键盘按下keydown>>>');
+        },false);
+
+        //键盘按下事件keypress不支持ctrl shift ent ...功能键(区分字母大小写)
+        document.addEventListener('keypress',function(event){
+            console.log('键盘按下keypress>>>');
+        });
+    </script>
+</body>
+</html>
