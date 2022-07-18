@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>定时器之发送短信</title>
+    <style>
+      .container {
+        width: 500px;
+        height: 300px;
+        background-color: pink;
+        margin: 0 auto;
+        border: 1px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      fieldset{
+        width: 400px;
+      }
+      .phone {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- <form action=""> -->
+      <fieldset>
+        <legend>定时器之发送短信</legend>
+        <div class="username">
+          <label for="username">会员名</label>
+          <input type="text" id="username" />
+        </div>
+        <div class="phone">
+          <label for="phone">手机号</label>
+          <input type="text" id="phone" />
+          <button id="sendCode">获取验证码</button>
+        </div>
+      </fieldset>
+      <!-- </form> -->
+    </div>
+
+    <script>
+      window.addEventListener("load", () => {
+        var sendCode = document.querySelector("#sendCode");
+        //点击完发送按钮，让按钮变灰
+        var count = 5 - 1;
+        sendCode.addEventListener("click", function () {
+          this.disabled = true;
+          var interval = setInterval(() => {
+            if (count > 0) {
+              sendCode.innerHTML = count-- + "秒之后重新发送短信";
+            } else {
+              sendCode.disabled = false;
+              sendCode.innerHTML = "获取验证码";
+              clearInterval(interval);
+              count = 5 - 1;
+            }
+          }, 1000);
+        });
+
+      });
+    </script>
+  </body>
+</html>

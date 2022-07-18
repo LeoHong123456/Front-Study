@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器</title>
+    <style>
+        .container{
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+
+    <script>
+        //*************************setTimeOut****************************
+        //页面中可能有多个定时器，一般会给定时器加一个标识
+        var timeOut1 = setTimeout(function(){
+            console.log(">>>");
+        },2000);
+
+        var timeOut2 = setTimeout(()=>{
+            console.log('***');
+        });
+
+        var timeOut3 = setTimeout(callback,2000);
+        function callback(){
+            console.log('^^^');
+        }
+
+        var container = document.querySelector('.container');
+        var timeOut4 = setTimeout(()=>{
+                container.style.display = 'none';
+                return ;
+            },5000);
+
+            //清除定时器使用方法
+            clearTimeout(timeOut4);
+
+    //*************************setInterval(每隔多少秒调用一次回调函数)****************************
+    var interval = setInterval(function(){
+        console.log("======");
+        //清除定时器
+        clearInterval(interval);
+    },1000);
+    </script>
+</body>
+</html>

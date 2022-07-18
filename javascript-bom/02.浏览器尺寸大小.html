@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浏览器尺寸大小</title>
+    <style>
+        .container{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        //当浏览器尺寸大于800px 隐藏container
+        window.addEventListener('load', function(){
+            var container = document.querySelector('.container');
+            //浏览器大小发生变化事件(一般用于响应式布局)
+            window.addEventListener('resize',function(event){
+                var width = window.innerWidth;
+                if(width>800){
+                    container.style.display = 'none';
+                }else{
+                    container.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container"></div>
+</body>
+</html>

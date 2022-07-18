@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>定时器页面跳转</title>
+    <style>
+      .container {
+        width: 100%;
+        margin: 10px auto;
+      }
+      span {
+        font-size: 18px;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <script>
+      window.addEventListener("load", function () {
+        var container = document.querySelector(".container");
+        var span = document.createElement("span");
+        var p = document.createElement("p");
+        p.setAttribute("style", "display:inline-block");
+        var timer = 5;
+        setInterval(function () {
+          if (timer >= 0) {
+            span.innerHTML = timer--;
+            p.innerHTML = "秒后跳转到百度...";
+            container.appendChild(span);
+            container.appendChild(p);
+            // container.insertBefore(p,container.children[1]);
+          } else {
+            //location.href可以得到页面地址
+            //有赋值就跳转到指定页面
+            location.href = "http://www.baidu.com";
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文档加载完再执行JS</title>
+    <script>
+        //文档加载完毕执行JS代码(方式一)
+        window.onload = function(){
+            var btn = document.querySelector('button');
+            btn.addEventListener('click',function(){
+                alert('***');
+            },false);
+        }
+        //文档加载完毕执行JS代码(方式二)
+        window.addEventListener('load',function(){
+            console.log('>>>>');
+        },false);
+
+        //DOMcontentLoaded事件触发时，仅当DOM加载完毕，不包括图片，样式，flash
+        //如果图片很多等全部加载完会很慢影响用户体验，此时用这个时间比较好
+        document.addEventListener('DOMContentLoaded',function(){
+            console.log('666');
+        });
+    </script>
+</head>
+<body>
+    <button>提交</button>
+</body>
+</html>
