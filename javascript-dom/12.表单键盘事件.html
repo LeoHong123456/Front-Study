@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表单键盘事件监听</title>
+    <style>
+      .container {
+        width: 500px;
+        height: 200px;
+        border: 2px dotted green;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        margin: 100px auto;
+        background-color: antiquewhite;
+      }
+      h2 {
+        margin: 0;
+        padding: 0;
+      }
+      .view {
+        position: relative;
+        width: 300px;
+        height: 40px;
+        border: 1px solid #000;
+        margin: 20px auto;
+        visibility: hidden;
+      }
+      .view-show {
+        position: relative;
+        width: 300px;
+        height: 40px;
+        line-height: 40px;
+        border: 1px dotted green;
+        margin: 20px auto;
+        visibility: visible;
+        border-radius: 15px;
+      }
+      .view-show::before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 50%;
+        bottom: -12px;
+        z-index: 1;
+        width: 25px;
+        height: 25px;
+        font-size: 16px;
+        background: linear-gradient(
+          45deg,
+          pink,
+          green 50%,
+          transparent 50%,
+          transparent 50%
+        );
+        transform: rotate(315deg);
+        visibility: visible;
+      }
+      .from {
+        width: 300px;
+        height: 20px;
+        margin: 0 auto;
+      }
+      input {
+        width: 300px;
+        height: 30px;
+        border: 1px solid #000;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>快递单号查询</h2>
+      <div class="view" id="view"></div>
+      <div class="from">
+        <input type="text" placeholder="请输入单号" />
+      </div>
+    </div>
+    <script>
+      var input = document.querySelector("input");
+      var view = document.querySelector("#view");
+      input.addEventListener("keyup",function () {
+          if (this.value == "") {
+            view.className = "view view::before";
+            view.innerHTML = "";
+          } else {
+            view.className = "view-show view-show::before";
+            view.innerHTML = this.value;
+          }
+        },false);
+
+    //失去焦点事件绑定
+    input.addEventListener('blur',function(){
+        view.className = "view view::before";
+    },false);
+
+    //获得焦点事件绑定
+    input.addEventListener('focus',function(){
+        if(input.value == ''){
+            view.className = "view view::before";
+        }else{
+            view.className = 'view-show view-show::before';
+        }
+    },false);
+    </script>
+  </body>
+</html>
