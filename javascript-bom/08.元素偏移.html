@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>元素偏移</title>
+    <style>
+      .container {
+        /* position: relative; */
+        width: 500px;
+        height: 500px;
+        background-color: green;
+        margin: 200px auto;
+      }
+      .content {
+        width: 100px;
+        height: 100px;
+        background-color: brown;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content"></div>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        var container = document.querySelector(".container");
+        /*console.log('元素距离视口顶部距离：'+container.offsetTop);
+            console.log('元素距离视口左边距离：'+container.offsetLeft);
+            console.log('元素宽度：'+container.offsetWidth);
+            console.log('元素高度：'+container.offsetHeight);
+
+            var content = document.querySelector('.content');
+            console.log('返回父元素定位的元素,如果没有定位就返回body：');
+            console.log(content.offsetParent); */
+        //offset 属性只能获取值，不能重新赋值，style属性 可以读写（可以获得值，也可以重新赋值）
+        //获取元素值offset 更合适，赋值元素值style
+
+        container.addEventListener("mousemove", function (e) {
+          this.innerHTML =
+            "当前X坐标=" + (e.pageX - this.offsetLeft) +
+            "当前Y坐标=" + (e.pageY - this.offsetTop);
+        });
+      });
+    </script>
+  </body>
+</html>
