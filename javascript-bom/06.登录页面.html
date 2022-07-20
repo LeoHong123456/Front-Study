@@ -42,7 +42,7 @@
         background-color: green;
       }
 
-      #forword-home{
+      #forword-home {
         width: 200px;
         height: 40px;
         border: 0;
@@ -50,7 +50,7 @@
         background-color: green;
       }
 
-      input:nth-child(-n+2){
+      input:nth-child(-n + 2) {
         width: 260px;
         height: 26px;
         margin-top: 12px;
@@ -68,24 +68,36 @@
               <tr>
                 <td><label for="username">用户名</label></td>
                 <td>
-                  <input type="text" id="username" name="username" placeholder="用户名/手机" />
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="用户名/手机"
+                  />
                 </td>
               </tr>
               <tr>
                 <td><lable for="password">密码</lable></td>
-                <td><input type="password" id="password" name="password" placeholder="密码" /></td>
+                <td>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="密码"
+                  />
+                </td>
               </tr>
             </table>
-            <input type="button" id="forword-home" value="进入首页">
+            <input type="button" id="forword-home" value="进入首页" />
             <input type="submit" id="but-sub" value="登录" />
           </div>
         </fieldset>
       </form>
     </div>
     <script>
-      window.addEventListener('load', function(){
-        var home = document.querySelector('#forword-home');
-        home.addEventListener('click', function(){
+      window.addEventListener("load", function () {
+        var home = document.querySelector("#forword-home");
+        home.addEventListener("click", function () {
           //实现浏览器前进
           history.forward();
           //表示浏览器前进一步，参数是2表示前进两步

@@ -39,6 +39,7 @@
     <div class="container">
       <table>
         <thead>
+          <th><input type="checkbox" name="" id="checkAll" /></th>
           <th>员工编号</th>
           <th>姓名</th>
           <th>年龄</th>
@@ -62,6 +63,12 @@
           td.innerHTML = data[i][key];
           tr.appendChild(td);
         }
+
+        //追加第一项复选框
+        var check = document.createElement("td");
+        check.innerHTML = '<input type="checkbox">';
+        tr.insertBefore(check, tr.children[0]);
+
         //追加最后一列操作项
         var operate = document.createElement("td");
         var a = document.createElement("a");
@@ -78,6 +85,42 @@
             tbody.removeChild(this.parentNode.parentNode);
           };
         }
+      }
+
+      //给表格添加复选框(全选，全不选操作)
+      var tbody = document.querySelector("tbody");
+      var inputs = tbody.querySelectorAll("input");
+      var checkAll = document.querySelector("#checkAll");
+      checkAll.addEventListener("click", function () {
+        for (var i = 0; inputs.length; i++) {
+          console.log(this.checked);
+          inputs[i].checked = this.checked;
+        }
+      });
+
+      //复选框排它操作
+      for (var i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener("click", function () {
+          var flag = true;
+          for (var i = 0; i < inputs.length; i++) {
+            if (!inputs[i].checked) {
+              flag = false;
+            }
+          }
+          checkAll.checked = flag;
+        });
+      }
+
+      //利用鼠标事件添加鼠标移入添加背景
+      var trs = tbody.querySelectorAll("tr");
+      for (var i = 0; i < trs.length; i++) {
+        trs[i].addEventListener("mouseover", function () {
+          this.style.backgroundColor = "pink";
+        });
+
+        trs[i].addEventListener("mouseout", function () {
+          this.style.backgroundColor = "#fff";
+        });
       }
     </script>
   </body>

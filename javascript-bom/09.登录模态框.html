@@ -1,14 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
     <title>登录模态框</title>
-</head>
-<body>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: antiquewhite;
+      }
+
+      .link-content p {
+        padding-top: 30px;
+        text-align: center;
+        margin: 0 auto;
+      }
+
+      a {
+        font-size: 20px;
+        font-weight: 500;
+        color: #000;
+      }
+      .container {
+        display: none;
+        width: 500px;
+        height: 360px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 2px solid #666;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(117, 116, 116, 0.5);
+      }
+
+      .header {
+        height: 100px;
+        position: relative;
+      }
+
+      .header h2 {
+        font-size: 20px;
+        font-weight: 800;
+        text-align: center;
+        margin: 30px 0px;
+      }
+
+      .close-button {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: -45px;
+        right: -15px;
+        border: 1px solid #025299;
+        border-radius: 50%;
+        background-color: #025299;
+        cursor: pointer;
+      }
+
+      .close-button::before,
+      .close-button::after {
+        content: "";
+        position: absolute;
+        height: 18px;
+        width: 2px;
+        top: 7px;
+        left: 50%;
+        background-color: #fff;
+      }
+
+      .close-button::before {
+        transform: rotate(45deg);
+      }
+
+      .close-button::after {
+        transform: rotate(-45deg);
+      }
+
+      .form {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .input-username {
+        width: 300px;
+        height: 30px;
+        margin: 0 auto;
+      }
+
+      .input-username input {
+        float: right;
+        width: 230px;
+        height: 30px;
+        outline: none;
+        border: 1px solid #000;
+      }
+
+      .input-username label {
+        float: left;
+        line-height: 26px;
+      }
+
+      .input-password {
+        width: 300px;
+        height: 30px;
+        margin: 30px auto;
+      }
+
+      .input-password input {
+        height: 30px;
+        width: 230px;
+        outline: none;
+        border: 1px solid #000;
+        float: right;
+      }
+
+      .input-password label {
+        float: left;
+        line-height: 26px;
+      }
+
+      .login-but {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        width: 300px;
+        height: 30px;
+        border: 0;
+        margin: auto;
+      }
+
+      .login-but input {
+        width: 200px;
+        height: 30px;
+        outline: none;
+        border: 0;
+        border-radius: 5px;
+        background-color: #6babe2;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="link-content">
+        <p>
+          <a href="javascript:void(0);" id="login-show">前往登录</a>
+        </p>
+      </div>
+    </header>
+
     <div class="container">
-        
+      <div class="header">
+        <h2>会员登录</h2>
+        <div class="close-button"></div>
+      </div>
+      <div class="form">
+        <div class="input-username">
+          <label for="username">会员名</label>
+          <input type="text" name="username" id="username" />
+        </div>
+
+        <div class="input-password">
+          <label for="password">密码</label>
+          <input type="password" name="password" id="password" />
+        </div>
+
+        <div class="login-but">
+          <input type="button" value="登录" />
+        </div>
+      </div>
     </div>
-</body>
+
+    <script>
+      window.addEventListener("load", function () {
+        var loginShow = document.querySelector("#login-show");
+        var container = document.querySelector(".container");
+        var closeBtn = document.querySelector(".close-button");
+        var header = document.querySelector(".header");
+        var body = document.querySelector("body");
+        //给超链接添加点击事件，弹出登录框
+        loginShow.addEventListener("click", function () {
+          container.style.display = "block";
+          body.style.backgroundColor = "#666";
+          container.style.backgroundColor = "antiquewhite";
+        });
+
+        closeBtn.addEventListener("click", function () {
+          container.style.display = "none";
+          body.style.backgroundColor = "antiquewhite";
+        });
+
+        //鼠标按下注册事件
+        header.addEventListener("mousedown", function (e) {
+          var x = e.pageX - container.offsetLeft;
+          var y = e.pageY - container.offsetTop;
+
+          function move(e) {
+            container.style.top = e.pageY - y + "px";
+            container.style.left = e.pageX - x + "px";
+          }
+
+          //添加鼠标移动事件(改变容器X，Y位置)
+          container.addEventListener("mousemove", move);
+
+          //添加鼠标弹起事件，移除鼠标移动事件
+          document.addEventListener("mouseup", function (e) {
+            container.removeEventListener("mousemove", move);
+          });
+        });
+      });
+    </script>
+  </body>
 </html>
