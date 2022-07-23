@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立即执行函数</title>
+</head>
+<body>
+    
+    <script>
+        //立即执行函数内部定义的变量都是局部的，不受外接干扰
+        //方式一
+        (function(window, document){
+            console.dir(window);
+            console.dir(document);
+        })(window, document)
+
+        //方式二
+        (function(){}());
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouse事件</title>
+    <style>
+        body{
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container{
+            width: 500px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: aliceblue;
+            margin: 200px auto;
+            overflow: hidden;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inner">
+        </div>
+    </div>
+
+    <script>
+        var container = document.querySelector('.container');
+        var inner = document.querySelector('.inner');
+
+        //mouseenter鼠标经过事件只会触发本身盒子(不会冒泡)
+        container.addEventListener('mouseenter', ()=>{
+            console.log(">>>>>A");
+        });
+        
+        //mouseenter鼠标离开事件只会触发本身盒子(不会冒泡)
+        container.addEventListener('mouseleave', ()=>{
+            console.log("C");
+        });
+
+        //mouseover子盒子的事件也会触发
+        inner.addEventListener('mouseover',()=>{
+            console.log(">>>>>>B");
+        });
+
+
+    </script>
+</body>
+</html>

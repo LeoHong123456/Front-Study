@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>缓动动画</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        .container{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+
+        .button{
+            width: 200px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 400px;
+            border-radius: 30px;
+            position: absolute;
+            top: 250px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: green;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- 缓动动画原理：
+    1、让盒子每次移动的距离慢慢变小，速度就会慢慢落下来
+    2、算法：(目标值-当前位置) / 10 每次移动步长
+    3、停止条件让盒子位置等于目标位置就停止 -->
+
+    <div class="container"></div>
+    <div class="button">走起来</div>
+
+    <script>
+      function animate(object, target) {
+        //每次进来先清除目标定时任务
+        clearInterval(object.timer);
+        //不介意定时任务使用变量接收，建议使用对象接收可以节省资源开支
+        object.timer = setInterval(() => {
+            //缓动动画每次移动的步长
+            var setp = (target - object.offsetLeft) / 10;
+            setp = setp > 0 ? Math.ceil(setp) : Math.floor(setp);
+          if (object.offsetLeft >= target) {
+            clearInterval(object.timer);
+          }
+          object.style.left = (object.offsetLeft + setp) + "px";
+        }, 15);
+      }
+      
+      var container = document.querySelector('.container');
+      var button = document.querySelector('.button');
+      button.addEventListener('click', ()=>{
+        container.style.left = 0 + "px";
+        animat(container, 1000);
+      });
+    </script>
+  </body>
+</html>

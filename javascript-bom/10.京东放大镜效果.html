@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>京东放大镜效果图</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      img {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -khtml-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+
+      .container {
+        width: 800px;
+        height: 400px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 200px auto;
+      }
+
+      .content-img {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: row nowrap;
+        float: left;
+        position: relative;
+        border: 1px solid #000;
+      }
+
+      .content-img img {
+        position:absolute;
+        width: 200px;
+        height: 200px;
+      }
+
+      .img-focus {
+        display: none;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 2;
+        transform: translate(-50%, -50%);
+        opacity: 0.6;
+        cursor: move;
+        background-color: antiquewhite;
+      }
+
+      .enlarge-wrap {
+        position:relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+        border: 1px solid #ccc;
+      }
+
+      .enlarge-img{
+        width: 500px;
+        height: 500px;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content-img">
+        <img src="./image/phone.webp" alt="手机" />
+        <div class="img-focus"></div>
+      </div>
+
+      <div class="enlarge-wrap">
+        <img src="./image/phone.webp" alt="" class="enlarge-img" />
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        var contentImg = document.querySelector(".content-img");
+        var imgFocus = document.querySelector(".img-focus");
+        var enlargeImg = document.querySelector(".enlarge-img");
+        var enlargeWrap = document.querySelector(".enlarge-wrap");
+        contentImg.addEventListener("mouseover", function (e) {
+          imgFocus.style.display = "block";
+          enlargeImg.style.display = "block";
+          enlargeWrap.style.display = 'flex';
+        });
+
+        contentImg.addEventListener("mouseout", function () {
+          imgFocus.style.display = "none";
+          enlargeImg.style.display = "none";
+          enlargeWrap.style.display = 'none'
+        });
+
+        //鼠标移动事件
+        contentImg.addEventListener("mousemove", function (event) {
+          var x = event.pageX - this.offsetLeft;
+          var y = event.pageY - this.offsetTop;
+
+          y = y <= imgFocus.offsetHeight / 2 ? imgFocus.offsetHeight / 2 : y;
+          y =y >= this.offsetHeight / 2 + imgFocus.offsetHeight / 2 ? this.offsetHeight - imgFocus.offsetHeight / 2 : y;
+
+          x = x <= imgFocus.offsetWidth / 2 ? imgFocus.offsetWidth / 2 : x;
+          x = x >= this.offsetWidth / 2 + imgFocus.offsetWidth / 2 ? this.offsetWidth - imgFocus.offsetWidth / 2 : x;
+          
+          //让盒子跟随鼠标移动位置
+          imgFocus.style.top = y + "px";
+          imgFocus.style.left = x + "px";
+
+          var enlargeX = x * (enlargeImg.offsetWidth - this.offsetWidth)/50;
+          var enlargeY = y * (enlargeImg.offsetHeight - this.offsetWidth)/150;
+          console.log('x='+ enlargeX+',y='+ enlargeY);
+          enlargeImg.style.left = '-'+ x +'px';
+          enlargeImg.style.top = '-'+ y +'px';
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>侧边导航栏动画效果制作</title>
+    <script src="./js/animate.js"></script>
+    <style>
+        .container{
+            width: 40px;
+            height: 40px;
+            position:fixed;
+            top:50%;
+            right:0;
+            z-index: 3;
+            padding-left: 20px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            background-color:#666;
+        }
+        .icon{
+            display: block;
+            font-size: 30px;
+            font-weight: 900;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+        }
+        .content{
+            display: none;
+            width: 80px;
+            height: 40px;
+            font-size: 16px;
+            text-align: left;
+            line-height: 40px;
+            padding-left: 10px;
+            box-sizing: content-box;
+            position: absolute;
+            top:0;
+            right: -40px;
+            z-index: -1;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="icon">☜<span>
+        <div class="content">问题反馈</div>
+    </div>
+
+    <script>
+        var container = document.querySelector('.container');
+        var content = document.querySelector('.content');
+        var icon = document.querySelector('.icon');
+
+        container.addEventListener('mouseenter', ()=>{
+            container.style.backgroundColor = 'red';
+            content.style.backgroundColor = 'red';
+            content.style.display = 'block';
+            content.style.color='#fff';
+            animate(content, -80, ()=>{
+    
+            });
+        });
+
+        container.addEventListener('mouseleave', ()=>{
+            container.style.backgroundColor='#666';
+            content.style.backgroundColor='#666';
+                content.style.color='#666';
+            animate(content, 0, ()=>{
+
+            });
+        });
+
+    </script>
+</body>
+</html>

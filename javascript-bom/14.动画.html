@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .container{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+
+        .animation{
+            position: absolute;
+            left: 0;
+            top: 260px;
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+
+        .button{
+            width: 150px;
+            height: 40px;
+            position: absolute; left: 200px; top: 500px;
+
+            text-align: center;
+            line-height: 40px;
+            border-radius: 20px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <div class="animation"></div>
+    <div class="button">开始运动</div>
+
+    <script>
+        var container = document.querySelector('.container');
+        var animation = document.querySelector('.animation');
+        var button = document.querySelector('.button');
+        //封装定时器(JS动画系列都是依靠定时器实现的)
+        function animat(object, target){
+            //每次进来先清除目标定时任务
+            clearInterval(object.timer);
+            //不介意定时任务使用变量接收，建议使用对象接收可以节省资源开支
+            object.timer = setInterval(()=>{
+                console.log(object.offsetLeft)
+                if(object.offsetLeft >= target){
+                    clearInterval(object.timer);
+                    return ;
+                }
+                object.style.left = (object.offsetLeft + 1) + 'px';
+            }, 30);
+        }
+        animat(container, 200);
+        //点击之后再执行
+        var flag = false;
+        button.addEventListener('click', function(){
+            if(!flag){
+                animat(animation, 500);
+                flag = true;
+            }else{
+                clearInterval(animation.timer);
+                flag = false;
+            }
+            console.log(flag)
+        });
+
+        button.addEventListener('mousedown', ()=>{
+            button.style.backgroundColor = 'yellow'
+        })
+        button.addEventListener('mouseup', ()=>{
+            button.style.backgroundColor= 'green';
+        });
+    </script>
+</body>
+</html>

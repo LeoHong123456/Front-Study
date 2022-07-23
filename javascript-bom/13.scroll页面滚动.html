@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面滚动</title>
+    <style>
+        .container{
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;;
+            overflow: auto;
+            background-color: antiquewhite;
+        }
+
+        body{
+            height: 3000px;
+        }
+
+        .content{
+            width: 300px;
+            height: 3000px;
+            background-color: antiquewhite;
+            overflow: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            scroll不包含边框，包含padding,包含内容超出范围
+        </div>
+    </div>
+    <script>
+
+        //offset 系列属性常用于获得元素位置 offsetLeft offsetTop
+        //client 系列属性常用于获取元素大小 clientWidth clientHeight
+        //scroll 系列属性常用于获取滚动距离 scrollTop scrollLeft
+        //注意页面滚动的距离通过 window.pageYOffset 属性获得
+
+        var container = document.querySelector('.container');
+        //scroll不包含边框，包含padding,包含内容超出范围
+        var height = container.scrollHeight;
+        var left = container.scrollLeft;
+        var width = container.scrollWidth;
+        var top = container.scrollTop;
+        console.log(height);
+
+        //scroll 滚动事件
+        container.addEventListener('scroll', function(){
+            console.log(">>>>>>>>>>>>>>鼠标拖动超出顶部距离："+this.scrollTop);
+        });
+
+        //可以获取浏览器被卷去的高度
+        window.addEventListener('scroll', function(){
+            var winPagY = window.pageYOffset;
+            console.log(">>>>>>>>>>>>>>鼠标拖动超出浏览器顶部距离："+winPagY);
+        });
+
+
+        console.log(container.offsetTop)
+
+    </script>
+</body>
+</html>
