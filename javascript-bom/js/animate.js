@@ -8,9 +8,11 @@ function animate(object, target, callback) {
     setp = setp > 0 ? Math.ceil(setp) : Math.floor(setp);
     if (object.offsetLeft == target) {
       clearInterval(object.timer);
-      if(callback){
-        callback();
-      }
+      // if(callback){
+      //   callback();
+      // }
+      //与上面if条件结果一致(简洁写法)
+      callback && callback();
     }
     object.style.left = (object.offsetLeft + setp) + "px";
   }, 10);

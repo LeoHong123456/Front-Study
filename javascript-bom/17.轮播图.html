@@ -1,12 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/animate.js"></script>
     <title>轮播图</title>
-</head>
-<body>
-    
-</body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      ul,
+      ol {
+        list-style: none;
+      }
+
+      .banner-container {
+        width: 632px;
+        height: 340px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: antiquewhite;
+      }
+
+      .img-box {
+        position:absolute;
+        top: 0;
+        left: 0;
+        width: 632px;
+        height: 340px;
+      }
+
+      .img-box li {
+        float: left;
+      }
+
+      .left-button,
+      .right-button {
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+        line-height: 50px;
+        text-align: center;
+        text-shadow: #ccc;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+
+      .left-button {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: 2;
+        transform: translateY(-50%);
+      }
+
+      .right-button {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        z-index: 2;
+        transform: translateY(-50%);
+      }
+
+      .sel-box {
+        position: absolute;
+        left: 10px;
+        bottom: 20px;
+        z-index: 2;
+      }
+
+      .sel-current {
+        float: left;
+        width: 10px;
+        height: 10px;
+        margin: 0px 4px;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner-container">
+      <div class="left-button">&lt</div>
+      <div class="right-button">&gt</div>
+      <!-- 图片ul -->
+      <ul class="img-box">
+        <li>
+          <img src="../items/小米首页PC/upload/active-banner1.jpg" alt="" />
+        </li>
+        <li>
+          <img src="../items/小米首页PC/upload/active-banner2.jpg" alt="" />
+        </li>
+        <li>
+          <img src="../items/小米首页PC/upload/active-banner3.jpg" alt="" />
+        </li>
+        <li>
+          <img src="../items/小米首页PC/upload/active-banner1.jpg" alt="" />
+        </li>
+      </ul>
+
+      <!-- 图片下标 -->
+      <ol class="sel-box"></ol>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        var selbox = document.querySelector(".sel-box");
+        var imgbox = document.querySelector(".img-box");
+        var rightButton = document.querySelector(".right-button");
+        var leftButton = document.querySelector(".left-button");
+        var bannerContainer = document.querySelector('.banner-container');
+        var imgWidth = imgbox.offsetWidth * imgbox.children.length;
+        imgbox.style.width = imgWidth + 'px';
+
+        var dataIndex = null;
+        //添加圆点元素并且添加下标元素
+        for (var i = 0; i < imgbox.children.length - 1; i++) {
+          var selLi = document.createElement("li");
+          selLi.setAttribute("class", "sel-current");
+          selLi.setAttribute("data-index", i);
+          selbox.appendChild(selLi);
+          selbox.children[0].style.backgroundColor = "#ccc";
+        }
+
+        for (var i = 0; i < selbox.children.length; i++) {
+          selbox.children[i].addEventListener("click", function () {
+            //排它思想去除其它元素的背景色
+            for (var x = 0; x < selbox.children.length; x++) {
+              selbox.children[x].style.backgroundColor = "";
+            }
+            //给当前点击元素添加背景色
+            this.style.backgroundColor = "#ccc";
+
+            //获取下标根据下标算出移动距离
+            dataIndex = this.getAttribute("data-index");
+            animate(imgbox, '-' + (dataIndex * bannerContainer.offsetWidth));
+          });
+        }
+
+        dataIndex = 0;
+        rightButton.addEventListener('click', function(){
+          animate(imgbox, '-' + (dataIndex += 1 * bannerContainer.offsetWidth));
+        });
+
+        leftButton.addEventListener('click', function(){
+          animate(imgbox, (dataIndex -= 1 * bannerContainer.offsetWidth));
+        });
+
+      });
+    </script>
+  </body>
 </html>
