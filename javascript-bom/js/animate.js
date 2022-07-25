@@ -6,10 +6,12 @@ function animate(object, target, callback) {
     //缓动动画每次移动的步长
     var setp = (target - object.offsetLeft) / 10;
     setp = setp > 0 ? Math.ceil(setp) : Math.floor(setp);
-    if (object.offsetRight >= target) {
+    if (object.offsetLeft == target) {
       clearInterval(object.timer);
-      callback();
+      if(callback){
+        callback();
+      }
     }
-    object.style.left = object.offsetLeft + setp + "px";
-  }, 15);
+    object.style.left = (object.offsetLeft + setp) + "px";
+  }, 10);
 }
