@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>筋斗云</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      .container {
+        position: relative;
+        width: 800px;
+        height: 100%;
+        margin: 20px auto;
+        background-color: azure;
+      }
+
+      ul {
+        list-style: none;
+        position: absolute;
+        /* display: flex;
+        justify-content: space-around;
+        flex-flow: row nowrap;
+        align-items: center; */
+      }
+
+      ul > li {
+        float: left;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+      }
+
+      .cloud {
+        display: block;
+        width: 100px;
+        height: 30px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: 1px solid green;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <span class="cloud"></span>
+      <div class="nav">
+        <ul>
+          <li class="items"><a href="#">案例一</a></li>
+          <li class="items"><a href="#">案例二</a></li>
+          <li class="items"><a href="#">案例三</a></li>
+          <li class="items"><a href="#">案例四</a></li>
+          <li class="items"><a href="#">案例五</a></li>
+          <li class="items"><a href="#">案例六</a></li>
+          <li class="items"><a href="#">案例七</a></li>
+          <li class="items"><a href="#">案例八</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        var cloud = document.querySelector(".cloud");
+        var items = document.querySelectorAll(".items");
+        // 2. 给所有的小li绑定事件
+        // 这个current 做为筋斗云的起始位置
+        var current = 0;
+        for (var i = 0; i < items.length; i++) {
+          // (1) 鼠标经过把当前小li 的位置做为目标值
+          items[i].addEventListener("mouseenter", function () {
+            animate(cloud, this.offsetLeft);
+          });
+          // (2) 鼠标离开就回到起始的位置
+          items[i].addEventListener("mouseleave", function () {
+            animate(cloud, current);
+          });
+          // (3) 当我们鼠标点击，就把当前位置做为目标值
+          items[i].addEventListener("click", function () {
+            current = this.offsetLeft;
+          });
+        }
+
+        function animate(obj, target, callback) {
+          // console.log(callback);  callback = function() {}  调用的时候 callback()
+
+          // 先清除以前的定时器，只保留当前的一个定时器执行
+          clearInterval(obj.timer);
+          obj.timer = setInterval(function () {
+            // 步长值写到定时器的里面
+            // 把我们步长值改为整数 不要出现小数的问题
+            // var step = Math.ceil((target - obj.offsetLeft) / 10);
+            var step = (target - obj.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            if (obj.offsetLeft == target) {
+              // 停止动画 本质是停止定时器
+              clearInterval(obj.timer);
+              // 回调函数写到定时器结束里面
+              callback && callback();
+            }
+            // 把每次加1 这个步长值改为一个慢慢变小的值  步长公式：(目标值 - 现在的位置) / 10
+            obj.style.left = obj.offsetLeft + step + "px";
+          }, 15);
+        }
+      });
+    </script>
+  </body>
+</html>

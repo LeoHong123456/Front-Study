@@ -1,178 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/reset.css">
-    <title>首页</title>
-    <style>
-      .clearflex::before,
-      .clearflex::after {
-        content: "";
-        display: table;
-        clear: both;
-      }
 
-      html,
-      body {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/reset.css">
+  <title>首页</title>
+  <style>
+    .clearflex::before,
+    .clearflex::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
 
-      .container {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
 
-      .head {
-        height: 8%;
-        position: relative;
-        background: linear-gradient(45deg, rgb(29, 122, 228), green);
-      }
+    .container {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
 
-      .pro-name h2 {
-        font-size: 25px;
-        font-weight: 600;
-        letter-spacing: 2px;
-        position: absolute;
-        left: 10px; top: 50%;
-        transform: translateY(-50%);
-      }
+    .head {
+      height: 8%;
+      position: relative;
+      background: linear-gradient(45deg, rgb(29, 122, 228), green);
+    }
 
-      .userInfo {
-        float: right;
-        position: absolute;
-        top: 50%;
-        right: 200px;
-        transform: translateY(-50%);
-      }
+    .pro-name h2 {
+      font-size: 25px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
 
-      .login-out{
-        float: right;
-        width: 80px;
-        height: 30px;
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 30px;
-        text-align: center;
-        margin: 20px 30px;
-        background-color: red;
-        border-radius: 15px;
-      }
-      .nav {
-        float: left;
-        width: 10%;
-        height: 92%;
-        background-color: beige;
-      }
+    .userInfo {
+      float: right;
+      position: absolute;
+      top: 50%;
+      right: 200px;
+      transform: translateY(-50%);
+    }
 
-      .nav ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 10px;
-      }
+    .login-out {
+      float: right;
+      width: 80px;
+      height: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 30px;
+      text-align: center;
+      margin: 20px 30px;
+      background-color: red;
+      border-radius: 15px;
+    }
 
-      .nav ul li {
-        height: 30px;
-        line-height: 30px;
-        font-size: 14px;
-        border-bottom: 1px dotted #000;
-      }
+    .nav {
+      float: left;
+      width: 10%;
+      height: 92%;
+      background-color: beige;
+    }
 
-      .content {
-        float: right;
-        width: 90%;
-        height: 92%;
-      }
+    .nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px;
+    }
 
-      .section {
-        width: 100%;
-        height: 92%;
-        /* linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%), */
-        background: linear-gradient(45deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%), url("./image/background.jpeg") no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-      }
+    .nav ul li {
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+      border-bottom: 1px dotted #000;
+    }
 
-      .section p {
-        margin: 0;
-        padding: 0;
-        word-spacing: 2px;
-      }
+    .content {
+      float: right;
+      width: 90%;
+      height: 92%;
+    }
 
-      .footer {
-        width: 100%;
-        height: 8%;
-        background-color: #666;
-      }
+    .section {
+      width: 100%;
+      height: 92%;
+      /* linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%), */
+      background: linear-gradient(45deg, rgba(0, 255, 0, .8), rgba(0, 255, 0, 0) 70.71%), url("./image/background.jpeg") no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
 
-      .footer span {
-        display: block;
-        font-size: 16px;
-        text-align: center;
-        padding-top: 30px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="head clearflex">
-        <div class="pro-name">
-          <h2>平台管理</h2>
-        </div>
-        <div class="userInfo"></div>
-        <div class="login-out">登出</div>
+    .section p {
+      margin: 0;
+      padding: 0;
+      word-spacing: 2px;
+    }
+
+    .footer {
+      width: 100%;
+      height: 8%;
+      background-color: #666;
+    }
+
+    .footer span {
+      display: block;
+      font-size: 16px;
+      text-align: center;
+      padding-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="head clearflex">
+      <div class="pro-name">
+        <h2>平台管理</h2>
       </div>
-
-      <div class="nav clearflex">
-        <ul>
-          <li>菜单一</li>
-          <li>菜单一</li>
-          <li>菜单一</li>
-          <li>菜单一</li>
-          <li>菜单一</li>
-          <li>菜单一</li>
-          <li>菜单一</li>
-          <li>菜单一</li>
-          <li>菜单一</li>
-          <li>菜单一</li>
-        </ul>
-      </div>
-
-      <div class="content">
-        <div class="section">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
-            accusantium ipsa minima numquam quasi obcaecati cumque commodi sint
-            possimus, hic, impedit alias. Obcaecati, incidunt. Modi voluptas
-            omnis rerum ullam sapiente.
-          </p>
-        </div>
-        <div class="footer">
-          <span>鼎泰科技Copyright &copy 2022</span>
-        </div>
-      </div>
+      <div class="userInfo"></div>
+      <div class="login-out">登出</div>
     </div>
 
-    <script>
-      window.addEventListener("load", function () {
-        var span = document.createElement("span");
-        var userInfo = document.querySelector(".userInfo");
-        var params = window.location.search.substr(1, window.location.search.length);
-        var args = params.split("&");
-        span.innerHTML ="欢迎您：" +decodeURI(args[0].substr(args[0].indexOf("=") + 1, args[0].length));
-        userInfo.appendChild(span);
+    <div class="nav clearflex">
+      <ul>
+        <li>菜单一</li>
+        <li>菜单一</li>
+        <li>菜单一</li>
+        <li>菜单一</li>
+        <li>菜单一</li>
+        <li>菜单一</li>
+        <li>菜单一</li>
+        <li>菜单一</li>
+        <li>菜单一</li>
+        <li>菜单一</li>
+      </ul>
+    </div>
 
-        var loginOut = document.querySelector('.login-out');
-        loginOut.addEventListener('click',function(){
-            //实现浏览器后退
-            history.back();
-        });
+    <div class="content">
+      <div class="section">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+          accusantium ipsa minima numquam quasi obcaecati cumque commodi sint
+          possimus, hic, impedit alias. Obcaecati, incidunt. Modi voluptas
+          omnis rerum ullam sapiente.
+        </p>
+      </div>
+      <div class="footer">
+        <span>鼎泰科技Copyright &copy 2022</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("load", function () {
+      var span = document.createElement("span");
+      var userInfo = document.querySelector(".userInfo");
+      var params = window.location.search.substr(1, window.location.search.length);
+      var args = params.split("&");
+      span.innerHTML = "欢迎您：" + decodeURI(args[0].substr(args[0].indexOf("=") + 1, args[0].length));
+      userInfo.appendChild(span);
+
+      var loginOut = document.querySelector('.login-out');
+      loginOut.addEventListener('click', function () {
+        //实现浏览器后退
+        history.back();
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>

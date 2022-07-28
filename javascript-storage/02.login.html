@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员登录</title>
+    <style>
+        html{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            background-color: rgba(15, 15, 15, 0.6);
+            font: 16px "Microsoft YaHei","微软雅黑","宋体",helvetica,"Hiragino Sans GB";
+        }
+        .container{
+            width: 500px;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content:space-around;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 70%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px 5px rgba(0,0,0,.3);
+            border-radius: 15px;
+            background-color: rgb(181, 193, 204);
+        }
+        .container>div{
+            width: 350px;
+            height: 50px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .check-input{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+       input{
+            width: 260px;
+            height: 26px;
+            font-size: 16px;
+        }
+        .login-but{
+            display: flex;
+            justify-content: center;
+        }
+        button{
+            width: 200px;
+            height: 40px;
+            border: 0;
+            outline: 0;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>会员登录</h2>
+        <div class="username-input">
+            <label for="username" class="lable-username">会员名：</label>
+            <input type="text" id="username" class="username" placeholder="请输入用户名/手机号">
+        </div>
+
+        <div class="pwd">
+            <label for="pwd" class="label-pwd">密码：</label>
+            <input type="password" id="pwd" class="pwd" placeholder="请输入密码">
+        </div>
+
+        <div class="reme-check">
+            <label for="remecheck" class="label-check">记住我：</label>
+            <input type="checkbox" name="" id="remecheck" class="check-input">
+        </div>
+    
+        <div class="login-but">
+            <button class="login-submit">登录</button>
+        </div>    
+    </div>
+    <script>
+        window.addEventListener('load', function(){
+            var username = document.querySelector("#username");
+            var pwd = document.querySelector("#pwd");
+            var remecheck = document.querySelector("#remecheck");
+            console.log(username+','+ pwd +','+ remecheck);
+
+            var usernameStor = localStorage.getItem('username');
+            var pwdStor = localStorage.getItem('pwd');
+            console.log(usernameStor);
+            if(usernameStor != '' && usernameStor != null  && pwdStor != '' && pwdStor != null){
+                this.username.value = usernameStor;
+                this.pwd.value = pwdStor;
+                remecheck.checked = true;
+            }else{
+                remecheck.checked = false;
+            }
+       
+            var loginSubmit = document.querySelector('.login-submit');
+            loginSubmit.addEventListener('click', function(){
+                if(username.value == '' || username.value == null){
+                    alert('请填写会员名！');
+                    return ;
+                }
+                if(pwd.value == '' || pwd.value == null){
+                    alert("请填写密码")
+                    return ;
+                }
+                if(remecheck.checked){
+                    localStorage.setItem('username', username.value);
+                    localStorage.setItem('pwd', pwd.value);
+                }
+                alert("登录成功！");
+            });
+
+        });
+    </script>
+</body>
+</html>

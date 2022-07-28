@@ -1,113 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>登录</title>
-    <style>
-      /* *{
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>登录</title>
+  <style>
+    /* *{
         margin: 0;
         padding: 0;
       } */
-      html,
-      body {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
 
-      .container {
-        width: 500px;
-        height: 400px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
+    .container {
+      width: 500px;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-      .content {
-        display: flex;
-        justify-content: space-between;
-        flex-flow: column nowrap;
-        align-items: center;
-      }
+    .content {
+      display: flex;
+      justify-content: space-between;
+      flex-flow: column nowrap;
+      align-items: center;
+    }
 
-      #but-sub {
-        width: 200px;
-        height: 40px;
-        border: 0;
-        margin-top: 20px;
-        border-radius: 20px;
-        background-color: green;
-      }
+    #but-sub {
+      width: 200px;
+      height: 40px;
+      border: 0;
+      margin-top: 20px;
+      border-radius: 20px;
+      background-color: green;
+    }
 
-      #forword-home {
-        width: 200px;
-        height: 40px;
-        border: 0;
-        border-radius: 20px;
-        background-color: green;
-      }
+    #forword-home {
+      width: 200px;
+      height: 40px;
+      border: 0;
+      border-radius: 20px;
+      background-color: green;
+    }
 
-      input:nth-child(-n + 2) {
-        width: 260px;
-        height: 26px;
-        margin-top: 12px;
-      }
-    </style>
-  </head>
+    input:nth-child(-n + 2) {
+      width: 260px;
+      height: 26px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
 
-  <body>
-    <div class="container">
-      <form action="./07.首页.html" method="get">
-        <fieldset>
-          <legend>登录</legend>
-          <div class="content">
-            <table>
-              <tr>
-                <td><label for="username">用户名</label></td>
-                <td>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    placeholder="用户名/手机"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td><lable for="password">密码</lable></td>
-                <td>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="密码"
-                  />
-                </td>
-              </tr>
-            </table>
-            <input type="button" id="forword-home" value="进入首页" />
-            <input type="submit" id="but-sub" value="登录" />
-          </div>
-        </fieldset>
-      </form>
-    </div>
-    <script>
-      window.addEventListener("load", function () {
-        var home = document.querySelector("#forword-home");
-        home.addEventListener("click", function () {
-          //实现浏览器前进
-          history.forward();
-          //表示浏览器前进一步，参数是2表示前进两步
-          // history.go(1);
-        });
+<body>
+  <div class="container">
+    <form action="./07.首页.html" method="get">
+      <fieldset>
+        <legend>登录</legend>
+        <div class="content">
+          <table>
+            <tr>
+              <td><label for="username">用户名</label></td>
+              <td>
+                <input type="text" id="username" name="username" placeholder="用户名/手机" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <lable for="password">密码</lable>
+              </td>
+              <td>
+                <input type="password" id="password" name="password" placeholder="密码" />
+              </td>
+            </tr>
+          </table>
+          <input type="button" id="forword-home" value="进入首页" />
+          <input type="submit" id="but-sub" value="登录" />
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <script>
+    window.addEventListener("load", function () {
+      var home = document.querySelector("#forword-home");
+      home.addEventListener("click", function () {
+        //实现浏览器前进
+        history.forward();
+        //表示浏览器前进一步，参数是2表示前进两步
+        // history.go(1);
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>返回页面顶部</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body,
+      html {
+        height: 100%;
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: #c3c3c3;
+      }
+      .header {
+        height: 15%;
+        background-color: goldenrod;
+      }
+      .banner {
+        height: 15%;
+        margin-top: 10px;
+        background-color: green;
+      }
+      .main {
+        height: 40%;
+        margin-top: 10px;
+        background-color: greenyellow;
+      }
+      .section {
+        height: 30%;
+        margin-top: 10px;
+        background-color: pink;
+      }
+      .footer {
+        height: 10%;
+        margin-top: 10px;
+        background-color: #ccc;
+      }
+      .flex-box {
+        display: none;
+        width: 80px;
+        height: 40px;
+        margin-top: 10px;
+        text-align: center;
+        line-height: 40px;
+        position: absolute;
+        right: 0;
+        top: 80%;
+        transform: translateY(-50%);
+        background-color: palevioletred;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header"></div>
+      <div class="banner"></div>
+      <div class="main"></div>
+      <div class="section"></div>
+      <div class="footer"></div>
+      <div class="flex-box">返回顶部</div>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        var container = document.querySelector(".container");
+        var header = document.querySelector(".header");
+        var flexBox = document.querySelector(".flex-box");
+
+        window.addEventListener("scroll", function () {
+          var headerH = header.offsetHeight;
+          var winPagY = window.pageYOffset;
+          if (winPagY >= 120) {
+            flexBox.style.display = "block";
+          } else {
+            flexBox.style.display = "none";
+          }
+        });
+
+        flexBox.addEventListener("click", function () {
+            animate(window, 0);
+        });
+
+
+        function animate(object, target, callback) {
+          //每次进来先清除目标定时任务
+          clearInterval(object.timer);
+          //不介意定时任务使用变量接收，建议使用对象接收可以节省资源开支
+          object.timer = setInterval(() => {
+            //缓动动画每次移动的步长
+            var setp = (target - window.pageYOffset) / 10;
+            setp = setp > 0 ? Math.ceil(setp) : Math.floor(setp);
+            if (window.pageYOffset == target) {
+              clearInterval(object.timer);
+              callback && callback();
+            }
+            console.log(window.pageYOffset + setp)
+            window.scroll(0, window.pageYOffset + setp);
+          }, 15);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>storage</title>
+</head>
+<body>
+<!--     
+    1、数据存储在用户浏览器中
+    2、设置读取方便、页面刷新不会丢失数据
+    3、容量较大，sessionStorage 约5M, localStorage约20M
+    4、只能存储字符串，可以将对象JSON.stringify()编码后存储 
+
+    sessionStorage 生命周期为关闭浏览器窗口
+    localStorage 生命周期永久生效，除非手动删除，关闭页面也会存在
+    sessionstorage.setItem(key, value);
+
+    -->
+
+    <script>
+        //设置会话数据
+        sessionStorage.setItem('name', 'leo');
+        //获取会话数据
+        var name = sessionStorage.getItem('name');
+        //删除数据
+        sessionStorage.removeItem('name');
+        console.log('name=' + name);
+        //清除所有会话数据
+        sessionStorage.clear();
+
+
+        localStorage.setItem('name', 'andy');
+        // localStroage.getItem('name');
+        // localStroage.removeItem('name');
+        // localStorage.clear();
+    </script>
+</body>
+</html>
