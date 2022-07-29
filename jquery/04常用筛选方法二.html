@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用筛选方法二</title>
+    <script src="./js/jquery.mini.js"></script>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li>ul节点1</li>
+            <li>ul节点2</li>
+            <li class="current">ul节点3</li>
+            <li>ul节点4</li>
+            <li>ul节点5</li>
+            <li>ul节点6</li>
+        </ul>
+        <hr>
+        <ol>
+            <li>ol节点1</li>
+            <li>ol节点2</li>
+            <li>ol节点3</li>
+            <li>ol节点4</li>
+            <li class="last">ol节点5</li>
+            <li>ol节点6</li>
+        </ol>
+        <hr/>
+
+        <div class="buts">
+            <button>按钮1</button>
+            <button>按钮2</button>
+            <button>按钮3</button>
+            <button>按钮4</button>
+            <button>按钮5</button>
+            <button>按钮6</button>
+            <button>按钮7</button>
+            <button>按钮8</button>
+        </div>
+
+    </div>
+    <script>
+        //jquery 常用元素筛选方法
+            
+        // parent()  查找父级
+        // children(selector)  相当于$('ul>li'),最近的一级子元素
+        // find(selector)     $('ul').find('li') 相当于$('ul li')子孙元素;
+        // siblings(selector) $('.first').siblings('li') 查找兄弟节点不包括自己本身
+        // nextAll([expr])    $('.first').nextAll() 查找当前元素之后的同辈元素
+        // prevAll([expr])   $('.last').prevtAll() 查找当前元素之前的同辈元素
+        // hasClass(class)    $('div').hasClass('protected') 检查当前元素是否含有某个特定的类，如果有返回true.
+        // eq(index)          $('li').eq(2) 相当于$('li:eq(2)'),index从0开始
+
+        $(function(){
+            $('ul .current').siblings('li').css('background','pink');
+            $('ol .last').nextAll('li').css('color','green');
+            $('ol .last').prevAll('li').css('color','red');
+
+
+            //jquery排它思想,内置隐式迭代
+            $('button').click(function(){
+                $(this).css('background', 'green');
+                $(this).siblings('button').css('background', '');
+            })
+
+        })
+    </script>
+</body>
+</html>

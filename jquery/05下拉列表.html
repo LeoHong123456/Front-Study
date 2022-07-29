@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>节点操作练习</title>
+    <script src="./js/jquery.mini.js"></script>
+    <style>
+      a {
+        text-decoration: none;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .container {
+        width: 500px;
+        background-color: pink;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+      }
+      .items {
+        float: left;
+        width: 33.33%;
+        text-align: center;
+        border: 1px solid #000;
+        box-sizing: border-box;
+      }
+      .items a {
+        font-size: 16px;
+        font-weight: 800;
+      }
+
+      .nav-mouse-out {
+        background-color: #fff;
+      }
+      .nav-mouse-over {
+        background-color: green;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .nav li {
+        width: 100%;
+        border-top: 1px solid #000;
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ul class="nav-list">
+        <li class="items">
+          <a href="#">微博</a>
+          <ul class="nav">
+            <li>私信</li>
+            <li>评论</li>
+            <li>@我</li>
+          </ul>
+        </li>
+        <li class="items">
+          <a href="#">微信</a>
+          <ul class="nav">
+            <li>私信</li>
+            <li>评论</li>
+            <li>@我</li>
+          </ul>
+        </li>
+        <li class="items">
+          <a href="#">支付宝</a>
+          <ul class="nav">
+            <li>私信</li>
+            <li>评论</li>
+            <li>@我</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <script>
+      $(function () {
+
+        $('.items').mouseover(function(){
+            $(this).children('.nav').show();
+        });
+        
+        $('.items').mouseout(function(){
+            $(this).children('.nav').hide();
+        });
+      });
+    </script>
+  </body>
+</html>

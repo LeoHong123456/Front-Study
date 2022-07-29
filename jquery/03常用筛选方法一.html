@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <script src="./js/jquery.mini.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="main">
+            <div class="aside"></div>
+        </div>
+        <div class="selection">
+        </div>
+    </div>
+    
+    <script>
+        $(function(){
+
+            //jquery 常用元素筛选方法
+            
+            // parent()  查找父级
+            // children(selector)  相当于$('ul>li'),最近的一级子元素
+            // find(selector)     $('ul').find('li') 相当于$('ul li')子孙元素;
+            // siblings(selector) $('.first').siblings('li') 查找兄弟节点不包括自己本身
+            // nextAll([expr])    $('.first').nextAll() 查找当前元素之后的同辈元素
+            // prevtAll([expr])   $('.last').prevtAll() 查找当前元素之前的同辈元素
+            // hasClass(class)    $('div').hasClass('protected') 检查当前元素是否含有某个特定的类，如果有返回true.
+            // eq(index)          $('li').eq(2) 相当于$('li:eq(2)'),index从0开始
+
+            //获取aside的父节点
+            var main = $('.aside').parent();
+            console.log(main);
+
+            //获取container子代元素
+            var selection = $('.container').children('.selection');
+            console.log(selection); 
+
+            //获取子孙后代的元素节点
+            var childers = $('.container').find('div');
+            console.log(childers);
+        })
+    </script>
+</body>
+</html>

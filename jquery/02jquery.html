@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <script src="./js/jquery.mini.js"></script>
+    <style>
+        ul,ol{
+            list-style: none;
+            border: 1px solid #000;
+        }
+        .container{
+            width: 500px;
+            margin: 0 auto;
+            background-color: pink;
+            border: 1px solid #000;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li>ul第1个元素</li>
+            <li>ul第2个元素</li>
+            <li>ul第3个元素</li>
+            <li>ul第4个元素</li>
+            <li>ul第5个元素</li>
+            <li>ul第6个元素</li>
+        </ul>
+        <ol>
+            <li>ol第1个元素</li>
+            <li>ol第2个元素</li>
+            <li>ol第3个元素</li>
+            <li>ol第4个元素</li>
+            <li>ol第5个元素</li>
+            <li>ol第6个元素</li>
+        </ol>
+    </div>
+
+    <script>
+        $(function(){
+            //获取第一个元素文本内容
+            var firstLi = $("ul li:first").text()
+            console.log(firstLi);
+
+            //将ul中的第一个li背景颜色改成白色
+            $('ul li:first').css('background', '#fff');
+
+            //将ul中的最后一个li背景颜色改成灰色
+            $('ul li:last').css('background', '#ccc');
+
+            //将ul中的第3个li(也就是索引号为2的li)背景色改成绿色
+            $('ul li:eq(2)').css('background','green');
+
+            //将ol中的li奇数行背景颜色改成灰色
+            $('ol li:odd').css('background', '#ccc');
+
+            //将ol中的li偶数行背景颜色改成红色
+            $('ol li:even').css('background', 'red');
+        })  
+    </script>
+</body>
+</html>
