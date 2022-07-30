@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动画效果</title>
+    <script src="./js/jquery.mini.js"></script>
+    <style>
+      .container-1>div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+
+      .container-2>div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-1">
+        <button>显示</button>
+        <button>隐藏</button>
+        <button>切换</button>
+        <div></div>
+    </div>
+    <hr/>
+    <div class="container-2">
+        <button>收起</button>
+        <button>展出</button>
+        <button>切换滑动</button>
+        <div></div>
+    </div>
+
+    <script>
+      //显示与隐藏
+      // show(),hide(),toggle();
+      //滑动系列
+      // slideDown(),slideUp(),slideToggle();
+      //淡入淡出系列
+      // fadeIn(),fadeOut(),fadeToggle(),fadeTo();
+      //自定义动画
+      // animate()
+      $(function () {
+        $(".container-1>button").eq(0).click(function () {
+            $(".container-1>div").show(1000);
+        });
+
+        $(".container-1>button").eq(1).click(function () {
+            $(".container-1>div").hide(1000, "linear", function () {
+              console.log("被隐藏了>>>");
+            });
+        });
+
+        $(".container-1>button").eq(2).click(function () {
+            $(".container-1>div").toggle(1000, function () {
+              $(this).html("<p>被切换了>>></p>");
+            });
+        });
+
+        //滑入滑出效果
+        $(".container-2>button").eq(0).click(function () {
+            $(".container-2>div").slideUp();
+        });
+
+        $(".container-2>button").eq(1).click(function () {
+            $(".container-2>div").slideDown();
+        });
+
+        $(".container-2>button").eq(2).click(function () {
+            $(".container-2>div").slideToggle();
+        });
+
+      });
+    </script>
+  </body>
+</html>

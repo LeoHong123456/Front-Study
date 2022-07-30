@@ -45,6 +45,8 @@
       }
 
       .content > div {
+        width: 100%;
+        height: 500px;
         display: none;
       }
     </style>
@@ -53,7 +55,7 @@
     <div class="container clearflex">
       <div class="nav clearflex">
         <ul>
-          <li class="items nav-mouseover">商品介绍</li>
+          <li class="items">商品介绍</li>
           <li class="items">规格与包装</li>
           <li class="items">售后保障</li>
           <li class="items">商品评价(50万+)</li>
@@ -62,7 +64,7 @@
       </div>
 
       <div class="content clearflex">
-        <div style="display: block">
+        <div>
           <p>
             品牌： Apple 商品名称：AppleiPhone 13 Pro
             Max商品编号：100026667928商品毛重：400.00g商品产地：中国大陆CPU型号：A15运行内存：其他(iPhone)机身颜色：远峰蓝色三防标准：IP68屏幕分辨率：FHD+充电功率：以官网信息为准机身内存：128GB机身色系：蓝色系屏幕材质：OLED直屏后摄主像素：1200万像素风格：苹果风，商务，科技
@@ -150,12 +152,25 @@
 
     <script>
       $(function () {
-        $(".items").click(function () {
-          //当前元素添加背景色，其它兄弟元素去除背景色
-          $(this).addClass("nav-mouseover").siblings().removeClass("nav-mouseover");
-          var index = $(this).index();
-          $(".content>div").eq(index).show().siblings().hide();
-        });
+        //hover 第一个参数mouseenter,第二个参数mouseleave两个事件，
+        // $('.items').hover(function(){
+        //     $(this).addClass('nav-mouseover').siblings().removeClass('nav-mouseover');
+        //     var index = $(this).index();
+        //     $('.content').children('div').eq(index).slideDown().siblings().hide();
+        // },function(){
+        //     $(this).removeClass('nav-mouseover');
+        //     var index = $(this).index();
+        //     $('.content').children('div').eq(index).slideUp().siblings().hide();
+        // });
+
+        //简写方式
+        $('.items').hover(function(){
+            $(this).toggleClass('nav-mouseover').siblings().removeClass('nav-mouseover');
+            var index = $(this).index();
+            //stop 解决动画排队问题
+            $('.content').children('div').eq(index).stop().slideToggle();
+        })
+
       });
     </script>
   </body>
