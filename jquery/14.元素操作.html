@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素操作</title>
+    <script src="./js/jquery.mini.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <script>
+        //each()循环遍历 index 索引 domEle dom对象，如果需要使用jquery方法需要进行转换
+        $(".container div").each(function(index, domEle){
+            $(domEle).css('color', 'red');
+        });
+    </script>
+</body>
+</html>

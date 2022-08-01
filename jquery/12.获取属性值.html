@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取属性值</title>
+    <script src="./js/jquery.mini.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="www.badiu.com">百度</a>
+        <div class="content" data-index="1"></div>
+        <span></span>
+    </div>
+    <script>
+        //内部属性通过prop()获取及设置
+        var href = $("a").prop('href');
+        console.log("href="+href);
+        $("a").prop('title','查一下吧！');
+        console.log($("a").prop('title'));
+
+        //自定义属性通过attr()方法获取设置
+        var index = $('.content').attr('data-index');
+        $('.content').attr('data-index', '2');
+        console.log('index=' + index);
+
+        //数据缓存data(),不会影响dom元素
+        $('span').data('username', 'andy');
+        console.log($('span').data('username'));
+        //获取h5的data-index属性，data-属性前缀可以省略，返回的数值
+        console.log($('.content').data('index'));
+
+
+    </script>
+</body>
+</html>

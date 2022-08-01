@@ -6,8 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>自定义动画</title>
     <script src="./js/jquery.mini.js"></script>
+
+    <style>
+        .container>div{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+    </style>
 </head>
 <body>
-    
+    <div class="container">
+        <button>运动</button>
+        <div></div>
+    </div>
+
+    <script>
+        $(function(){
+            $("button").click(function(){
+                //animate函数
+                $('.container>div').animate(
+                {'left':500,'top':300,'opacity':.4,'transform': 'rotate(45)'}, //参数一：CSS样式对象
+                500,       //参数二：执行时间
+                'linear',  //参数三：动画效果
+                function(){//参数四：回调函数
+                    console.log('执行回调');
+                }
+                );
+            });
+        });
+    </script>
 </body>
 </html>
