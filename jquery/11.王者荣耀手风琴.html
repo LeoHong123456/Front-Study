@@ -91,11 +91,11 @@
             $(".hero li").mouseenter(function(){
                 $(this).stop().animate(
                     {'width' : 224}
-                ).find(".big").stop().fadeIn().siblings(".sm").stop().fadeOut();
+                ).find(".big").stop().fadeIn(200,'linear').siblings(".sm").stop().fadeOut(0);
 
                 $(this).siblings().stop().animate(
                     {'width': 69}
-                ).find('.sm').stop().fadeIn().siblings('.big').stop().fadeOut();
+                ).find('.sm').stop().fadeIn(200,'linear').siblings('.big').stop().fadeOut(0);
             });
         })
 

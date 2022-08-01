@@ -12,12 +12,58 @@
         <div>1</div>
         <div>2</div>
         <div>3</div>
+        <hr/>
+
+        <div class="content">
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="aside">主内容</div>
     </div>
     <script>
+        //1、循环遍历元素---------------------
         //each()循环遍历 index 索引 domEle dom对象，如果需要使用jquery方法需要进行转换
         $(".container div").each(function(index, domEle){
             $(domEle).css('color', 'red');
         });
+        //第二种使用方法
+        $.each($('div'),function(index, domEle){
+
+        });
+        //$.each()可以遍历对象
+        var data = {'name':'leo','age':18};
+        $.each(data,function(key, value){
+            console.log('key='+ key +", value="+ value);
+        })
+
+        //1、新增元素====================
+        //（内部添加）创建元素$(要创建的元素)内部添加添加到内容的最后面
+        $('.content ul').append($("<li>动态创建元素1</li>"));
+        //（内部添加）创建元素添加到内容最前面
+        $('.content ul').prepend($("<li>动态创建元素2</li>"));
+        
+        //(外部添加元素)
+        var div = $('<p>我是新加到最后的段落</p>');
+        $(".aside").after(div);
+
+        //(外部添加元素)
+        var div1 = $('<p>我是新加到前面的段落</p>');
+        $(".aside").before(div1);
+
+        //2、删除元素====================
+        //remove()删除元素本身
+        // $('ul').remove();
+
+        //empty()删除元素子节点
+        $("ul").empty();
+
+        //清空子元素
+        $("ul").html("");
+
+        
+
     </script>
 </body>
 </html>
