@@ -93,7 +93,6 @@
         $(function(){
             //节流阀防止点击导航栏有抖动的效果
             var flag = true;
-
             function toggle(){
                 if($(document).scrollTop() >= $('.header').offset().top){
                     $(".nav").stop().fadeIn();
@@ -103,7 +102,6 @@
             }
             //刷新页面执行一次
             toggle();
-
             $(window).scroll(function(){
                 toggle();
                 if(flag){
