@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>juqery卷去内容</title>
+    <script src="./js/jquery.mini.js"></script>
+    <style>
+        .container{
+            width: 800px;
+            height: 3000px;
+            margin: 300px auto;
+            background-color: pink;
+        }
+
+        .aside{
+            display: none;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: pink;
+            text-align: center;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+
+    <div class="aside">返回顶部</div>
+
+    <script>
+        $(function(){
+
+            //原生JS写法    
+            // var container = document.querySelector(".container");
+            // window.addEventListener('scroll', function(){
+            //     console.log(window.scrollY);
+            // })
+
+            //文档被卷去多少
+            $(window).scroll(function(top){
+                var top = $(document).scrollTop();
+                console.log(top);
+            });
+
+            $(window).scroll(function(){
+                var top = $(document).scrollTop();
+                if(top >= $(".container").offset().top){
+                    $('.aside').css({'position':'fixed'}).stop().fadeIn();
+                }else{
+                    $('.aside').css({'display':'none'}).stop().fadeOut();
+                }
+            });
+
+            $('.aside').click(function(){
+                //scrollTop(100)可以赋值操作,没有动画效果
+                // $(document).scrollTop(0);
+
+                //带动画效果，是根据（html,body）元素来做动画
+                $("html,body").stop().animate({
+                    scrollTop: 0
+                })
+            });
+        })
+    </script>
+</body>
+</html>
