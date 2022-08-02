@@ -59,7 +59,6 @@
             line-height: 30px;
             border: 1px solid #000;
         }
-
         .current{
             background-color: red;
         }
@@ -92,29 +91,40 @@
 
     <script>
         $(function(){
-            $(window).scroll(function(){
+            //节流阀防止点击导航栏有抖动的效果
+            var flag = true;
+
+            function toggle(){
                 if($(document).scrollTop() >= $('.header').offset().top){
                     $(".nav").stop().fadeIn();
                 }else{
                     $(".nav").stop().fadeOut();
                 }
+            }
+            //刷新页面执行一次
+            toggle();
 
-                $.each($(".container>div"), function(index, eleDom){
-                    var top = $(eleDom).offset().top;
-                    if($(document).scrollTop() >= top){
-                        $(".nav>ul>li").eq(index).addClass('current').siblings().removeClass();
-                    }
-                })
-
-            })
-
-            $(".nav>ul>li").click(function(){
-                var top = $(".container>div").eq($(this).index()).offset().top;
-                $("html,body").stop().animate({scrollTop:top})
-                $(this).addClass("current").siblings().removeClass();
+            $(window).scroll(function(){
+                toggle();
+                if(flag){
+                    $.each($(".container>div"), function(index, eleDom){
+                        var top = $(eleDom).offset().top;
+                        if($(document).scrollTop() >= top){
+                            $(".nav>ul>li").eq(index).addClass('current').siblings().removeClass();
+                        }
+                    });
+                }
             });
 
-        })
+            $(".nav>ul>li").click(function(){
+                flag = false;
+                var top = $(".container>div").eq($(this).index()).offset().top;
+                $("html,body").stop().animate({scrollTop:top}, function(){
+                    flag = true;
+                    $(this).addClass("current").siblings().removeClass();
+                })
+            });
+        });
     </script>
 </body>
 </html>
