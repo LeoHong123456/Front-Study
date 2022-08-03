@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件</title>
+    <script src="./js/jquery.mini.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,ol{
+            list-style: none;
+        }
+
+        .container{
+            float: left;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+
+        .header{
+            float: left;
+            width: 200px;
+            height: 200px;
+            margin: 0 10px;
+            border: 1px solid #000;
+        }
+
+        .section{
+            float: left;
+            width: 200px;
+            height: 200px;
+            margin: 0 10px;
+            border: 1px solid #000;
+        }
+
+        .article{
+            float: left;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 0 10px;
+        }
+        .article ul>li{
+            border: 1px solid #000;
+        }
+
+        .aside{
+            float: left;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 0 10px;
+        }
+
+        .aside ol>li{
+            border: 1px solid #000;
+        }
+
+        .current{
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+    <div class="header"></div>
+    <div class="section"></div>
+    <div class="article">
+        <ul>
+            <li>节点一</li>
+            <li>节点二</li>
+            <li>节点三</li>
+            <li>节点四</li>
+            <li>节点五</li>
+        </ul>
+    </div>
+    <div class="aside">
+        <ol></ol>
+    </div>
+
+    <script>
+        $(function(){
+            //传统事件注册
+            //点击事件修改背景色为红色
+            $(".container").click(function(){
+                $(this).css('backgroundColor', 'pink');
+            });
+
+            //鼠标进入事件修改背景色为红色
+            $(".container").mouseenter(function(){
+                $(this).css('backgroundColor', 'red');
+            })
+
+            //鼠标移出事件修改背景色为红色
+            $(".container").mouseleave(function(){
+                $(this).css("backgroundColor", "blue");
+            })
+
+            //多事件监听
+            $(".header").on({
+                mouseenter:function(){
+                    $(this).css("backgroundColor","red");
+                },
+                mouseleave:function(){
+                    $(this).css("backgroundColor", "blue");
+                },
+                click:function(){
+                    $(this).css("backgroundColor","pink");
+                }
+            });
+
+            //多事件执行同一操作(第一个参数字符串可以写入多个事件空格隔开，鼠标移入移除回调同一方法可以这么写)
+            $(".section").on("mouseenter mouseleave", function(){
+                $(this).toggleClass("current");
+            });
+
+            //事件委托绑定事件到ul元素上，li元素触发事件冒泡(委派)
+            $(".article>ul").on("click", "li", function(event){
+                window.alert(event.target.outerHTML);
+            })
+
+            //on可以动态绑定动态创建的元素事件(比较常用)
+            $(".aside>ol").on("click", "li", function(e){
+                alert(e.target.outerHTML)
+            })
+
+            var li = $("<li>ol节点一</li>")
+            $(".aside").children('ol').append(li);
+
+        })
+    </script>
+</body>
+</html>
