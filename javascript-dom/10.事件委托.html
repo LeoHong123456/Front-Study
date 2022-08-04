@@ -34,13 +34,13 @@
     </div>
     <script>
         //事件委托，获取li 的click 事件，需要给每个li添加事件这样会影响页面初始化速度
-        //，把事件绑定到ul(父节点)，通过时间对象target来获取点击对象从而实现事件委托机制
+        //，把事件绑定到ul(父节点)，通过事件对象target来获取点击对象从而实现事件委托机制
         //原理是通过事件冒泡来影响每一个节点
         var ul = document.querySelector('ul');
         ul.addEventListener('click', fn, true);
         function fn(event){
             var li = event.target;
-            // alert(li.outerHTML);
+            alert(li.outerHTML);
             // console.log(li.innerText);
             // console.log(li.textContent);
             var ul = li.parentNode;

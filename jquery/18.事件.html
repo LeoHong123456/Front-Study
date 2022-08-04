@@ -65,6 +65,9 @@
         .current{
             background-color: greenyellow;
         }
+        .footer{
+            clear: both;
+        }
     </style>
 </head>
 
@@ -84,6 +87,13 @@
     <div class="aside">
         <ol></ol>
     </div>
+
+    <div class="footer">
+        <button class="sub-but" style="clear:both;">提交(只允许触发一次)</button>
+    </div>
+
+
+
 
     <script>
         $(function(){
@@ -133,6 +143,18 @@
 
             var li = $("<li>ol节点一</li>")
             $(".aside").children('ol').append(li);
+
+
+            //事件解绑(如果off(事件名称)中不写参数解绑所有事件)
+            $(".header").off('click');
+
+            //事件委托解除绑定
+            $("ul").off('click', 'li')
+
+            //one()事件只会触发一次实现原理就是执行一次就解绑事件
+            $(".sub-but").one('click', function(){
+                alert(1)
+            })
 
         })
     </script>

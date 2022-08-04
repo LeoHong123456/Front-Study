@@ -95,8 +95,9 @@
             })
 
             $(".section").find('ul').on('click', 'a' ,function(e){
-                $(e.target.parentNode).remove();
-                e.preventDefault();
+                $(this).parent().slideUp(function(){
+                    $(this).remove();
+                })
             })
         })
     </script>
