@@ -15,10 +15,18 @@
 
     <script>
         $(function(){
-            var target = {};
-            var user = {'id':1,'username':'andy','age':18};
+            var target = {'id':1,'username':'leo','inf':{'address':'中国'}};
+            var user = {'id':1,'username':'andy','age':18,'inf':{'address':'湖南'}};
+            //(第一个参数是否深度拷贝，true 深度拷贝，false 浅拷贝复杂对象拷贝的是对象地址值，参数二拷贝目标，参数三 拷贝源)
+            // $.extend(target, user);
 
             $.extend(true,target, user);
+
+
+            //多库共存$修改别名，可以指定自己的名称
+            var leo = $.noConflict()
+            var container = leo(".container");
+            console.log(container);
         })
     </script>
 </body>
