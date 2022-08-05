@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax send</title>
+    <style>
+      .contaner {
+        width: 500px;
+        height: 300px;
+        margin: 100px auto;
+        position: relative;
+        background-color: pink;
+      }
+      .content {
+        width: 500px;
+        height: 70%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #ccc;
+      }
+      .sub-but {
+        width: 80px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        margin: 5px 5px;
+        color: #fff;
+        background-color: rgb(37, 66, 145);
+      }
+      .aside {
+        width: 200px;
+        border-radius: 2px;
+        border: 2px dotted rgb(224, 81, 81);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contaner">
+      <button class="sub-but">发起GET</button>
+      <button class="sub-but">发起POST</button>
+      <button class="sub-but">JSON请求</button>
+      <button class="sub-but">IE缓存</button>
+      <button class="sub-but">超时请求</button>
+      <div class="aside">
+        <button class="sub-but">发起请求</button>
+        <button class="sub-but">停止请求</button>
+      </div>
+      <div class="content"></div>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        var subGet = document.querySelectorAll(".sub-but")[0];
+        var content = document.querySelector(".content");
+
+        //1、Ajax发起GET请求
+        subGet.addEventListener("click", function () {
+          //   创建对象
+          const xhr = new XMLHttpRequest();
+          //   初始化，设置请求方法和URL
+          xhr.open("GET", "http://127.0.0.1:8000/server?username=leo&age=18");
+          //   发送请求
+          xhr.send();
+          //   事件绑定处理服务器返回的结果(readystate 是xhr对象中的属性表示状态0,1,2,3,4)
+          xhr.addEventListener("readystatechange", function () {
+            // 判断服务端返回的所有结果
+            if (xhr.readyState === 4) {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                //响应状态码
+                console.log(xhr.status);
+                // 响应状态字符
+                console.log(xhr.statusText);
+                //返回所有的响应头
+                console.log(xhr.getAllResponseHeaders());
+                // 响应体
+                content.innerHTML = xhr.response;
+              }
+            }
+          });
+        });
+
+        //2、Ajax 发起POST请求
+        var subPost = document.querySelectorAll(".sub-but")[1];
+        subPost.addEventListener("click", function () {
+          // 创建对象
+          const xhr = new XMLHttpRequest();
+          // 设置请求方法和请求地址
+          xhr.open("POST", "http://127.0.0.1:8000/server");
+          xhr.setRequestHeader(
+            "Content-type",
+            "application/x-www-form-urlencoded"
+          );
+          // 设置参数发送请求
+          let params = { name: "leo", age: 18 };
+          xhr.send(JSON.stringify(params));
+          xhr.addEventListener("readystatechange", function () {
+            if (xhr.readyState === 4) {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                content.innerHTML = xhr.response;
+              }
+            }
+          });
+        });
+
+        //3、Ajax 发起POST请求JSON响应
+        let subPostJson = document.querySelectorAll(".sub-but")[2];
+        subPostJson.addEventListener("click", function () {
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", "http://127.0.0.1:8000/serverJson");
+          xhr.setRequestHeader("Content-type", "application/json");
+          //设置返回的报文是json对象
+          xhr.responseType = "json";
+          let params = { name: "leo", phone: "13125666654" };
+          xhr.send(JSON.stringify(params));
+          xhr.addEventListener("readystatechange", () => {
+            if (xhr.readyState === 4) {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                while (content.lastChild) {
+                  content.removeChild(content.lastChild);
+                }
+                var p = document.createElement("p");
+                console.log(xhr.response);
+                // p.innerHTML = JSON.parse(xhr.response).username;
+                p.innerHTML = xhr.response.username;
+                content.appendChild(p);
+              }
+            }
+          });
+        });
+
+        //4、(解决GET请求IE缓存问题需要在请求连接上加个时间戳)
+        let subIe = document.querySelectorAll(".sub-but")[3];
+        subIe.addEventListener("click", function () {
+          const xhr = new XMLHttpRequest();
+          xhr.open("GET", "http://127.0.0.1:8000/server?t=" + Date.now());
+          xhr.send();
+          xhr.addEventListener("readystatechange", function () {
+            if (xhr.readyState === 4) {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                content.innerHTML = xhr.response;
+              }
+            }
+          });
+        });
+
+        //5、请求超时处理
+        let delayBut = document.querySelectorAll(".sub-but")[4];
+        delayBut.addEventListener("click", function () {
+          const xhr = new XMLHttpRequest();
+          //设置超时时间，超过2秒就取消请求
+          xhr.timeout = 2000;
+          //超时回调函数
+          xhr.ontimeout = function () {
+            alert("网络异常，请稍后再试！");
+          };
+          //没有网络的情况回调函数
+          xhr.onerror = function () {
+            alert("无网络！");
+          };
+          xhr.open("GET", "http://127.0.0.1:8000/delay?t=" + Date.now());
+          xhr.send();
+          xhr.addEventListener("readystatechange", function () {
+            if (xhr.readyState === 4) {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                content.innerHTML = xhr.response;
+              }
+            }
+          });
+        });
+
+        //6、发起请求(避免频繁发起请求)
+        let stopReq = document.querySelectorAll(".sub-but")[5];
+        let xhr = null;
+        let sending = false;
+        stopReq.addEventListener("click", function () {
+          if(sending) xhr.abort();
+          xhr = new XMLHttpRequest();
+          sending = true;
+          xhr.open("GET", "http://127.0.0.1:8000/delay?t="+Date.now());
+          xhr.send();
+          xhr.addEventListener("readystatechange", function () {
+            if (xhr.readyState === 4) {
+              sending = false;
+              if (xhr.status >= 200 && xhr.status < 300) {
+                content.innerHTML = xhr.response;
+              }
+            }
+          });
+        });
+
+        //7、取消请求
+        let cancelReq = document.querySelectorAll('.sub-but')[6];
+        cancelReq.addEventListener('click', function(){
+          //取消请求
+          xhr.abort();
+        });
+
+      });
+    </script>
+  </body>
+</html>
