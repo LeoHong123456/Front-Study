@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery-Ajax</title>
+    <script src="./js/jquery.mini.js"></script>
+
+    <style>
+      .contaner {
+        width: 500px;
+        height: 300px;
+        margin: 100px auto;
+        position: relative;
+        background-color: pink;
+      }
+      .but {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+      }
+      .content {
+        width: 500px;
+        height: 85%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #ccc;
+      }
+      .sub-but {
+        width: 80px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        margin: 5px 5px;
+        color: #fff;
+        background-color: rgb(37, 66, 145);
+      }
+      .aside {
+        width: 200px;
+        border-radius: 2px;
+        border: 2px dotted rgb(224, 81, 81);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contaner">
+      <div class="but">
+        <button class="sub-but">发起GET</button>
+        <button class="sub-but">发起POST</button>
+      </div>
+      <div class="content"></div>
+    </div>
+
+    <script>
+      $(function () {
+        $(".sub-but").eq(0).on("click", function () {
+          $.ajax({
+            url: "http://127.0.0.1:8000/serverJson",
+            data: 'username=leo&age=18',
+            dataType: "json",
+            type: "GET",
+            timeout: 2000,
+            headers: { "Content-type": "application/json" },
+            success: function (response, data) {
+              console.log(response);
+            },
+            error: function () {
+              console.log(response);
+            },
+          });
+        });
+
+
+        $(".sub-but").eq(1).on("click", function () {
+          $.ajax({
+            url: "http://127.0.0.1:8000/serverJson",
+            data: JSON.stringify({username: "leo", age: 18}),
+            dataType: "json",
+            type: "POST",
+            timeout: 2000,
+            headers: { "Content-type": "application/json" },
+            success: function (data,code,xhr) {
+              console.log(data);
+              console.log(code);
+              console.log(xhr);
+            },
+            error: function () {
+              // console.log();
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

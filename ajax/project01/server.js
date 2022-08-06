@@ -22,6 +22,8 @@ app.all("/serverJson", (request, response) => {
   //接受所有请求头(如果前端自定义了请求头需要放行所有请求头，请求方式改成all)
   response.setHeader("Access-Control-Allow-Headers", "*");
   response.setHeader("Content-type", "appliction/json");
+  console.dir(request)
+  console.log("请求参数："+ JSON.stringify(request.body))
   let result = { username: "张三", age: 18, sex: "man" };
   response.send(JSON.stringify(result));
 });
@@ -29,6 +31,7 @@ app.all("/serverJson", (request, response) => {
 //模拟接口超时
 app.get("/delay", (request, response) => {
   response.setHeader("Access-Control-Allow-Origin", "*");
+  console.log(request.params);
   var timeOut = setTimeout(()=>{
     console.log("处理完成！");
     response.send("get delay!");
