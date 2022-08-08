@@ -7,6 +7,54 @@
     <title>跨域请求</title>
 </head>
 <body>
-    
+    <div class="container">
+        <button>发起GET</button>
+        <button>发起POST</button>
+    </div>
+
+    <script>
+        var button = document.querySelectorAll("button");
+        console.log(button[0]);
+        button[0].addEventListener('click', function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://127.0.0.1:8000/serverJson");
+            xhr.responseType='json';
+            xhr.timeout=2000;
+            xhr.send();
+            xhr.addEventListener('readystatechange', function(){
+                if(xhr.readyState === 4){
+                    if(xhr.status >=200 && xhr.status<300){
+                        console.log(xhr.response);
+                    }
+                }
+            });
+            xhr.onerror= function(){
+                console.log('网络异常！')
+            }
+        })
+
+        button[1].addEventListener('click', function(){
+            var xhr = new XMLHttpRequest();
+            xhr.timeout=2000;
+            xhr.responseType= 'json';
+            xhr.open('POST', 'http://127.0.0.1:8000/serverJson');      
+            xhr.setRequestHeader('Content-type','application/json');      
+            let params = {'username':'leo', 'age':19};
+            xhr.send(JSON.stringify(params));
+            xhr.addEventListener('readystatechange', function(){
+                if(xhr.readyState ===4){
+                    if(xhr.status >=200 && xhr.status <300){
+                        console.log(xhr.response);
+                    }
+                }
+            })
+            xhr.onerror = function(){
+                console.log("网络异常！");
+            }
+            xhr.ontimeout = function(){
+                console.log('网络连接超时！');
+            }
+        })
+    </script>
 </body>
 </html>
