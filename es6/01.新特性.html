@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ES6新特性</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: left;
+        flex-flow: row nowrap;
+      }
+      .item {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #000;
+        margin: 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>点击切换颜色</h2>
+    <div class="container">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        var item = document.querySelectorAll(".item");
+
+        // for (var i = 0; i < item.length; i++) {
+        //   item[i].addEventListener("click", function () {
+        //i此时不是局部变量而是全局变量,实际变量window.i,所以不能使用item[i],而是使用this做指向
+        //     this.style.backgroundColor = "pink";
+        //   });
+        // }
+
+    
+        for (let i = 0; i < item.length; i++) {
+          item[i].addEventListener("click", function () {
+            //let 是局部变量，可以使用item[i]
+            item[i].style.backgroundColor = "pink";
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

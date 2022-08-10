@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ES6常量</title>
+  </head>
+  <body>
+    <script>
+      //1、常量使用大写
+      const BASE_URL = "http://www.baidu.com";
+      //2、常量必须有初始值
+      const PORT = 80;
+      //3、常量值不能修改
+      // BASE_URL = "www.baidu.com";
+      //4/块级作用域
+      {
+        const PLAYER = "UZI";
+      }
+
+      //console.log(PLAYER); //提示找不到 Uncaught TypeError: Assignment to constant variable.
+
+      //5、对数组和对象的元素修改不算对常量修改，不会报错
+      const ITEM = ["JAVA", "PHP", "C#"];
+      ITEM.push[("JAVASCRIPT", "HTML", "CSS")];
+
+      //ES6 允许按照一定模式从数组和对象中提取值，对变量进行赋值
+      const LANGUAGE = ["JAVA", "LESS", "CSS"];
+
+      //相当于声明了三个变量，把language分别赋值给三个变量
+      let [java, less, css] = LANGUAGE;
+      console.log("java=" + java + ",less=" + less + ",css=" + css);
+
+      //对象结构
+      const person = {
+        name: "leo",
+        age: 18,
+        skill: () => {
+          console.log("java");
+        },
+      };
+      //定义三个变量并赋值person对应属性字段值
+      let { name, age, skill } = person;
+      console.log("对象结构赋值=" + name);
+      skill();
+
+      //模板字符串反引号``,模板字符串中可以出现换行符
+      let str = `${name}模板字符串`;
+      console.log(str, typeof str);
+      //换行示例
+      let template = `<ul>
+            <li>java</li>
+            <li>html</li>
+            <li>css</li>
+       </ul`;
+      console.log(template);
+
+      //字符串变量相连
+      let str1 = `${age}字符串变量相连`;
+      console.log(str1);
+
+      //ES6支持在对象中直接写入属性，方法作为对象的属性方法。
+      let sex = 'man';
+      let demo = function(){};
+      const test = {
+        sex,
+        demo,
+        //简写方法
+        run(){
+            console.log('run...')
+        }
+    };
+      console.log(test)
+
+    </script>
+  </body>
+</html>

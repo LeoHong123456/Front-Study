@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器</title>
+</head>
+<body>
+    <script>
+        //生成器其实就是一个特殊的函数
+        //异步编程纯回调函数
+        function * gen(){
+            console.log('第一部分代码');
+            yield '第一部分';
+
+            console.log('第二部分代码');
+            yield '第二部分'
+
+            console.log('第三部分代码');
+            yield '第三部分'
+        }
+        let iterator = gen();
+        //借助迭代器运行方法
+        iterator.next();
+        // iterator.next();
+        // iterator.next();
+
+        // 遍历
+        for(let v of gen()){
+            console.log(v);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ES6新特性</title>
+  </head>
+  <body>
+    <script>
+      //老版本声明函数
+      // let run = function(){
+      //     console.log('run>>>');
+      // }
+
+      //箭头函数声明函数(a,b)形式参数
+      let run = (a, b) => {
+        console.log("run>>>");
+        return a + b;
+      };
+      let result = run(1, 2);
+      console.log(`方法返回结果${result}`);
+
+      //this是静态的，this始终指向函数声明时所在的作用域
+      function getName() {
+        console.log(this.name);
+      }
+      let getName2 = (p) => {
+        console.log(this.name);
+      };
+
+      window.name = "leo";
+      const person = { name: "leo001" };
+      //普通调用
+      //   getName();
+      //   getName2();
+      getName.call(person);
+      getName2.call(person);
+
+      //箭头函数不能作为构造函数实例化对象 Uncaught ReferenceError: Person is not definedUncaught ReferenceError: Person is not defined
+      //   let person1 =(name, age)=>{
+      //     this.name = name;
+      //     this.age= age;
+      //   }
+      //   let me = new Person('leo',18);
+      //   console.log(me);
+
+      //箭头函数不能使用arguments属性
+
+      //箭头函数简写
+      // 1、省略小括号，当形参有且只有一个的时候
+      let add = (n) => {
+        return n + n;
+      };
+      console.log(add(8));
+      //2、可以省略花括号，当代码体只有一条语句的时候,此时 return 也必须省略（相乘结果及是返回结果）
+      let pow = (n) => n * n;
+      console.log(pow(2));
+
+      //ES6允许形参传递默认值(如果第三个参数不传递的情况，第三个参数值就是10)
+      let sum = (a, b, c = 10) => {
+        return a + b + c;
+      };
+      let res = sum(1, 2);
+      console.log(res);
+
+      //支持对象形参默认值
+      let connect = ({
+        host = "127.0.0.1",
+        username,
+        password,
+        port = 3306,
+      }) => {
+        console.log(
+          `host=${host},username=${username},password=${password},port=${port}`
+        );
+      };
+      
+      let info = connect({
+        host: "172.25.104.22",
+        username: "root",
+        password: "root",
+        port: 3307,
+      });
+      console.log(info);
+    </script>
+  </body>
+</html>

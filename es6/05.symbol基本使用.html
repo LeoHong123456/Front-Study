@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rest参数扩展运算符</title>
+  </head>
+  <body>
+    <script>
+      //ES5 获取参数集
+      var demo = function () {
+        console.log(arguments);
+      };
+      demo(1, 23, 45, 6);
+
+      //ES6参数集...args 表示可以接收多个参数
+      let demo1 = (a, b, ...args) => {
+        console.log(`a=${a},b=${b},args=${args}`);
+      };
+      demo1(1, 2, 3, 4, 5, 6);
+
+      //********************扩展运算符******************
+      //数据克隆（浅拷贝）
+      const arrs = ["B", "G", "M"];
+      const arrs1 = [...arrs];
+      console.log(arrs1);
+
+      //将伪数组转为真数组
+      const div = document.querySelectorAll("div");
+      const divs = [...div];
+      console.log(divs);
+
+      //symbol 基本使用（）
+      // 1、symbol的值是唯一的，用来解决命名冲突问题
+      // 2、symbol值不能与其他数据进行运算
+      // 3、symbol定义的对象属性不能使用for in 循环遍历，但是可以使用reflect.ownKeys来获取对象所有键。
+
+      let symbol = Symbol();
+      console.log(symbol, typeof symbol); //Symbol() 'symbol'
+
+      //Symbol.for 创建
+      let s1 = Symbol.for("leo");
+      let s2 = Symbol.for("leo");
+      // s1 === s2  结果为：true
+
+      //symbol 使用，添加symbol 方式一
+      let game = {
+        name: "王者荣耀",
+        [Symbol("up")]: function () {
+          console.log("上路");
+        },
+        [Symbol("down")]: function () {
+          console.log("下路");
+        },
+      };
+
+      //symbol 使用，添加symbol方法 方式二
+    //   let gameObj = {
+    //     name:'王者荣耀'
+
+    //   };
+    //   gameObj[methods.up] = function(){
+    //     console.log('蔡文姬');
+    //   }
+
+    //   gameObj[methods.down] = function(){
+    //     console.log('百里守约');
+    //   }
+
+
+      const lang = ['java','html', 'css'];
+      //使用 of 可以得到数组中的元素，for(let v of lang) 得到的是数组中的角标
+      for(let v of lang){
+        console.log(v); //java,html,css
+      }
+
+      let arr = lang[Symbol.iterator]();
+      console.log(arr.next());
+    </script>
+  </body>
+</html>

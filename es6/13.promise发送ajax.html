@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>promise ajax</title>
+  </head>
+  <body>
+    <div class="container">
+      <button>发起请求</button>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        const BASE_URL = "http://172.25.50.3:8600/ds-api-web/getWebConfig";
+        let button = document.querySelector("button");
+        button.addEventListener("click", function () {
+          sendPost();
+        });
+
+        function sendPost() {
+            const p = new Promise(function (resolve, reject) {
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", BASE_URL);
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            let params = "siteId=2000&siteType=1&terminal=PC&machineModel=pc_Chrome_103.0.0.0&version=1.0.0";
+            xhr.send(params);
+            xhr.addEventListener("readystatechange", function () {
+              if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                  resolve(xhr.response);
+                } else {
+                  reject(xhr.status);
+                }
+              }
+            });
+          });
+
+          p.then(
+            function (value) {
+              console.log(value);
+            },
+            function (reason) {
+              console.error(reason);
+            }
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

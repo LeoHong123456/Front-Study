@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>迭代器</title>
+  </head>
+  <body>
+    <script>
+      const arr = {
+        name: "code",
+        skill: ["java", "html", "css", "less"],
+        //不用调用，初始化会自动执行
+        [Symbol.iterator]() {
+          let index = 0;
+          let _this = this;
+          return {
+            next: function () {
+              if (index < _this.skill.length) {
+                const result = { value: _this.skill[index], done: false };
+                index++;
+                return result;
+              } else {
+                return { value: undefined, done: true };
+              }
+            },
+          };
+        },
+      };
+
+      //自定义遍历对象
+      for (let value of arr) {
+        console.log(value);
+      }
+
+      
+      // arr.skill.forEach((ele,index)=>{
+      //     console.log(`key=${index},value=${ele}`)
+      // });
+    </script>
+  </body>
+</html>

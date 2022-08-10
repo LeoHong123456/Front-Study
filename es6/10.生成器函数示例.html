@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生成器函数示例</title>
+  </head>
+  <body>
+    <script>
+      //模拟获取 用户数据 订单数据 商品数据
+      function getUsers() {
+        setTimeout(() => {
+          let data = "用户数据";
+          //传入产生会返回data
+          iterator.next(data);
+        }, 3000);
+      }
+
+      function getOrders() {
+        setTimeout(() => {
+          let data = "订单数据";
+          iterator.next(data);
+        }, 1000);
+      }
+
+      function getGoods() {
+        setTimeout(() => {
+          let data = "商品数据";
+          iterator.next(data);
+        }, 1000);
+      }
+
+      //真实场景是现获取到会员数据，才能得到订单，商品数据，异步执行
+      function * gen() {
+        let users = yield getUsers();
+        console.log(users);
+
+        let orders = yield getOrders();
+        console.log(orders);
+
+        let goods = yield getGoods();
+        console.log(goods);
+      }
+
+      let iterator = gen();
+      iterator.next();//执行生产器函数
+    </script>
+  </body>
+</html>
