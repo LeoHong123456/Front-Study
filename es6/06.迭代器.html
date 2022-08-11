@@ -11,7 +11,7 @@
       const arr = {
         name: "code",
         skill: ["java", "html", "css", "less"],
-        //不用调用，初始化会自动执行
+        //不用调用，对象初始化会自动执行
         [Symbol.iterator]() {
           let index = 0;
           let _this = this;
@@ -34,7 +34,7 @@
         console.log(value);
       }
 
-      
+
       // arr.skill.forEach((ele,index)=>{
       //     console.log(`key=${index},value=${ele}`)
       // });

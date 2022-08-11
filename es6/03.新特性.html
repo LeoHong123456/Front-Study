@@ -49,7 +49,7 @@
 
       //箭头函数简写
       // 1、省略小括号，当形参有且只有一个的时候
-      let add = (n) => {
+      let add = n => {
         return n + n;
       };
       console.log(add(8));
@@ -71,11 +71,9 @@
         password,
         port = 3306,
       }) => {
-        console.log(
-          `host=${host},username=${username},password=${password},port=${port}`
-        );
+        console.log(`host=${host},username=${username},password=${password},port=${port}`);
       };
-      
+
       let info = connect({
         host: "172.25.104.22",
         username: "root",

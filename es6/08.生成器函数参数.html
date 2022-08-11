@@ -9,16 +9,17 @@
 <body>
     <script>
         function * run(arg){
-            console.log(arg);
             let one = yield 111;
             console.log(one);
             yield 222;
+            
             yield 333;
         }
 
         //执行迭代器对象
         let iterator = run('AAA');
         console.log(iterator.next());
+
         //next 方法可以传入实参
         console.log(iterator.next('BBB'));
         console.log(iterator.next('CCC'));
