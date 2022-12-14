@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06.生命周期getSnapshotBeforeUpdate使用场景</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin ></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.0.0-beta.3/babel.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .news-list {
+        width: 500px;
+        height: 150px;
+        background-color: pink;
+        overflow: auto;
+        margin: 0 auto;
+      }
+      .news {
+        height: 30px;
+        border: 1px solid greenyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo"></div>
+
+    <script type="text/babel">
+      class News extends React.Component {
+        //构造器
+        constructor(props) {
+          super(props);
+          this.state = { newsArr: []};
+        }
+
+        //从props获取派生状态
+        static getDerivedStateFromProps(props, state) {
+          console.log("getDerivedStateFromProps>>>", props, state);
+          return null;
+        }
+
+        //获取更新前的快照(快照值可以是对象，字符串，方法...等等)
+        getSnapshotBeforeUpdate(){
+          return this.refs.list.scrollHeight;
+        }
+
+        //组件更新完成钩子
+        componentDidUpdate(preProps, preState, height){
+          this.refs.list.scrollTop += this.refs.list.scrollHeight - height;
+        }
+
+        //组件挂载完成的钩子
+        componentDidMount() {
+          console.log("componentDidMount>>>");
+          setInterval(() => {
+            const {newsArr} = this.state
+            const news = '新闻'+(newsArr.length+1)
+            this.setState({newsArr:[news,...newsArr]})
+          }, 1000);
+        }
+
+        //组件渲染
+        render() {
+          return (
+            <div className="news-list" ref="list">
+              <ul className="news-item">
+                {
+                  this.state.newsArr.map((content,index)=>{
+                    return <div key={index} className="news">{content}</div>
+                  })
+                }
+              </ul>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<News />, document.querySelector("#demo"));
+    </script>
+  </body>
+</html>

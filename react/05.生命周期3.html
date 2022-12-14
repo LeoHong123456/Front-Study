@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生命周期三(17.1版本)</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin ></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.0.0-beta.3/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script type="text/babel">
+      class Count extends React.Component {
+        /*
+          1、初始化阶段：由ReactDOM.render()触发，初次渲染
+              1、constructor()
+              2、getDerivedStateFromProps()
+              3、render()
+              4、componentDidMount()
+
+          2、更新阶段：由组件内部this.state()或者父组件重新render()触发
+              1、getDerivedStateFromProps()
+              2、shouldComponentUpdate()
+              3、render()
+              4、getSnapshotBeforeUpdate()
+              5、componentDidUpdate()
+
+          3、卸载组件：由ReactDOM.unmountComponentAtNode()触发
+              1、componentWillUnmount()
+        
+        */
+
+
+
+        //构造器
+        constructor(props) {
+          console.log("构造器>>>1");
+          super(props);
+          this.state = { count: 0 };
+        }
+
+        //递增
+        addSum = () => {
+          const { count } = this.state;
+          this.setState({ count: count + 1 });
+        };
+
+        //卸载组件
+        delComponent = () => {
+          //卸载组件
+          ReactDOM.unmountComponentAtNode(document.querySelector("#demo"));
+        };
+
+        //强制更新
+        force = () => {
+          this.forceUpdate();
+        };
+
+        //从props获取派生状态
+        static getDerivedStateFromProps(props, state) {
+          console.log("getDerivedStateFromProps>>>", props, state);
+          return null;
+        }
+
+        //获取更新前的快照(快照值可以是对象，字符串，方法...等等)
+        getSnapshotBeforeUpdate(){
+          console.log('getSnapshotBeforeUpdate>>>');
+          return null;
+        }
+
+        //组件挂载完成的钩子
+        componentDidMount() {
+          console.log("componentDidMount>>>4");
+        }
+
+        //更新了状态是否要更新组件钩子(阀门)
+        shouldComponentUpdate() {
+          //此钩子不写默认会生成一个并返回true, 如果返回false 就不会更新页面 render 也不会执行
+          console.log("shouldComponentUpdate>>>");
+          return true;
+        }
+
+        //组件更新完毕钩子
+        componentDidUpdate(preProps, preState,snapshotVal) {
+          console.log("componentDidUpdate>>>", preProps, preState,snapshotVal);
+        }
+
+        //渲染组件
+        render() {
+          console.log("render>>>3");
+          const { count } = this.state;
+          return (
+            <div>
+              <h2>求和结果为：{count}</h2>
+              <button onClick={this.addSum}>递增加一</button>
+              <button onClick={this.delComponent}>卸载组件</button>
+              <button onClick={this.force}>不修改状态强制更新</button>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Count />, document.querySelector("#demo"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生命周期一</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.0.0-beta.3/babel.min.js"></script>
+</head>
+<body>
+  <div id="demo"></div>
+
+  <script type="text/babel">
+    class Life extends React.Component{
+      //设置初始值
+      state = {opacity: 1};
+
+      del=()=>{
+        //卸载组件
+        ReactDOM.unmountComponentAtNode(document.querySelector("#demo"));
+      }
+      //组件挂载完成之后调用(只会调用一次)
+      componentDidMount(){
+        this.timer = setInterval(()=>{
+          let {opacity} = this.state;
+          opacity -= 0.1;
+          if(opacity <= 0) opacity =1;
+          this.setState({opacity});
+        }, 200)
+      }
+      //组件将要卸载执行
+      componentWillUnmount(){
+        //清除定时器
+        clearInterval(this.timer);
+      }
+      //初始化渲染、状态更新之后调用
+      render(){
+        return(
+          <div>
+            <h2 style={{opacity:this.state.opacity}}>Hello World</h2>  
+            <button onClick={this.del}>点击</button>
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(<Life/>, document.querySelector("#demo"))
+  </script>
+</body>
+</html>

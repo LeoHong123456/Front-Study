@@ -1,0 +1,104 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "单条替换数据",
+      "author": "typicode1"
+    },
+    {
+      "id": 2,
+      "title": "修改单条局部数据",
+      "author": "typicode2"
+    },
+    {
+      "id": 3,
+      "title": "json-server3",
+      "author": "typicode3"
+    },
+    {
+      "id": 4,
+      "title": "json-server4",
+      "author": "typicode4"
+    },
+    {
+      "id": 5,
+      "title": "json-server5",
+      "author": "typicode5"
+    },
+    {
+      "id": 6,
+      "title": "json-server6",
+      "author": "typicode6"
+    },
+    {
+      "id": 7,
+      "title": "json-server7",
+      "author": "typicode7"
+    },
+    {
+      "id": 8,
+      "title": "json-server8",
+      "author": "typicode8"
+    },
+    {
+      "title": "json-server9",
+      "author": "typicode9",
+      "id": 9
+    },
+    {
+      "title": "json-server9",
+      "author": "typicode9",
+      "id": 10
+    },
+    {
+      "title": "json-server9",
+      "author": "typicode9",
+      "id": 11
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment1",
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "body": "some comment2",
+      "postId": 2
+    },
+    {
+      "id": 3,
+      "body": "some comment3",
+      "postId": 3
+    },
+    {
+      "id": 4,
+      "body": "some comment4",
+      "postId": 4
+    },
+    {
+      "id": 5,
+      "body": "some comment5",
+      "postId": 5
+    },
+    {
+      "id": 6,
+      "body": "some comment6",
+      "postId": 6
+    },
+    {
+      "id": 7,
+      "body": "some comment7",
+      "postId": 7
+    },
+    {
+      "id": 8,
+      "body": "some comment8",
+      "postId": 8
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -1,0 +1,9 @@
+.btn-request{
+  display: block;
+  width: 180px;
+  height: 35px;
+  border: 0;
+  border-radius: 5px;
+  background-color: pink;
+  margin: 20px auto;
+}

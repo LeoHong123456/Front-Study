@@ -1,0 +1,81 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  box-sizing: border-box;
+}
+.container .top {
+  height: 12%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.container .top > h2 {
+  font-size: 30px;
+  padding-top: 30px;
+  padding-left: 20px;
+}
+.container .main-content {
+  height: 88%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.container .main-content .main-nav {
+  width: 15%;
+  height: 100%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-right: 3px;
+  background-color: aqua;
+}
+.container .main-content .main-nav .items {
+  display: flex;
+  flex-flow: column nowrap;
+  color: #000;
+  font-size: 20px;
+  text-decoration: none;
+  border-bottom: 1px dashed #666;
+  padding: 5px 0px 5px 8px;
+}
+.container .main-content .section {
+  width: 85%;
+  height: 100%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background-color: aquamarine;
+}
+.container .main-content .section .home-nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 5px 0px 5px 10px;
+  border-bottom: 1px solid #ccc;
+}
+.container .main-content .section .home-nav li {
+  height: 30px;
+  line-height: 30px;
+  border-radius: 3px;
+  background-color: palevioletred;
+  margin-left: 10px;
+}
+.container .main-content .section .home-nav a {
+  color: #000;
+  font-size: 16px;
+  text-decoration: none;
+}
+.container .main-content .section .message-item {
+  list-style: none;
+  padding-left: 10px;
+}
+.container .main-content .section .news-item {
+  list-style: none;
+  padding-left: 10px;
+}
+.container .nav-button {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+}

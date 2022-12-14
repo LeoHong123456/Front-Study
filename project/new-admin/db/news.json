@@ -1,0 +1,140 @@
+{
+  "menus": [
+    {
+      "id": 1,
+      "key": "home",
+      "label": "首页"
+    },
+    {
+      "id": 2,
+      "key": "user-manage",
+      "label": "用户管理"
+    },
+    {
+      "id": 3,
+      "key": "right-manage",
+      "label": "权限管理"
+    },
+    {
+      "id": 4,
+      "key": "news-manage",
+      "label": "新闻管理"
+    }
+  ],
+  "children":[
+    {
+      "id": 1,
+      "key":"user-manage/list",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 2,
+      "key":"user-manage/list1",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 3,
+      "key":"user-manage/list2",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 4,
+      "key":"user-manage/list3",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 5,
+      "key":"user-manage/list4",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 6,
+      "key":"user-manage/list5",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 7,
+      "key":"user-manage/list6",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 8,
+      "key":"user-manage/list7",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 9,
+      "key":"user-manage/list8",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 10,
+      "key":"user-manage/list9",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 11,
+      "key":"user-manage/list10",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 12,
+      "key":"user-manage/list11",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 13,
+      "key":"user-manage/list12",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 14,
+      "key":"user-manage/list13",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 15,
+      "key":"user-manage/list14",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 16,
+      "key":"user-manage/list15",
+      "label":"用户列表",
+      "menuId": 2
+    },
+    {
+      "id": 2,
+      "key":"right-manage/right/list",
+      "label":"权限列表",
+      "menuId": 3
+    },
+    {
+      "id": 3,
+      "key":"right-manage/role/list",
+      "label":"角色列表",
+      "menuId": 3
+    },
+    {
+      "id": 4,
+      "key":"123123123",
+      "label":"新闻列表",
+      "menuId": 4
+    }
+  ]
+}

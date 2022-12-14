@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用箭头函数实现获取KEY VALUE</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.0.0-beta.3/babel.min.js"></script>
+</head>
+<body>
+  
+  <div id="demo"></div>
+  <script type="text/babel">
+    class Login extends React.Component{
+
+      render(){
+        return (
+          <form onSubmit={this.loginHandel}>
+            <label for="username">用户名</label>
+            <input type="text" id="username" name="username" onChange={event=>this.saveFormData('username', event)} />
+            <label for="password">用户名</label>
+            <input type="password" id="password" name="password" onChange={event=>this.saveFormData('password', event)} />
+            <button>登录</button>
+          </form>
+        )
+      }
+
+      loginHandel = (event)=>{
+        event.preventDefault();
+        const {username, password} = this.state;
+        alert(`你输入的用户名= ${username},密码= ${password}`)
+      }
+
+      saveFormData = (dataType, event)=>{
+        this.setState({[dataType] : event.target.value});
+      }
+    }
+
+    ReactDOM.render(<Login/>, document.querySelector("#demo"));
+  </script>
+</body>
+</html>
+
+
+
+

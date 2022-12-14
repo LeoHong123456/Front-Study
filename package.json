@@ -1,0 +1,25 @@
+{
+  "name": "Front-Study",
+  "version": "1.0.0",
+  "description": "前端学习",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeoHong123456/Front-Study.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeoHong123456/Front-Study/issues"
+  },
+  "homepage": "https://github.com/LeoHong123456/Front-Study#readme",
+  "dependencies": {
+    "react-router-dom": "^6.4.2",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1"
+  }
+}

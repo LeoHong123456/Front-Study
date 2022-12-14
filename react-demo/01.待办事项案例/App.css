@@ -1,0 +1,16 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+  width: 500px;
+  height: 600px;
+  margin: 50px auto;
+  border: 1px solid yellowgreen;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,.3);
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}

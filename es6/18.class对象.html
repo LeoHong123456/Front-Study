@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>class对象</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>class对象</title>
+  </head>
+  <body>
+    <script>
+      //ES5
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      let p1 = new Person("zhagnsan", 16);
+      console.log(p1);
+      Person.prototype.call = function () {
+        console.log(">>>>>>>>>>");
+      };
 
-  <script>
-    
-
-  </script>
-</body>
+      //ES6
+      /*class Person {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+        run() {
+          console.log(">>>>>>>>>>>");
+        }
+      }
+      let p = new Person("leo", 18);
+      console.log(p);
+      p.run(); */
+    </script>
+  </body>
 </html>
