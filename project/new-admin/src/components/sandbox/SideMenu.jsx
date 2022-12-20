@@ -18,7 +18,6 @@ export default function SideMenu(props) {
   }, []);
 
   return (
-
     <Sider trigger={null} collapsible collapsed={false}>
       <div style={{ height:"100%", display: 'flex', flexFlow: 'column nowrap' }}>
         <div className="logo">

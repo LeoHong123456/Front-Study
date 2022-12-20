@@ -1,0 +1,25 @@
+.video-items {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+
+.video-items li {
+  width: 50%;
+}
+
+.video-container {
+  height: 320px;
+  padding: 8px 5px;
+}
+
+.video-img {
+  width: 100%;
+  height: 300px;
+}
+
+.video-title {
+  line-height: 25px;
+  font-size: 14px;
+  text-align: center;
+}
