@@ -5,9 +5,14 @@ import NewsSandBox from '../views/sanbox/NewsSandBox'
 
 export default function indexRouter() {
 
+  // const SignInWrapper = ({ children, token }) => {
+  //   console.log(`children=${children}, token=${token}`)
+  //   return token ? children : <Navigate to="/" replace />;
+  // };
+
   const SignInWrapper = ({ children, token }) => {
     console.log(`children=${children}, token=${token}`)
-    return token ? children : <Navigate to="/" replace />;
+    return children
   };
 
   return (
@@ -18,8 +23,11 @@ export default function indexRouter() {
         <Route path='/newsSandBox/*' element={
           <SignInWrapper token={localStorage.getItem('token')}>
             <NewsSandBox/>
-          </SignInWrapper>}/>
+          </SignInWrapper>
+        }/>
       </Routes>
     </HashRouter>
   )
 }
+
+
