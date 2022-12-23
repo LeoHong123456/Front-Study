@@ -1,0 +1,31 @@
+.tab-bar-container{
+  width: 100%;
+  position:fixed;
+  left: 0;bottom:0;
+  background-color: antiquewhite;
+}
+
+.tab-bar-wrapper{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.tab-item{
+  height: 45px;
+  padding-top: 8px;
+  position: relative;
+  outline: none;
+  text-decoration: none;
+}
+
+.tab-item img{
+  width: 21px;
+  height: 21px;
+}
+
+.tab-lable{
+  color: #666;
+  font-size: 10px;
+  text-align: center;
+}

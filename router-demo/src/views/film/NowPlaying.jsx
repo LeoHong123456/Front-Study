@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import FilmItem from './FilmItem'
+import './NowPlaying.css'
+
 
 export default function NowPlaying() {
   //头部信息
@@ -39,8 +41,8 @@ export default function NowPlaying() {
       <ul className='video-items'>
         {
           list.map(item =>
-            <li onClick={() => viewDetail(item.filmId)}>
-              <FilmItem key={item.filmsId} {...item} />
+            <li onClick={()=>viewDetail(item.filmId)}>
+              <FilmItem key={item.filmId} {...item}/>
             </li>
           )
         }
