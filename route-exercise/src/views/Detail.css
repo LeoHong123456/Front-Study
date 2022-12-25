@@ -53,5 +53,6 @@
   line-height: 25px;
   border: 1px solid #ff5f16;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 

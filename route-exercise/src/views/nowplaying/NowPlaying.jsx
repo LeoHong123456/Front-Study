@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Detail from '../Detail'
 import './NowPlaying.css'
+import PlayingDetail from '../PlayingDetail'
 
 export default function NowPlaying() {
+
   const config = {
     headers: {
       "EagleEye-SessionID": "undefined",
@@ -19,11 +22,22 @@ export default function NowPlaying() {
       .then(res => setList(res.data.data.films))
   }, []);
 
+
+  const navigate = useNavigate();
+  function playingDetail(id){
+    console.log(id)
+    navigate(`/playingDetail?id=${id}`)
+  }
+  
   return (
     <div className='video-container'>
-      <ul className=''>
+      <ul>
         {
-          list.map(item => <Detail key={item.filmId} {...item} />)
+          list.map(item =>
+            <li onClick={()=>playingDetail(item.filmId)}>
+              <Detail key={item.filmId} {...item} />
+            </li>
+          )
         }
       </ul>
     </div>
