@@ -17,7 +17,6 @@ export default function Film() {
         </div>
       </div>
       <Outlet />
-
       <TabBar />
     </div>
   )

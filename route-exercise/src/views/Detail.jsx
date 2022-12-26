@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import './Detail.css'
 export default function Detail(props) {
   return (
-    <NavLink className='video-wrapper'>
+    <div className='video-wrapper'>
       <div className='video-content-img'>
         <img src={props.poster} alt={props.category} />
       </div>
@@ -14,8 +14,8 @@ export default function Detail(props) {
         <div className='video-title'>{props.label}</div>
         <div className='video-title'>
           {
-            props.actors.map(actor =>
-              <span key={`${props.filmId}`}>{actor.name}</span>
+            props.actors.map((actor, index) =>
+              <span key={index}>{actor.name}</span>
             )
           }
         </div>
@@ -31,6 +31,6 @@ export default function Detail(props) {
           购票
         </NavLink>
       </div>
-    </NavLink>
+    </div>
   )
 }

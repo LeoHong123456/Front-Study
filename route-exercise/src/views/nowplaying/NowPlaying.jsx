@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Detail from '../Detail'
 import './NowPlaying.css'
-import PlayingDetail from '../PlayingDetail'
 
 export default function NowPlaying() {
 
@@ -25,7 +24,6 @@ export default function NowPlaying() {
 
   const navigate = useNavigate();
   function playingDetail(id){
-    console.log(id)
     navigate(`/playingDetail?id=${id}`)
   }
   
@@ -33,9 +31,9 @@ export default function NowPlaying() {
     <div className='video-container'>
       <ul>
         {
-          list.map(item =>
-            <li onClick={()=>playingDetail(item.filmId)}>
-              <Detail key={item.filmId} {...item} />
+          list.map((item, index) =>
+            <li key={index} onClick={()=>playingDetail(item.filmId)}>
+              <Detail {...item} />
             </li>
           )
         }
