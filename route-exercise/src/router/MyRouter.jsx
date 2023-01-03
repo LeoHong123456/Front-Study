@@ -7,18 +7,23 @@ import Center from '../views/Center'
 import Detail from '../views/Detail'
 import NotFound from '../views/NotFound'
 import PlayingDetail from '../views/PlayingDetail'
+import Redirect from '../components/Redirect'
 
 
 export default function MyRouter() {
   return (
     <Routes>
-
       <Route path="/film" element={<Film/>}>
         <Route index element={<NowPlaying/>}/>
         <Route path="nowplaying" element={<NowPlaying/>}/>
       </Route>
       <Route path="/login" element={<Login/>}/>
-      <Route path="/center" element={<Center/>}/>
+      
+      <Route path="/center" element={
+        <AuthComponent>
+          <Center/>
+        </AuthComponent>}/>
+
       <Route path="/detail" element={<Detail/>}/>
       <Route path="playingDetail" element={<PlayingDetail/>}/>
       <Route path='/' element={<Navigate to="/film"/>}/>
@@ -26,4 +31,10 @@ export default function MyRouter() {
       <Route path="*" element={<NotFound/>}/>
     </Routes>
   )
+}
+
+function AuthComponent(props){
+  const {children} = props;
+  const token = localStorage.getItem('token');
+  return token ? children : <Redirect to='/login'/>
 }

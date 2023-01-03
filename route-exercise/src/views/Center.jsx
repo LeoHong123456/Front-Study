@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import TabBar from '../components/TabBar';
 
 export default function Center() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ export default function Center() {
         localStorage.removeItem("token");
         navigate("/login")
       }}>登出</button>
+      <TabBar />
     </div>
   )
 }

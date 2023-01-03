@@ -30,9 +30,23 @@ export default function PlayingDetail() {
     })
   }, [list]);
 
+
   const navigate = useNavigate();
   function goBank() {
     navigate(`/film`);
+  }
+
+  let flag = false;
+  function showMemo(event) {
+    const playingMemo = document.querySelector("#playingMemo")
+    if (flag) {
+      playingMemo.className = "playing-memo"
+      event.target.className = "toggle"
+    } else {
+      playingMemo.className = "playing-memo-show"
+      event.target.className = "toggle-top"
+    }
+    flag = !flag;
   }
 
   return (
@@ -64,9 +78,10 @@ export default function PlayingDetail() {
                   <span>{list?.nation}</span>
                 </div>
 
-                <div className='playing-memo'>
+                <div id="playingMemo" className='playing-memo'>
                   <p>{list?.synopsis}</p>
                 </div>
+                <div className='toggle' onClick={(e) => showMemo(e)}></div>
               </div>
             </div>
 
@@ -81,10 +96,14 @@ export default function PlayingDetail() {
                     list.actors?.map((item, index) => {
                       return (
                         <li key={index}>
-                          <div className='actors-detail'>
-                            <img className='actors-img' src={item.avatarAddress} alt=""></img>
-                            <p>{item.name}</p>
-                            <p>{item.role}</p>
+                          <div className="actors-content">
+                            <div className='actors-detail'>
+                              <img className='actors-img' src={item.avatarAddress} alt="" />
+                              <div className='roule-detail'>
+                                <p>{item.name}</p>
+                                <p>{item.role}</p>
+                              </div>
+                            </div>
                           </div>
                         </li>
                       )

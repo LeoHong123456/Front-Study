@@ -1,9 +1,24 @@
 import React,{useRef} from 'react'
+import { useEffect } from 'react';
 import {useNavigate} from 'react-router-dom'
+import TabBar from '../components/TabBar'
 
 export default function Login() {
   const navigate  =  useNavigate();
   const username = useRef();
+
+  // useEffect(()=>{
+  //   const token = localStorage.getItem("token")
+  //   if(token !== ''){
+  //     navigate('/center')
+  //   }
+  // },[])
+
+  function login(){
+    const {current:{value}} = username;
+    localStorage.setItem("token", value)
+    navigate('/center');
+  }
 
   return (
     <div>
@@ -11,11 +26,8 @@ export default function Login() {
       <hr/>
       <label htmlFor="username"></label><input type="text" ref={username} id = "username"/>
       <hr/>
-      <button onClick={()=>{
-        const {current:{value}} = username;
-        localStorage.setItem("token", value)
-        navigate('/center');
-      }}>登录</button>
+      <button onClick={()=>login()}>登录</button>
+      <TabBar/>
     </div>
   )
 }
