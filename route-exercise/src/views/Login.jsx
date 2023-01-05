@@ -27,7 +27,6 @@ export default function Login() {
       <label htmlFor="username"></label><input type="text" ref={username} id = "username"/>
       <hr/>
       <button onClick={()=>login()}>登录</button>
-      <TabBar/>
     </div>
   )
 }

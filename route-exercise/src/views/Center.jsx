@@ -12,7 +12,6 @@ export default function Center() {
         localStorage.removeItem("token");
         navigate("/login")
       }}>登出</button>
-      <TabBar />
     </div>
   )
 }

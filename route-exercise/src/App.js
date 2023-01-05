@@ -1,10 +1,17 @@
 
+import { HashRouter } from 'react-router-dom';
 import './App.css';
-import MyRouter from './router/MyRouter';
+import TabBar from './components/TabBar';
+import MyRouter from './router/MyRouter_bak';
+import './components/TabBar.css'
 
 function App() {
   return (
-    <MyRouter/>
+    <HashRouter>
+      <MyRouter/>
+      <TabBar/>
+    </HashRouter>
+
   );
 }
 

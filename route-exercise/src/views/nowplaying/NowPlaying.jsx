@@ -38,7 +38,7 @@ export default function NowPlaying() {
 
 
   const navigate = useNavigate();
-  function playingDetail(id) {
+  const playingDetail = (id)=>{
     navigate(`/playingDetail?id=${id}`)
   }
 

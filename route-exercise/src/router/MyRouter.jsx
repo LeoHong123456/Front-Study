@@ -1,40 +1,58 @@
 import React from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import Film from '../views/Film'
-import NowPlaying from '../views/nowplaying/NowPlaying'
-import Login from '../views/Login'
-import Center from '../views/Center'
-import Detail from '../views/Detail'
-import NotFound from '../views/NotFound'
-import PlayingDetail from '../views/PlayingDetail'
+import { useRoutes } from 'react-router-dom'
 import Redirect from '../components/Redirect'
 
-
 export default function MyRouter() {
+  const LazyLoad = (path) => {
+    const Comment = React.lazy(() => import(`../views/${path}`))
+    return (
+      <React.Suspense fallback={<>请稍后。。。</>}>
+        <Comment />
+      </React.Suspense>
+    );
+  }
+  const element = useRoutes([
+    {
+      path: "film",
+      element: LazyLoad("Film"),
+      children: [
+        {
+          path: "*",
+          element: LazyLoad("nowplaying/NowPlaying")
+        }
+      ]
+    },
+    {
+      path: "login",
+      element: LazyLoad("Login")
+    },
+    {
+      path: "center",
+      element: <AuthComponent>{LazyLoad("Center")}</AuthComponent>
+    },
+    {
+      path: "detail",
+      element: LazyLoad("Detail")
+    },
+    {
+      path: "playingDetail",
+      element: LazyLoad("PlayingDetail")
+    },
+    {
+      path: "/",
+      element: LazyLoad("film")
+    },
+    {
+      path: "*",
+      element: LazyLoad("NotFound")
+    }
+  ])
   return (
-    <Routes>
-      <Route path="/film" element={<Film/>}>
-        <Route index element={<NowPlaying/>}/>
-        <Route path="nowplaying" element={<NowPlaying/>}/>
-      </Route>
-      <Route path="/login" element={<Login/>}/>
-      
-      <Route path="/center" element={
-        <AuthComponent>
-          <Center/>
-        </AuthComponent>}/>
-
-      <Route path="/detail" element={<Detail/>}/>
-      <Route path="playingDetail" element={<PlayingDetail/>}/>
-      <Route path='/' element={<Navigate to="/film"/>}/>
-      {/* 404页面 */}
-      <Route path="*" element={<NotFound/>}/>
-    </Routes>
+    element
   )
 }
 
-function AuthComponent(props){
-  const {children} = props;
-  const token = localStorage.getItem('token');
-  return token ? children : <Redirect to='/login'/>
+function AuthComponent(props) {
+  const token = localStorage.getItem("token")
+  return token ? props.children : <Redirect to="/login" />
 }

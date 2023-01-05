@@ -1,7 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import './Film.css'
-import TabBar from '../components/TabBar'
 
 export default function Film() {
   return (
@@ -17,7 +16,6 @@ export default function Film() {
         </div>
       </div>
       <Outlet />
-      <TabBar />
     </div>
   )
 }
