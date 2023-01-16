@@ -1,0 +1,17 @@
+@import "~antd/dist/antd.css";
+.ant-card {
+  margin-bottom: 10px;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background-color: rgba(144, 147, 153, 0);
+  &:hover {
+    background-color: rgba(144, 147, 153, 0.3);
+  }
+}

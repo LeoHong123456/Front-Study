@@ -1,36 +1,84 @@
-import React,{useState} from 'react'
-import { Layout, Menu } from 'antd';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined, } from '@ant-design/icons';
-import Style from './css/SideMenu.module.scss'
-
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import { Layout, Menu } from "antd";
+import axios from "axios";
+import {
+  KeyOutlined,
+  HomeOutlined,
+  TeamOutlined,
+  UserOutlined,
+  LockOutlined,
+} from "@ant-design/icons";
+import Style from "./css/SideMenu.module.scss";
 const { Sider } = Layout;
 export default function SideMenu() {
+  const [menus, setMenus] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/rights?_embed=children&pagepermisson=1")
+      .then((res) => {
+        setMenus(res.data);
+      });
+  }, []);
+
+  const iconList = {
+    home: <HomeOutlined />,
+    "/user-manage": <UserOutlined />,
+    "/user-manage/list": <UserOutlined />,
+    "/right-manage": <UserOutlined />,
+    "/right-manage/role/list": <UserOutlined />,
+    "/right-manage/right/list": <UserOutlined />,
+  };
+
+  const { pathname } = useLocation();
+  const openKeys = pathname.split("/")[1];
+
   const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
+  const renderMenu = (menuList) => {
+    return menuList.map((item) => {
+      if (item.children?.length > 0 && checkPagePermission(item)) {
+        return (
+          <Menu.SubMenu
+            key={item.key}
+            icon={iconList[item.key]}
+            title={item.label}
+          >
+            {renderMenu(item.children)}
+          </Menu.SubMenu>
+        );
+      }
+      return (
+        checkPagePermission(item) && (
+          <Menu.Item key={item.key} icon={iconList[item.key]} title={item.label} onClick={(e) => {
+            navigate(e.key, { replace: true })
+          }}>
+            {item.label}
+          </Menu.Item>
+        )
+      );
+    });
+  };
+
+  const checkPagePermission = (item) => {
+    return item.pagepermisson;
+  };
+
   return (
     <Sider trigger={null} collapsible collapsed={collapsed}>
-      <div className={Style.logo}> 新闻管理系统</div>
-      <Menu
-        theme="dark"
-        mode="inline"
-        defaultSelectedKeys={['1']}
-        items={[
-          {
-            key: '1',
-            icon: <UserOutlined />,
-            label: 'nav 1',
-          },
-          {
-            key: '2',
-            icon: <VideoCameraOutlined />,
-            label: 'nav 2',
-          },
-          {
-            key: '3',
-            icon: <UploadOutlined />,
-            label: 'nav 3',
-          },
-        ]}
-      />
+      <div className={Style.top}>
+        <div className={Style.logo}>新闻管理系统</div>
+        <div className={Style.leftMenu}>
+          <Menu
+            theme="dark"
+            mode="inline"
+            selectedKeys={[pathname]}
+            defaultOpenKeys={[openKeys]}
+          >
+            {renderMenu(menus)}
+          </Menu>
+        </div>
+      </div>
     </Sider>
-  )
+  );
 }
