@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Table, Tag, Button, Modal, Space } from 'antd';
+import { Table, Tag, Button, Modal, Popover, Switch } from 'antd';
 import axios from 'axios';
 import {
   EditOutlined,
@@ -48,8 +48,17 @@ export default function RightList() {
       width: 100,
       render: (item) => {
         return <div>
-          <Button type="primary" shape="circle" icon={<EditOutlined />} />
-          <Button danger onClick={() => confirmMethod(item)} shape="circle" icon={<DeleteOutlined />} />
+          <Popover
+            content={<div style={{textAlign:'center'}}>
+              <Switch checked={item.pagepermisson} onChange={()=>switchMethod(item)}></Switch>
+            </div>}
+            title="修改配置"
+            trigger={item.pagepermisson === undefined ? '' : 'click'}
+          >
+            <Button type="primary" shape="circle" icon={<EditOutlined />} />
+          </Popover>
+          &nbsp;&nbsp;&nbsp;
+          <Button danger onClick={() => confirmMethod(item)} shape="circle" icon={<DeleteOutlined />} disabled={item.pagepermisson === undefined} />
         </div>
       },
     },
@@ -63,13 +72,34 @@ export default function RightList() {
       okText: '确认',
       cancelText: '取消',
       onOk() {
-        setDataSource(dataSource.filter(data => data.id !== item.id))
-        axios.delete(`http://localhost:8000/rights/${item.id}`)
+        if (item.grade === 1) {
+          setDataSource(dataSource.filter(data => data.id !== item.id))
+          axios.delete(`http://localhost:8000/rights/${item.id}`)
+        } else {
+          let list = dataSource.filter(data => data.id === item.rightId)
+          list[0].children = list[0].children.filter(data => data.id !== item.id)
+          setDataSource([...dataSource])
+          axios.delete(`http://localhost:8000/children/${item.id}`)
+        }
       },
       onCancel() {
         console.log("cancel")
       }
     });
+  }
+
+  const switchMethod = (item)=>{
+    item.pagepermisson = item.pagepermisson === 1 ? 0 : 1;
+    setDataSource([...dataSource])
+    if(item.grade === 1){
+      axios.patch(`http://localhost:8000/rights/${item.id}`,{
+        pagepermisson: item.pagepermisson
+      })
+    }else{
+      axios.patch(`http://localhost:8000/children/${item.id}`,{
+        pagepermisson: item.pagepermisson
+      })
+    }
   }
 
   return (

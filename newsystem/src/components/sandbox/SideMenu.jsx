@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Layout, Menu } from "antd";
-import axios from "axios";
-import {
-  KeyOutlined,
-  HomeOutlined,
-  TeamOutlined,
-  UserOutlined,
-  LockOutlined,
-} from "@ant-design/icons";
+import { HomeOutlined, UserOutlined } from "@ant-design/icons";
 import Style from "./css/SideMenu.module.scss";
+import axios from "axios";
+
 const { Sider } = Layout;
 export default function SideMenu() {
   const [menus, setMenus] = useState([]);
@@ -42,7 +37,7 @@ export default function SideMenu() {
           <Menu.SubMenu
             key={item.key}
             icon={iconList[item.key]}
-            title={item.label}
+            title={item.title}
           >
             {renderMenu(item.children)}
           </Menu.SubMenu>
@@ -50,10 +45,10 @@ export default function SideMenu() {
       }
       return (
         checkPagePermission(item) && (
-          <Menu.Item key={item.key} icon={iconList[item.key]} title={item.label} onClick={(e) => {
+          <Menu.Item key={item.key} icon={iconList[item.key]} title={item.title} onClick={(e) => {
             navigate(e.key, { replace: true })
           }}>
-            {item.label}
+            {item.title}
           </Menu.Item>
         )
       );
@@ -61,7 +56,7 @@ export default function SideMenu() {
   };
 
   const checkPagePermission = (item) => {
-    return item.pagepermisson;
+    return item.pagepermisson === 1;
   };
 
   return (

@@ -31,7 +31,7 @@ export default function IndexRouter() {
           name: "首页",
           index: true,
           path: "home",
-          element: <Home />,
+          element: <Home />
         },
         {
           name: "用户列表",

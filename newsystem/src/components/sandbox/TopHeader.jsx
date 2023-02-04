@@ -1,17 +1,11 @@
 import React, { useState } from "react";
-import { Layout, theme, Dropdown, Space, Avatar } from "antd";
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { Layout, theme, Dropdown, Avatar } from "antd";
+import { MenuFoldOutlined, MenuUnfoldOutlined, UserOutlined} from "@ant-design/icons";
 import Style from "./css/TopHeader.module.scss";
 
 const { Header } = Layout;
 export default function TopHeader() {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+  const { token: { colorBgContainer }} = theme.useToken();
   const [collapsed, setCollapsed] = useState(false);
   const items = [
     {
@@ -30,18 +24,11 @@ export default function TopHeader() {
   ];
 
   return (
-    <Header
-      style={{
-        padding: "0px 16px",
-        background: colorBgContainer,
-        fontSize: 20,
-      }}
-    >
+    <Header style={{padding: "0px 16px",background: colorBgContainer,fontSize: 20}}>
       {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
         className: "trigger",
         onClick: () => setCollapsed(!collapsed),
       })}
-
       <div className={Style.rightMenu}>
         <span className={Style.userHint}>您好，管理员 admin</span>
         <Dropdown menu={{ items }}>
