@@ -2,7 +2,6 @@
   display: flex;
   height: 100%;
   flex-flow: column nowrap;
-
   .logo{
     color: #fff;
     height: 50px;
@@ -14,8 +13,8 @@
     margin-bottom: 10px;
     background-color: green;
   }
-}
-.leftMenu{
-  flex: 1; //占满
-  overflow: auto; //超出自己滚动条
+  .leftMenu{
+    flex: 1; //占满
+    overflow: auto; //超出自己滚动条
+  }
 }
