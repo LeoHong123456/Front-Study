@@ -7,13 +7,12 @@ import TopHeader from '../../components/sandbox/TopHeader'
 const { Content, Footer } = Layout;
 export default function NewsSandBox() {
   const { token: { colorBgContainer }, } = theme.useToken();
-
   return (
     <Layout>
       <SideMenu />
       <Layout className='site-layout'>
         <TopHeader />
-        <Content style={{ margin: '24px 16px', padding: 24, minHeight: 280, background: colorBgContainer, }}>
+        <Content style={{ margin: '24px 16px', padding: 24, minHeight: 280, background: colorBgContainer, overflow: 'auto'}}>
           <Outlet />
         </Content>
         <Footer style={{ textAlign: 'center', padding: 0, lineHeight: "48px" }}>Ant Design ©2018 Created by Ant UED</Footer>

@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import { Table, Button, Switch, Modal, Form, Select, Checkbox, Radio, Input } from 'antd'
+import React, { useState, useEffect, useRef } from 'react'
+import { Table, Button, Switch, Modal } from 'antd'
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
-import axios from 'axios'
 import UserForm from '../../../components/user-manager/UserForm'
+import axios from 'axios'
 
 export default function UserList() {
-  const [form] = Form.useForm()
   const [open, setOpen] = useState(false)
   const [dataSource, setDataSource] = useState([])
   const [regions, setRegions] = useState([]);
   const [roles, setRoles] = useState([]);
-
+  const addForm = useRef(null);
   //获取用户列表
   useEffect(() => {
     axios.get(`http://localhost:8000/users?_expand=role`).then((res) => {
@@ -74,18 +73,19 @@ export default function UserList() {
       fixed: 'right',
       width: 150,
       render: (item) => {
-        console.log(item)
         return <div>
           <Button type="primary" disabled={item.default} shape='circle' icon={<EditOutlined />}></Button>
           &nbsp;&nbsp;
-          <Button danger shape="circle" disabled={item.default} icon={<DeleteOutlined />} />
+          <Button danger shape="circle" onClick={()=>deleteMethod(item)} disabled={item.default} icon={<DeleteOutlined />} />
         </div>
       }
     },
   ]
 
   const deleteMethod = (item) => {
-
+    console.log(item)
+    setDataSource(dataSource.filter(data => data.id !== item.id))
+    axios.delete(`http://localhost:8000/users/${item.id}`)
   }
 
   return (
@@ -95,14 +95,13 @@ export default function UserList() {
         columns={columns}
         dataSource={dataSource}
         size='small'
-        pagination={{ pageSize: 20 }}
+        pagination={{ pageSize: 10 }}
         rowKey={item => item.id}
         scroll={{
           x: 1500,
           y: '100%',
         }}
       />
-
       <Modal
         open={open}
         title="新增用户"
@@ -111,12 +110,30 @@ export default function UserList() {
         onCancel={() => {
           setOpen(false)
         }}
-        onOk={() => {
-          console.log("add")
-          setOpen(false)
-        }}
+        onOk={
+          () => {
+            //获取表单数据
+            addForm.current.validateFields().then(value => {
+              setOpen(false)
+              //重置表单
+              addForm.current.resetFields()
+              axios.post(`http://localhost:8000/users`, {
+                ...value,
+                "roleState": true,
+                "default": false
+              }).then(res => {
+                setDataSource([...dataSource, {
+                  ...res.data,
+                  role: roles.filter(item => item.id === value.roleId + "")[0]
+                }])
+              })
+            }).catch(err => {
+              console.log(err)
+            })
+          }
+        }
       >
-        <UserForm regions={regions} roles={roles}/>
+        <UserForm regions={regions} roles={roles} ref={addForm} />
       </Modal>
     </div>
   )
