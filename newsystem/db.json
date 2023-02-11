@@ -1,11 +1,20 @@
 {
   "users": [
     {
+      "id": 1,
+      "username": "admin",
+      "password": 123456,
+      "roleState": true,
+      "default": true,
+      "region": "",
+      "roleId": 1
+    },
+    {
       "username": "钢蛋",
       "password": "123",
       "roleState": true,
       "default": false,
-      "region": "南极洲",
+      "region": "亚洲",
       "roleId": 2,
       "id": 3
     },
@@ -14,8 +23,8 @@
       "password": "123",
       "roleState": true,
       "default": false,
-      "region": "",
-      "roleId": 1,
+      "region": "南美洲",
+      "roleId": 2,
       "id": 4
     },
     {
@@ -53,6 +62,24 @@
       "region": "亚洲",
       "roleId": 3,
       "id": 8
+    },
+    {
+      "username": "starbug",
+      "password": "123456",
+      "region": "南美洲",
+      "roleId": 3,
+      "roleState": true,
+      "default": false,
+      "id": 9
+    },
+    {
+      "username": "lhh",
+      "password": "123456",
+      "region": "北美洲",
+      "roleId": 2,
+      "roleState": true,
+      "default": false,
+      "id": 10
     }
   ],
   "roles": [
@@ -64,43 +91,10 @@
         "/user-manage/add",
         "/user-manage/delete",
         "/user-manage/update",
-        "/right-manage/role/list",
+        "/right-manage",
         "/right-manage/right/list",
         "/right-manage/role/update",
-        "/right-manage/role/delete",
         "/right-manage/right/update",
-        "/right-manage/right/delete",
-        "/news-manage/list",
-        "/news-manage/add",
-        "/news-manage/update/:id",
-        "/news-manage/preview/:id",
-        "/news-manage/draft",
-        "/news-manage/category",
-        "/audit-manage/audit",
-        "/audit-manage/list",
-        "/publish-manage/unpublished",
-        "/publish-manage/published",
-        "/publish-manage/sunset",
-        "right-manage",
-        "news-manage",
-        "audit-manage",
-        "publish-manage",
-        "user-manage/list",
-        "user-manage",
-        "home"
-      ]
-    },
-    {
-      "id": 2,
-      "roleName": "区域管理员",
-      "roleType": 2,
-      "rights": [
-        "/home",
-        "/user-manage",
-        "/user-manage/add",
-        "/user-manage/delete",
-        "/user-manage/update",
-        "/user-manage/list",
         "/news-manage",
         "/news-manage/list",
         "/news-manage/add",
@@ -114,7 +108,46 @@
         "/publish-manage",
         "/publish-manage/unpublished",
         "/publish-manage/published",
-        "/publish-manage/sunset"
+        "/publish-manage/sunset",
+        "/user-manage",
+        "/user-manage/list",
+        "/right-manage/role/list",
+        "/right-manage/role/delete",
+        "/right-manage/right/delete",
+        "/home"
+      ]
+    },
+    {
+      "id": 2,
+      "roleName": "区域管理员",
+      "roleType": 2,
+      "rights": [
+        "/home",
+        "/user-manage",
+        "/user-manage/add",
+        "/user-manage/delete",
+        "/user-manage/update",
+        "/user-manage/list",
+        "/news-manage/list",
+        "/news-manage/add",
+        "/publish-manage",
+        "/publish-manage/unpublished",
+        "/publish-manage/published",
+        "/publish-manage/sunset",
+        "/news-manage",
+        "/audit-manage",
+        "/audit-manage/audit",
+        "/audit-manage/list",
+        "/right-manage/right/delete",
+        "/right-manage/role/update",
+        "/right-manage/right/update",
+        "/right-manage/role/delete",
+        "/right-manage",
+        "/right-manage/role/list",
+        "/news-manage/update/:id",
+        "/news-manage/preview/:id",
+        "/news-manage/draft",
+        "/news-manage/category"
       ]
     },
     {
@@ -122,16 +155,21 @@
       "roleName": "区域编辑",
       "roleType": 3,
       "rights": [
+        "/home",
+        "/audit-manage",
+        "/audit-manage/list",
+        "/publish-manage",
+        "/publish-manage/unpublished",
+        "/publish-manage/published",
+        "/publish-manage/sunset",
+        "/audit-manage/audit",
         "/news-manage/list",
         "/news-manage/add",
         "/news-manage/update/:id",
         "/news-manage/preview/:id",
         "/news-manage/draft",
-        "/publish-manage/unpublished",
-        "/publish-manage/published",
-        "/publish-manage/sunset",
-        "publish-manage",
-        "/audit-manage/audit"
+        "/news-manage/category",
+        "/news-manage"
       ]
     }
   ],
@@ -161,11 +199,9 @@
       "id": 6,
       "title": "用户列表",
       "rightId": 2,
-      "key": "user-manage/list",
+      "key": "/user-manage/list",
       "pagepermisson": 1,
-      "grade": 2,
-      "type": "divider",
-      "dashed": true
+      "grade": 2
     },
     {
       "id": 8,
@@ -303,42 +339,42 @@
     {
       "id": 1,
       "title": "首页",
-      "key": "home",
+      "key": "/home",
       "pagepermisson": 1,
       "grade": 1
     },
     {
       "id": 2,
       "title": "用户管理",
-      "key": "user-manage",
+      "key": "/user-manage",
       "pagepermisson": 1,
       "grade": 1
     },
     {
       "id": 7,
       "title": "权限管理",
-      "key": "right-manage",
+      "key": "/right-manage",
       "pagepermisson": 1,
       "grade": 1
     },
     {
       "id": 14,
       "title": "新闻管理",
-      "key": "news-manage",
+      "key": "/news-manage",
       "pagepermisson": 1,
       "grade": 1
     },
     {
       "id": 21,
       "title": "审核管理",
-      "key": "audit-manage",
+      "key": "/audit-manage",
       "pagepermisson": 1,
       "grade": 1
     },
     {
       "id": 24,
       "title": "发布管理",
-      "key": "publish-manage",
+      "key": "/publish-manage",
       "pagepermisson": 1,
       "grade": 1
     }
@@ -346,7 +382,7 @@
   "categories": [
     {
       "id": 1,
-      "title": "时事新闻",
+      "title": "时事新闻1",
       "value": "时事新闻"
     },
     {
@@ -356,7 +392,7 @@
     },
     {
       "id": 3,
-      "title": "科学技术",
+      "title": "科学技术2",
       "value": "科学技术"
     },
     {
@@ -416,15 +452,15 @@
     {
       "title": "千锋教育",
       "categoryId": 3,
-      "content": "<p style=\"text-align:start;\"></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      看到有同学在问大连的</span><a href=\"http://www.mobiletrain.org/\" target=\"_blank\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">千锋教育</span></a><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">校址在哪里，这里小千就来给大家介绍一下千锋教育和校区地址，给大家参考一下。</span></p>\n<p style=\"text-align:center;\"></p>\n<img src=\"http://upload.mobiletrain.org/2020/1218/1608271193504.jpg\" alt=\"u=313055993,4178527216&fm=26&gp=0\" style=\"height: ;width: \"/>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\"><strong>千锋教育大连校区地址</strong></span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      首先先给大家介绍一下千锋教育的大连校区地址，坐落在：辽宁省大连市高新园区爱贤街10号大连设计城A座901，联系和咨询电话可以拨打 400-811-9990，会有专人负责接待同学。</span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\"><strong>千锋教育</strong></span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      再给大家简单介绍一下千锋教育，千锋教育是北京千锋互联科技有限公司旗下的品牌，开设了12大热门课程，并且每月都会更新最新的前沿技术。</span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      千锋教育一直秉持着“用良心做教育”的理念，在全国拥有上百家的合作高校，更是有超过20000家的合作企业。</span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      千锋教育总部设立在北京，目前在目前已在深圳、上海、郑州、广州、大连、武汉、成都、西安、杭州、青岛、重庆、长沙、哈尔滨、南京、太原建立分公司。</span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      千锋教育开设HTML5前端、Java、Python、全链路设计、云计算、软件测试、大数据、智能物联网、Unity游戏开发、Go语言开发、网络安全、互联网营销学科，并推出软考、Adobe认证、PMP认证、</span><a href=\"http://www.mobiletrain.org/topic/redhat/\" target=\"_blank\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">红帽RHCE认证</span></a><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">课程</span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      最后欢迎大家来到千锋教育大连校区了解我们的培训课程，全程名师面授确保课程品质，还享受2周的免费试听不满意不缴费随时退学即可，赶紧来了解一下吧~~~~</span></p>\n<p style=\"text-align:start;\"><br>&nbsp;</p>\n",
+      "content": "<p style=\"text-align:start;\"></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      看到有同学在问大连的</span><a href=\"http://www.mobiletrain.org/\" target=\"_blank\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">千锋教育</span></a><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">校址在哪里，这里小千就来给大家介绍一下千锋教育和校区地址，给大家参考一下。</span></p>\n<p style=\"text-align:center;\"></p>\n<img src=\"http://upload.mobiletrain.org/2020/1218/1608271193504.jpg\" alt=\"u=313055993,4178527216&fm=26&gp=0\" style=\"height: ;width: \"/>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\"><strong>千锋教育大连校区地址</strong></span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      首先先给大家介绍一下千锋教育的大连校区地址，坐落在：辽宁省大连市高新园区爱贤街10号大连设计城A座901，联系和咨询电话可以拨打 400-811-9990，会有专人负责接待同学。</span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\"><strong>千锋教育</strong></span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      再给大家简单介绍一下千锋教育，千锋教育是北京千锋互联科技有限公司旗下的品牌，开设了12大热门课程，并且每月都会更新最新的前沿技术。</span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      千锋教育一直秉持着“用良心做教育”的理念，在全国拥有上百家的合作高校，更是有超过20000家的合作企业。</span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      千锋教育总部设立在北京，目前在目前已在深圳、上海、郑州、广州、大连、武汉、成都、西安、杭州、青岛、重庆、长沙、哈尔滨、南京、太原建立分公司。</span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      千锋教育开设HTML5前端、Java、Python、全链路设计、云计算、软件测试、大数据、智能物联网、Unity游戏开发、Go语言开发、网络安全、互联网营销学科，并推出软考、Adobe认证、PMP认证、</span><a href=\"http://www.mobiletrain.org/topic/redhat/\" target=\"_blank\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">红帽RHCE认证</span></a><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">课程</span></p>\n<p style=\"margin-left:0px;\"><span style=\"color: rgb(0,0,0);background-color: rgb(255,255,255);font-size: 14px;font-family: 微软雅黑, \"PingFang SC;\">      最后欢迎大家来到千锋教育大连校区了解我们的培训课程，全程名师面授确保课程品质，还享受2周的免费试听不满意不缴费随时退学即可，赶紧来了解一下吧~~~~</span></p>\n<p style=\"text-align:start;\"><br>&nbsp;</p>\n",
       "region": "全球",
       "author": "admin",
       "roleId": 1,
       "auditState": 2,
       "publishState": 2,
       "createTime": 1615777743864,
-      "star": 1030,
-      "view": 2031,
+      "star": 1000,
+      "view": 2010,
       "id": 1,
       "publishTime": 1615778496314
     },
@@ -438,8 +474,8 @@
       "auditState": 2,
       "publishState": 2,
       "createTime": 1615778694831,
-      "star": 511,
-      "view": 833,
+      "star": 500,
+      "view": 804,
       "id": 2,
       "publishTime": 1615778911028
     },
@@ -454,7 +490,7 @@
       "publishState": 2,
       "createTime": 1615778715619,
       "star": 600,
-      "view": 984,
+      "view": 983,
       "id": 3,
       "publishTime": 1615778911762
     },
@@ -514,7 +550,7 @@
       "publishState": 2,
       "createTime": 1615778852584,
       "star": 309,
-      "view": 480,
+      "view": 479,
       "id": 7,
       "publishTime": 1615778917074
     },
@@ -529,7 +565,7 @@
       "publishState": 2,
       "createTime": 1615778891518,
       "star": 781,
-      "view": 891,
+      "view": 889,
       "id": 8,
       "publishTime": 1615778917615
     },
@@ -549,106 +585,186 @@
       "publishTime": 1616203519274
     },
     {
-      "title": "bbb",
-      "categoryId": 2,
-      "content": "<p>bbbb</p>\n",
+      "title": "dasfasgawet",
+      "categoryId": 6,
+      "content": "<ul>\n<li>dfasdf</li>\n<li>restgzrdaestgrse43564</li>\n<li>edcw34qv 534vg53454fv</li>\n</ul>\n",
       "region": "全球",
-      "author": "admin",
       "roleId": 1,
-      "auditState": 2,
-      "publishState": 2,
-      "createTime": 1617508814604,
+      "auditState": 0,
+      "publishState": 0,
+      "createTime": "2021-10-27T13:00:38.917Z",
       "star": 0,
       "view": 0,
-      "id": 11,
-      "publishTime": 1617523734431
+      "id": 10
     },
     {
-      "title": "cccc22222",
+      "title": "那里们11111111",
       "categoryId": 3,
-      "content": "<p>cccc12222</p>\n",
+      "content": "<ol>\n<li>aaaaaaaaaaaaaaaaaaaaaaaaaaaaa</li>\n<li>dzfsdzfasgfasdg</li>\n</ol>\n",
+      "region": "全球",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 1,
+      "publishState": 0,
+      "createTime": 1635339700913,
+      "star": 0,
+      "view": 0,
+      "id": 11
+    },
+    {
+      "title": "fate/zero",
+      "categoryId": 5,
+      "content": "<ol>\n<li>sdafasdgasdgfgfdsfgsad</li>\n</ol>\n<ul>\n<li>gfasdgasgasg</li>\n<li>sdafsadf</li>\n</ul>\n",
       "region": "全球",
       "author": "admin",
       "roleId": 1,
       "auditState": 2,
-      "publishState": 2,
-      "createTime": 1617508821840,
+      "publishState": 1,
+      "createTime": 1635342060878,
       "star": 0,
       "view": 0,
-      "id": 12,
-      "publishTime": 1617527476474
+      "id": 12
     },
     {
-      "title": "teichui-1111",
-      "categoryId": 1,
-      "content": "<p>11111111111</p>\n",
-      "region": "亚洲",
-      "author": "铁锤",
-      "roleId": 2,
-      "auditState": 3,
-      "publishState": 0,
-      "createTime": 1617518218962,
-      "star": 0,
-      "view": 0,
-      "id": 14
-    },
-    {
-      "title": "司马海味-111",
+      "title": "zzzz",
       "categoryId": 2,
-      "content": "<p>dwda</p>\n",
-      "region": "亚洲",
-      "author": "司马海味",
-      "roleId": 3,
-      "auditState": 3,
+      "content": "<p>sdafasdfgasdg</p>\n",
+      "region": "全球",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 1,
       "publishState": 0,
-      "createTime": 1617518470380,
+      "createTime": 1635581983999,
       "star": 0,
       "view": 0,
       "id": 15
     },
     {
-      "title": "西门11111",
+      "title": "fate stay night unlimited blade works",
       "categoryId": 2,
-      "content": "<p>dwadw111</p>\n",
-      "region": "南极洲",
-      "author": "西门吹灯",
-      "roleId": 3,
-      "auditState": 2,
-      "publishState": 1,
-      "createTime": 1617518536111,
+      "content": "<p>fsn ubw</p>\n",
+      "region": "全球",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 1,
+      "publishState": 0,
+      "createTime": 1635585009027,
       "star": 0,
       "view": 0,
       "id": 16
     },
     {
-      "title": "aaaa",
+      "title": "钢弹的新闻",
       "categoryId": 2,
-      "content": "<p>aaaa</p>\n",
+      "content": "<p>啊啊啊啊啊啊啊</p>\n<ul>\n<li>asd</li>\n</ul>\n",
+      "region": "全球",
+      "author": "钢蛋",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1635585235591,
+      "star": 0,
+      "view": 0,
+      "id": 17,
+      "publishTime": 1635590343244
+    },
+    {
+      "title": "测试水水水水水水",
+      "categoryId": 3,
+      "content": "<p>撒大苏打实打实大苏打实打实大苏打实打实</p>\n",
+      "region": "亚洲",
+      "author": "司马海味",
+      "roleId": 3,
+      "auditState": 3,
+      "publishState": 0,
+      "createTime": 1635585567963,
+      "star": 0,
+      "view": 0,
+      "id": 18
+    },
+    {
+      "title": "3eeeeeeeeeeee",
+      "categoryId": 3,
+      "content": "<p>ssssssssssssss</p>\n",
       "region": "全球",
       "author": "admin",
       "roleId": 1,
       "auditState": 2,
       "publishState": 3,
-      "createTime": 1618035524570,
+      "createTime": 1635590898161,
       "star": 0,
       "view": 0,
-      "id": 17,
-      "publishTime": 1618035533728
+      "id": 19,
+      "publishTime": 1635590902461
     },
     {
-      "title": "teichui-1111",
-      "categoryId": 1,
-      "content": "<p>111</p>\n",
-      "region": "亚洲",
-      "author": "铁锤",
-      "roleId": 2,
+      "title": "aaaaaaaaaaa",
+      "categoryId": 4,
+      "content": "<p>zzzzzzzzzzzzzzzzzzzzfdawsfasfasdf</p>\n",
+      "region": "全球",
+      "author": "admin",
+      "roleId": 1,
       "auditState": 2,
       "publishState": 2,
-      "createTime": 1618039847910,
+      "createTime": 1635860419285,
+      "star": 15,
+      "view": 6,
+      "id": 20,
+      "publishTime": 1635860426396,
+      "role": {
+        "id": 1,
+        "roleName": "超级管理员",
+        "roleType": 1,
+        "rights": [
+          "/user-manage/add",
+          "/user-manage/delete",
+          "/user-manage/update",
+          "/right-manage",
+          "/right-manage/right/list",
+          "/right-manage/role/update",
+          "/right-manage/right/update",
+          "/news-manage",
+          "/news-manage/list",
+          "/news-manage/add",
+          "/news-manage/update/:id",
+          "/news-manage/preview/:id",
+          "/news-manage/draft",
+          "/news-manage/category",
+          "/audit-manage",
+          "/audit-manage/audit",
+          "/audit-manage/list",
+          "/publish-manage",
+          "/publish-manage/unpublished",
+          "/publish-manage/published",
+          "/publish-manage/sunset",
+          "/user-manage",
+          "/user-manage/list",
+          "/right-manage/role/list",
+          "/right-manage/role/delete",
+          "/right-manage/right/delete",
+          "/home"
+        ]
+      },
+      "category": {
+        "id": 4,
+        "title": "军事世界",
+        "value": "军事世界"
+      }
+    },
+    {
+      "title": "咋啊啊",
+      "categoryId": 2,
+      "content": "<p>啊啊啊啊啊啊啊啊啊啊啊</p>\n",
+      "region": "全球",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1635942711804,
       "star": 0,
-      "view": 2,
-      "id": 18,
-      "publishTime": 1618039853615
+      "view": 10,
+      "id": 21,
+      "publishTime": 1635942719548
     }
   ]
 }

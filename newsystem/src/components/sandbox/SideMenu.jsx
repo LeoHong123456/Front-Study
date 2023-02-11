@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Layout, Menu } from "antd";
-import { HomeOutlined, UserOutlined } from "@ant-design/icons";
+import { HomeOutlined, UserOutlined ,ApartmentOutlined, ReadOutlined, SearchOutlined, RotateRightOutlined} from "@ant-design/icons";
 import Style from "./css/SideMenu.module.scss";
 import axios from "axios";
 
@@ -13,21 +13,21 @@ export default function SideMenu() {
       .get("http://localhost:8000/rights?_embed=children&pagepermisson=1")
       .then((res) => {
         setMenus(res.data);
-      });
-  }, []);
+      })
+  }, [])
 
   const iconList = {
-    home: <HomeOutlined />,
+    "/home": <HomeOutlined />,
     "/user-manage": <UserOutlined />,
-    "/user-manage/list": <UserOutlined />,
-    "/right-manage": <UserOutlined />,
-    "/right-manage/role/list": <UserOutlined />,
-    "/right-manage/right/list": <UserOutlined />,
+    "/right-manage": <ApartmentOutlined />,
+    "/news-manage":<ReadOutlined />,
+    "/audit-manage":<SearchOutlined />,
+    "/publish-manage":<RotateRightOutlined />,
   };
 
   const { pathname } = useLocation();
-  const openKeys = pathname.split("/")[1];
-
+  const openKeys = "/"+ pathname.split("/")[1];
+  console.log(`pathname=${pathname}, openKeys=${openKeys}`)
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
   const renderMenu = (menuList) => {
@@ -45,9 +45,10 @@ export default function SideMenu() {
       }
       return (
         checkPagePermission(item) && (
-          <Menu.Item key={item.key} icon={iconList[item.key]} title={item.title} onClick={(e) => {
-            navigate(e.key, { replace: true })
-          }}>
+          <Menu.Item key={item.key} icon={iconList[item.key]} title={item.title}
+            onClick={(e) => {
+              navigate(e.key, { replace: true })
+            }}>
             {item.title}
           </Menu.Item>
         )
