@@ -120,6 +120,22 @@ export default function UserList() {
       key: 'region',
       dataIndex: 'region',
       width: 100,
+      filters:[
+        ...regions.map(item=>({
+          text:item.title,
+          value:item.value
+        })),
+        {
+          text : "全球",
+          value : "全球"
+        }
+      ],
+      onFilter:(value, item)=>{
+        if(value === '全球'){
+          return item.region === ""
+        }
+        return item.region === value
+      },
       render: (region) => {
         return <p className={Style.regionTitle}><b>{region === '' ? '全球' : region}</b></p>
       }
