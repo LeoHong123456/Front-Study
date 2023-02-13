@@ -7,6 +7,7 @@ import NewsSandBox from "../views/sandbox/NewsSandBox";
 import UserList from '../views/sandbox/user-manage/UserList'
 import RoleList from "../views/sandbox/right-manage/RoleList";
 import RightList from "../views/sandbox/right-manage/RightList";
+import Test from "../views/sandbox/user-manage/Test";
 import NotFound from "../views/sandbox/notfound/NotFound";
 
 export default function IndexRouter() {
@@ -37,6 +38,11 @@ export default function IndexRouter() {
           name: "用户列表",
           path: "user-manage/list",
           element: <UserList />
+        },
+        {
+          name: "用户列表",
+          path: "user-manage/test",
+          element: <Test />
         },
         {
           name: "角色列表",

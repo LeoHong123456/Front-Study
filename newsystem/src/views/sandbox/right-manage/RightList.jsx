@@ -29,8 +29,8 @@ export default function RightList() {
     {
       title: '权限名称',
       width: 100,
-      dataIndex: 'label',
-      key: 'label',
+      dataIndex: 'title',
+      key: 'title',
       fixed: 'left',
     },
     {

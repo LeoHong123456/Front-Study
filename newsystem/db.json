@@ -61,25 +61,13 @@
       "default": false,
       "region": "亚洲",
       "roleId": 3,
-      "id": 8
-    },
-    {
-      "username": "starbug",
-      "password": "123456",
-      "region": "南美洲",
-      "roleId": 3,
-      "roleState": true,
-      "default": false,
-      "id": 9
-    },
-    {
-      "username": "lhh",
-      "password": "123456",
-      "region": "北美洲",
-      "roleId": 2,
-      "roleState": true,
-      "default": false,
-      "id": 10
+      "id": 8,
+      "value": {
+        "username": "咕噜墩子",
+        "password": "123",
+        "region": "非洲",
+        "roleId": 2
+      }
     }
   ],
   "roles": [

@@ -27,9 +27,9 @@ export default function SideMenu() {
 
   const { pathname } = useLocation();
   const openKeys = "/"+ pathname.split("/")[1];
-  console.log(`pathname=${pathname}, openKeys=${openKeys}`)
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
+
   const renderMenu = (menuList) => {
     return menuList.map((item) => {
       if (item.children?.length > 0 && checkPagePermission(item)) {
