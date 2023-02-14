@@ -68,6 +68,15 @@
         "region": "亚洲",
         "roleId": 2
       }
+    },
+    {
+      "username": "上官婉儿",
+      "password": "123456",
+      "region": "亚洲",
+      "roleId": 2,
+      "roleState": true,
+      "default": false,
+      "id": 9
     }
   ],
   "roles": [
