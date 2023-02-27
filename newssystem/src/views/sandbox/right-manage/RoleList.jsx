@@ -44,7 +44,6 @@ export default function RoleList() {
     })
   }, []);
 
-
   useEffect(() => {
     axios.get(`http://localhost:8000/rights?_embed=children`).then(res => {
       setTreeData(res.data)
@@ -68,19 +67,14 @@ export default function RoleList() {
     })
   }
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
   const handleOk = () => {
     setIsModalOpen(false);
-    setDataSource(dataSource.map(item => {
-      if (item.id === currentId) {
-        return { ...item, rights: currentRight }
-      }
-      return item
-    }))
+    setDataSource(dataSource.map(item => item.id === currentId ? { ...item, rights: currentRight } : item))
     axios.patch(`http://localhost:8000/roles/${currentId}`,{rights:currentRight});
+  };
+
+  const showModal = () => {
+    setIsModalOpen(true);
   };
 
   const handleCancel = () => {
@@ -95,13 +89,7 @@ export default function RoleList() {
     <div>
       <Table dataSource={dataSource} columns={columns} rowKey={(item) => item.id}></Table>
       <Modal title="权限分配" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <Tree
-          checkable
-          onCheck={onCheck}
-          checkedKeys={currentRight}
-          checkStrictly={false}
-          treeData={treeData}
-        />
+        <Tree checkable onCheck={onCheck} checkedKeys={currentRight} checkStrictly={false} treeData={treeData} />
       </Modal>
     </div>
   )

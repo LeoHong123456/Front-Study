@@ -1,20 +1,22 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
-import { Button, Form, Input } from 'antd'
+import { Button, Form, Input, message } from 'antd'
 import Style from './Login.module.scss'
 import axios from 'axios'
 
 export default function Login() {
   const navigate = useNavigate();
   const onFinish = (values) => {
-    console.log(values)
-    axios.get(`http://localhost:8000/users?username=${values.username}&password=${values.password}&roleState=true`)
+    axios.get(`http://localhost:8000/users?_expand=role&username=${values.username}&password=${values.password}&roleState=true`)
     .then(res=>{
-      console.log(res.data)
+      if(res.data.length === 0){
+        message.error("用户名或密码不正确！")
+      }else{
+        localStorage.setItem('token', JSON.stringify(res.data[0]))
+        navigate("/home", { replace: true })
+      }
     })
-    // localStorage.setItem('token', values)
-    // navigate("/home", { replace: true })
   }
 
   return (

@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Table, Tag, Button, Modal, Popover, Switch } from 'antd';
+import { Table, Tag, Button, Modal, Popover, Switch } from 'antd'
+import { EditOutlined, DeleteOutlined, ExclamationCircleOutlined, } from '@ant-design/icons'
 import axios from 'axios';
-import {
-  EditOutlined,
-  DeleteOutlined,
-  ExclamationCircleOutlined,
-} from '@ant-design/icons';
+
 export default function RightList() {
   const [dataSource, setDataSource] = useState([]);
   useEffect(() => {
@@ -49,12 +46,10 @@ export default function RightList() {
       render: (item) => {
         return <div>
           <Popover
-            content={<div style={{textAlign:'center'}}>
-              <Switch checked={item.pagepermisson} onChange={()=>switchMethod(item)}></Switch>
-            </div>}
-            title="修改配置"
-            trigger={item.pagepermisson === undefined ? '' : 'click'}
-          >
+            content={
+            <div style={{ textAlign: 'center' }}>
+              <Switch checked={item.pagepermisson} onChange={() => switchMethod(item)}></Switch>
+            </div>} title="修改配置" trigger={item.pagepermisson === undefined ? '' : 'click'} >
             <Button type="primary" shape="circle" icon={<EditOutlined />} />
           </Popover>
           &nbsp;&nbsp;&nbsp;
@@ -88,15 +83,15 @@ export default function RightList() {
     });
   }
 
-  const switchMethod = (item)=>{
+  const switchMethod = (item) => {
     item.pagepermisson = item.pagepermisson === 1 ? 0 : 1;
     setDataSource([...dataSource])
-    if(item.grade === 1){
-      axios.patch(`http://localhost:8000/rights/${item.id}`,{
+    if (item.grade === 1) {
+      axios.patch(`http://localhost:8000/rights/${item.id}`, {
         pagepermisson: item.pagepermisson
       })
-    }else{
-      axios.patch(`http://localhost:8000/children/${item.id}`,{
+    } else {
+      axios.patch(`http://localhost:8000/children/${item.id}`, {
         pagepermisson: item.pagepermisson
       })
     }
@@ -104,15 +99,7 @@ export default function RightList() {
 
   return (
     <div>
-      <Table
-        columns={columns}
-        dataSource={dataSource}
-        pagination={{ pageSize: 5 }}
-        scroll={{
-          x: 500,
-          y: 600,
-        }}
-      />
+      <Table columns={columns} dataSource={dataSource} pagination={{ pageSize: 5 }} scroll={{ x: 500, y: 600, }} />
     </div>
   )
 }

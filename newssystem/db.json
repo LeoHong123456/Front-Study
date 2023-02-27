@@ -76,7 +76,22 @@
       "roleId": 2,
       "roleState": true,
       "default": false,
-      "id": 9
+      "id": 9,
+      "value": {
+        "username": "上官婉儿",
+        "password": "123456",
+        "region": "亚洲",
+        "roleId": 2
+      }
+    },
+    {
+      "username": "test",
+      "password": "123",
+      "region": "欧洲",
+      "roleId": 2,
+      "roleState": true,
+      "default": false,
+      "id": 10
     }
   ],
   "roles": [
@@ -120,11 +135,6 @@
       "roleType": 2,
       "rights": [
         "/home",
-        "/user-manage",
-        "/user-manage/add",
-        "/user-manage/delete",
-        "/user-manage/update",
-        "/user-manage/list",
         "/news-manage/list",
         "/news-manage/add",
         "/publish-manage",
@@ -144,7 +154,13 @@
         "/news-manage/update/:id",
         "/news-manage/preview/:id",
         "/news-manage/draft",
-        "/news-manage/category"
+        "/news-manage/category",
+        "/right-manage/right/list",
+        "/user-manage",
+        "/user-manage/add",
+        "/user-manage/delete",
+        "/user-manage/update",
+        "/user-manage/list"
       ]
     },
     {
@@ -166,7 +182,9 @@
         "/news-manage/preview/:id",
         "/news-manage/draft",
         "/news-manage/category",
-        "/news-manage"
+        "/news-manage",
+        "/right-manage/role/list",
+        "/right-manage/right/list"
       ]
     }
   ],
