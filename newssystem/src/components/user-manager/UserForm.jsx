@@ -13,7 +13,6 @@ const UserForm = forwardRef((props, ref) => {
   const roleObj = { 1: "superadmin", 2: "admin", 3: "editor" }
   const checkRegionDisabled = (item) => {
     if (props.isUpdate) {
-        console.log(`roleObj=${roleObj}, roleId=${roleId}`)
       return roleObj[roleId] === "superadmin" ? false : true
     } else {
       return roleObj[roleId] === "superadmin" ? false : item.value !== region

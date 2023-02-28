@@ -20,7 +20,7 @@ export default function UserList() {
   //获取用户列表
   useEffect(() => {
     const roleObj = {1: "superadmin", 2: "admin", 3: "editor"}
-    axios.get(`http://localhost:8000/users?_expand=role`).then((res) => {
+    axios.get(`/users?_expand=role`).then((res) => {
       const list  = res.data
       setDataSource(roleObj[roleId] === "superadmin"? list : 
       [...list.filter(item=>item.username === username),
@@ -30,14 +30,14 @@ export default function UserList() {
 
   //获取区域列表
   useEffect(() => {
-    axios.get(`http://localhost:8000/regions`).then(res => {
+    axios.get(`/regions`).then(res => {
       setRegions(res.data)
     })
   }, [])
 
   //获取角色列表
   useEffect(() => {
-    axios.get(`http://localhost:8000/roles`).then(res => {
+    axios.get(`/roles`).then(res => {
       setRoles(res.data)
     })
   }, [])
@@ -46,7 +46,7 @@ export default function UserList() {
   const handleChange = (item) => {
     item.roleState = !item.roleState;
     setDataSource([...dataSource])
-    axios.patch(`http://localhost:8000/users/${item.id}`, {
+    axios.patch(`/users/${item.id}`, {
       roleState: item.roleState
     })
   }
@@ -54,7 +54,7 @@ export default function UserList() {
   //删除会员
   const deleteMethod = async (item) => {
     setDataSource(dataSource.filter(data => data.id !== item.id))
-    axios.delete(`http://localhost:8000/users/${item.id}`)
+    axios.delete(`/users/${item.id}`)
     message.success('删除成功！');
   }
 
@@ -83,7 +83,7 @@ export default function UserList() {
         }
         return item;
       }))
-      axios.patch(`http://localhost:8000/users/${current.id}`,{value})
+      axios.patch(`/users/${current.id}`,{value})
     })
   }
 
@@ -93,7 +93,7 @@ export default function UserList() {
       setOpen(false)
       //重置表单
       addForm.current.resetFields()
-      axios.post(`http://localhost:8000/users`, {
+      axios.post(`/users`, {
         ...value,
         "roleState": true,
         "default": false

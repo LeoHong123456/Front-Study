@@ -39,13 +39,13 @@ export default function RoleList() {
   ];
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/roles`).then((res) => {
+    axios.get(`/roles`).then((res) => {
       setDataSource(res.data)
     })
   }, []);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/rights?_embed=children`).then(res => {
+    axios.get(`/rights?_embed=children`).then(res => {
       setTreeData(res.data)
     })
   }, [])
@@ -59,7 +59,7 @@ export default function RoleList() {
       cancelText: '取消',
       onOk() {
         setDataSource(dataSource.filter(data => data.id !== item.id))
-        axios.delete(`http://localhost:8000/roles/${item.id}`)
+        axios.delete(`/roles/${item.id}`)
       },
       onCancel() {
         console.log(`取消删除！`)
@@ -70,7 +70,7 @@ export default function RoleList() {
   const handleOk = () => {
     setIsModalOpen(false);
     setDataSource(dataSource.map(item => item.id === currentId ? { ...item, rights: currentRight } : item))
-    axios.patch(`http://localhost:8000/roles/${currentId}`,{rights:currentRight});
+    axios.patch(`/roles/${currentId}`,{rights:currentRight});
   };
 
   const showModal = () => {

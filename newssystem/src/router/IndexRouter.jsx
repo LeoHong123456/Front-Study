@@ -22,8 +22,8 @@ export default function IndexRouter() {
   const [BackRouteList, setBackRouteList] = useState([])
   useEffect(() => {
     Promise.all([
-      axios.get(`http://localhost:8000/rights`),
-      axios.get(`http://localhost:8000/children`),
+      axios.get(`/rights`),
+      axios.get(`/children`),
     ]).then(res => {
       setBackRouteList([...res[0].data, ...res[1].data])
     })
@@ -57,7 +57,7 @@ export default function IndexRouter() {
   const initRoutes = [
     { name: '登录页面', path: '/login', element: <Login/> },
     { path: '/', element: <AuthComponent>{<NewsSandBox/>}</AuthComponent>, children: [
-      {name: '404找不到', path: '*' , element: <NotFound />},
+      BackRouteList.length>0 && {name: '404找不到', path: '*' , element: <NotFound />},
       ...routes
     ]},
   ]
