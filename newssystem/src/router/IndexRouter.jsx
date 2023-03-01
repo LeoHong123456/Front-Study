@@ -16,6 +16,7 @@ import Unpublished from "../views/sandbox/publish-manage/Unpublished"
 import Published from "../views/sandbox/publish-manage/Published"
 import Sunset from "../views/sandbox/publish-manage/Sunset"
 import NotFound from "../views/sandbox/notfound/NotFound"
+import NoPermission from "../views/sandbox/nopermission/NoPermission"
 import axios from "axios"
 
 export default function IndexRouter() {
@@ -50,13 +51,14 @@ export default function IndexRouter() {
     "/publish-manage/sunset": <Sunset/>
   }
 
-
-  const {role:{rights}} = JSON.parse(localStorage.getItem("token"))
   const checkRoute = (item) =>{
     return LocalRouterMap[item.key] && item.pagepermisson
   }
+
   const checkUserPermission = (item) =>{
-    return rights.includes(item.key)
+    // const {role:{rights}} = JSON.parse(localStorage.getItem("token"))
+    // return rights.includes(item.key)
+    return true;
   }
   
   const routes = BackRouteList.map(item => {

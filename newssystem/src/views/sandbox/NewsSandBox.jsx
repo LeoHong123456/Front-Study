@@ -3,15 +3,12 @@ import { Outlet } from 'react-router-dom'
 import { Layout, theme } from 'antd'
 import SideMenu from '../../components/sandbox/SideMenu'
 import TopHeader from '../../components/sandbox/TopHeader'
-import NProgress from 'nprogress'
-import  'nprogress/nprogress.css'
+// import NProgress from 'nprogress'
+// import  'nprogress/nprogress.css'
 
 const { Content, Footer } = Layout;
 export default function NewsSandBox() {
   // NProgress.start()
-  // useEffect(()=>{
-  //   NProgress.done()
-  // })
   const { token: { colorBgContainer }, } = theme.useToken();
   return (
     <Layout>
