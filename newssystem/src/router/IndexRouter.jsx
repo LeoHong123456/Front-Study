@@ -50,15 +50,29 @@ export default function IndexRouter() {
     "/publish-manage/sunset": <Sunset/>
   }
 
+
+  const {role:{rights}} = JSON.parse(localStorage.getItem("token"))
+  const checkRoute = (item) =>{
+    return LocalRouterMap[item.key] && item.pagepermisson
+  }
+  const checkUserPermission = (item) =>{
+    return rights.includes(item.key)
+  }
+  
   const routes = BackRouteList.map(item => {
-    return { path: item.key, key: item.key, element: LocalRouterMap[item.key], exact: true }
+    //验证权限
+    if(checkRoute(item) && checkUserPermission(item)){
+      return { path: item.key, key: item.key, element: LocalRouterMap[item.key], exact: true }
+    }
+    return {path: "*", key: item.key, element: <NoPermission/>}
   })
 
   const initRoutes = [
     { name: '登录页面', path: '/login', element: <Login/> },
     { path: '/', element: <AuthComponent>{<NewsSandBox/>}</AuthComponent>, children: [
-      BackRouteList.length>0 && {name: '404找不到', path: '*' , element: <NotFound />},
-      ...routes
+      ...routes,
+      //等待路由加载完成再渲染404路由，避免出现404
+      BackRouteList.length > 0 && {name: '404找不到', path: '*' , element: <NotFound />}
     ]},
   ]
   return useRoutes(initRoutes)
